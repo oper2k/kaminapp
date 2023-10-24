@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>825460394136-11683vqe8k4jp8gjhooobgo3c0980h3o.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.825460394136-11683vqe8k4jp8gjhooobgo3c0980h3o</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>825460394136-ue7ihco07soldjvkpl3eukm8m57i6m7e.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB6IW9DrlMrnnwXkVEb3QObZ8TOIDEU8M8</string>
+	<key>GCM_SENDER_ID</key>
+	<string>825460394136</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>pro.appful.kaminapp</string>
+	<key>PROJECT_ID</key>
+	<string>kaminapp-fcbab</string>
+	<key>STORAGE_BUCKET</key>
+	<string>kaminapp-fcbab.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:825460394136:ios:1bd40b7d4e17a3474168ed</string>
+</dict>
+</plist>
