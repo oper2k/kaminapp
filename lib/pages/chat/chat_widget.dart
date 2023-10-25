@@ -1,10 +1,10 @@
 import '/auth/supabase_auth/auth_util.dart';
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
-import '/custom_code/actions/index.dart' as actions;
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
@@ -572,13 +572,14 @@ class _ChatWidgetState extends State<ChatWidget> {
                                   'IconButton_refresh_database_request');
                               setState(() => _model.requestCompleter = null);
                               await _model.waitForRequestCompleted();
-                              logFirebaseEvent('IconButton_custom_action');
-                              await actions.oneSignalSendPush(
-                                currentUserUid == FFAppState().userAdmin
-                                    ? widget.chat!.rlUserClient!
-                                    : widget.chat!.rlUserAdmin!,
-                                'Новое сообшение',
-                                _model.textController.text,
+                              logFirebaseEvent('IconButton_backend_call');
+                              await OneSignalGroup.sendNotificationsCall.call(
+                                receiverId:
+                                    currentUserUid == FFAppState().userAdmin
+                                        ? widget.chat?.rlUserClient
+                                        : widget.chat?.rlUserAdmin,
+                                heading: 'Новое сообшение',
+                                content: _model.textController.text,
                               );
                               logFirebaseEvent(
                                   'IconButton_clear_text_fields_pin_codes');
