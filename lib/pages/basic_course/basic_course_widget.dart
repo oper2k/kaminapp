@@ -87,7 +87,10 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
             },
           ),
           title: Text(
-            'Личный кабинет',
+            valueOrDefault<String>(
+              widget.currentCourse?.name,
+              'Базовый курс',
+            ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
