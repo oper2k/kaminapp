@@ -1,3 +1,4 @@
+import '/backend/api_requests/api_calls.dart';
 import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
@@ -259,6 +260,12 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                             widget.currentTestAnswers?.uid,
                           ),
                         );
+                        logFirebaseEvent('Button_backend_call');
+                        await OneSignalGroup.sendNotificationsCall.call(
+                          receiverId: widget.currentTestAnswers?.rlUser,
+                          heading: 'Тест не сдан :(',
+                          content: 'Попробуй еще раз',
+                        );
                         logFirebaseEvent('Button_navigate_back');
                         context.safePop();
                       },
@@ -296,6 +303,12 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                             'uid',
                             widget.currentTestAnswers?.uid,
                           ),
+                        );
+                        logFirebaseEvent('Button_backend_call');
+                        await OneSignalGroup.sendNotificationsCall.call(
+                          receiverId: widget.currentTestAnswers?.rlUser,
+                          heading: 'Поздравляем!',
+                          content: 'Тест успешно сдан :)',
                         );
                         logFirebaseEvent('Button_navigate_back');
                         context.safePop();
