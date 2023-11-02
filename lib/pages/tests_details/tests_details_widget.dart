@@ -319,7 +319,6 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                   ),
                                                   updateCallback: () =>
                                                       setState(() {}),
-                                                  updateOnChange: true,
                                                   child: TestQuestionTextWidget(
                                                     key: Key(
                                                       'Keyhjs_${questionsItem.uid}',
@@ -541,6 +540,12 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                       'Новый тест на проверку',
                                                   content: 'Работай давай!',
                                                 );
+                                                logFirebaseEvent(
+                                                    'Row_update_app_state');
+                                                setState(() {
+                                                  FFAppState().answers = [];
+                                                  FFAppState().questions = [];
+                                                });
                                                 logFirebaseEvent(
                                                     'Row_navigate_to');
                                                 if (Navigator.of(context)

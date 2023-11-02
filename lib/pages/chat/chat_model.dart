@@ -18,7 +18,7 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();
-  Completer<List<MessagesRow>>? requestCompleter;
+  Completer<List<ChatMessagesInfoViewRow>>? requestCompleter;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
   TextEditingController? textController;

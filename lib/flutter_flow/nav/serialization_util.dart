@@ -261,6 +261,8 @@ dynamic deserializeParam<T>(
             return MessagesRow(data);
           case ContactsRow:
             return ContactsRow(data);
+          case FirebaseDictRow:
+            return FirebaseDictRow(data);
           case CourseRow:
             return CourseRow(data);
           case TestsRow:
@@ -277,6 +279,10 @@ dynamic deserializeParam<T>(
             return UsersRow(data);
           case SubLessonsRow:
             return SubLessonsRow(data);
+          case ChatMessagesInfoViewRow:
+            return ChatMessagesInfoViewRow(data);
+          case FirebaseUsersRow:
+            return FirebaseUsersRow(data);
           case MapRow:
             return MapRow(data);
           default:

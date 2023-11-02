@@ -20,9 +20,6 @@ class SubLessonsRow extends SupabaseDataRow {
   String? get name => getField<String>('name');
   set name(String? value) => setField<String>('name', value);
 
-  String? get type => getField<String>('type');
-  set type(String? value) => setField<String>('type', value);
-
   int? get sort => getField<int>('sort');
   set sort(int? value) => setField<int>('sort', value);
 
