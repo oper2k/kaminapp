@@ -203,8 +203,11 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                                                       Duration(milliseconds: 0),
                                                   fadeOutDuration:
                                                       Duration(milliseconds: 0),
-                                                  imageUrl: containerUsersRow!
-                                                      .photoUrl!,
+                                                  imageUrl:
+                                                      valueOrDefault<String>(
+                                                    containerUsersRow?.photoUrl,
+                                                    'https://zigbtihbwqghofeurmcw.supabase.co/storage/v1/object/public/kamin/users/avatars/Me.png',
+                                                  ),
                                                   width: 45.0,
                                                   height: 45.0,
                                                   fit: BoxFit.cover,

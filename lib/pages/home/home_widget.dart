@@ -294,7 +294,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                   Duration(milliseconds: 0),
                                               imageUrl: valueOrDefault<String>(
                                                 columnUsersRow?.photoUrl,
-                                                'нет',
+                                                'https://zigbtihbwqghofeurmcw.supabase.co/storage/v1/object/public/kamin/users/avatars/Me.png',
                                               ),
                                               width: 62.0,
                                               height: 62.0,

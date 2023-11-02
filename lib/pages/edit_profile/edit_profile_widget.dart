@@ -287,10 +287,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                           logFirebaseEvent(
                                               'EDIT_PROFILE_photo_camera_outlined_ICN_O');
                                           logFirebaseEvent(
-                                              'IconButton_clear_query_cache');
-                                          FFAppState().clearUserAvatarCacheKey(
-                                              currentUserUid);
-                                          logFirebaseEvent(
                                               'IconButton_upload_media_to_supabase');
                                           final selectedMedia =
                                               await selectMediaWithSourceBottomSheet(

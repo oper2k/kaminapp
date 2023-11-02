@@ -816,6 +816,14 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                         onTap: () async {
                                                           logFirebaseEvent(
                                                               'BASIC_COURSE_CurrentTestAnswers_ON_TAP');
+                                                          logFirebaseEvent(
+                                                              'CurrentTestAnswers_update_app_state');
+                                                          setState(() {
+                                                            FFAppState()
+                                                                .currentAnswer = '';
+                                                            FFAppState()
+                                                                .currentQuestions = '';
+                                                          });
                                                           if (((testsIndex ==
                                                                       0) &&
                                                                   (currentTestAnswersTestsAnswersRowList
@@ -846,6 +854,8 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                         .name!;
                                                                 FFAppState()
                                                                     .answers = [];
+                                                                FFAppState()
+                                                                    .questions = [];
                                                               });
                                                             }
                                                             if (currentTestAnswersTestsAnswersRowList

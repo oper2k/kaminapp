@@ -127,10 +127,10 @@ class _ChatWidgetState extends State<ChatWidget> {
               ),
               Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 75.0),
-                child: FutureBuilder<List<MessagesRow>>(
+                child: FutureBuilder<List<ChatMessagesInfoViewRow>>(
                   future: (_model.requestCompleter ??=
-                          Completer<List<MessagesRow>>()
-                            ..complete(MessagesTable().queryRows(
+                          Completer<List<ChatMessagesInfoViewRow>>()
+                            ..complete(ChatMessagesInfoViewTable().queryRows(
                               queryFn: (q) => q
                                   .eq(
                                     'chat',
@@ -153,7 +153,8 @@ class _ChatWidgetState extends State<ChatWidget> {
                         ),
                       );
                     }
-                    List<MessagesRow> listViewMessagesRowList = snapshot.data!;
+                    List<ChatMessagesInfoViewRow>
+                        listViewChatMessagesInfoViewRowList = snapshot.data!;
                     return RefreshIndicator(
                       onRefresh: () async {
                         logFirebaseEvent(
@@ -171,15 +172,16 @@ class _ChatWidgetState extends State<ChatWidget> {
                         ),
                         reverse: true,
                         scrollDirection: Axis.vertical,
-                        itemCount: listViewMessagesRowList.length,
+                        itemCount: listViewChatMessagesInfoViewRowList.length,
                         itemBuilder: (context, listViewIndex) {
-                          final listViewMessagesRow =
-                              listViewMessagesRowList[listViewIndex];
+                          final listViewChatMessagesInfoViewRow =
+                              listViewChatMessagesInfoViewRowList[
+                                  listViewIndex];
                           return Column(
                             mainAxisSize: MainAxisSize.max,
                             mainAxisAlignment: MainAxisAlignment.end,
                             children: [
-                              if (listViewMessagesRow.rlUserOwner !=
+                              if (listViewChatMessagesInfoViewRow.rlUserOwner !=
                                   currentUserUid)
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -213,57 +215,25 @@ class _ChatWidgetState extends State<ChatWidget> {
                                           padding:
                                               EdgeInsetsDirectional.fromSTEB(
                                                   8.0, 0.0, 8.0, 0.0),
-                                          child: FutureBuilder<List<UsersRow>>(
-                                            future: UsersTable().querySingleRow(
-                                              queryFn: (q) => q.eq(
-                                                'uid',
-                                                widget.chat?.rlUserClient,
-                                              ),
+                                          child: Container(
+                                            width: 40.0,
+                                            height: 40.0,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
                                             ),
-                                            builder: (context, snapshot) {
-                                              // Customize what your widget looks like when it's loading.
-                                              if (!snapshot.hasData) {
-                                                return Center(
-                                                  child: SizedBox(
-                                                    width: 50.0,
-                                                    height: 50.0,
-                                                    child: SpinKitFoldingCube(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      size: 50.0,
-                                                    ),
-                                                  ),
-                                                );
-                                              }
-                                              List<UsersRow>
-                                                  circleImageUsersRowList =
-                                                  snapshot.data!;
-                                              final circleImageUsersRow =
-                                                  circleImageUsersRowList
-                                                          .isNotEmpty
-                                                      ? circleImageUsersRowList
-                                                          .first
-                                                      : null;
-                                              return Container(
-                                                width: 40.0,
-                                                height: 40.0,
-                                                clipBehavior: Clip.antiAlias,
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                ),
-                                                child: CachedNetworkImage(
-                                                  fadeInDuration:
-                                                      Duration(milliseconds: 0),
-                                                  fadeOutDuration:
-                                                      Duration(milliseconds: 0),
-                                                  imageUrl: circleImageUsersRow!
-                                                      .photoUrl!,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              );
-                                            },
+                                            child: CachedNetworkImage(
+                                              fadeInDuration:
+                                                  Duration(milliseconds: 0),
+                                              fadeOutDuration:
+                                                  Duration(milliseconds: 0),
+                                              imageUrl: valueOrDefault<String>(
+                                                listViewChatMessagesInfoViewRow
+                                                    .photoUrl,
+                                                'https://zigbtihbwqghofeurmcw.supabase.co/storage/v1/object/public/kamin/users/avatars/Me.png',
+                                              ),
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
                                       Flexible(
@@ -305,7 +275,8 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                                 16.0,
                                                                 16.0),
                                                     child: Text(
-                                                      listViewMessagesRow.name!,
+                                                      listViewChatMessagesInfoViewRow
+                                                          .name!,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -321,7 +292,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                     ],
                                   ),
                                 ),
-                              if (listViewMessagesRow.rlUserOwner ==
+                              if (listViewChatMessagesInfoViewRow.rlUserOwner ==
                                   currentUserUid)
                                 Padding(
                                   padding: EdgeInsetsDirectional.fromSTEB(
@@ -370,7 +341,8 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                                 16.0,
                                                                 16.0),
                                                     child: Text(
-                                                      listViewMessagesRow.name!,
+                                                      listViewChatMessagesInfoViewRow
+                                                          .name!,
                                                       style:
                                                           FlutterFlowTheme.of(
                                                                   context)
@@ -392,61 +364,25 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                 .secondaryBackground,
                                             shape: BoxShape.circle,
                                           ),
-                                          child: FutureBuilder<List<UsersRow>>(
-                                            future: FFAppState().userAvatar(
-                                              uniqueQueryKey: currentUserUid,
-                                              requestFn: () =>
-                                                  UsersTable().querySingleRow(
-                                                queryFn: (q) => q.eq(
-                                                  'uid',
-                                                  currentUserUid,
-                                                ),
-                                              ),
+                                          child: Container(
+                                            width: 40.0,
+                                            height: 40.0,
+                                            clipBehavior: Clip.antiAlias,
+                                            decoration: BoxDecoration(
+                                              shape: BoxShape.circle,
                                             ),
-                                            builder: (context, snapshot) {
-                                              // Customize what your widget looks like when it's loading.
-                                              if (!snapshot.hasData) {
-                                                return Center(
-                                                  child: SizedBox(
-                                                    width: 50.0,
-                                                    height: 50.0,
-                                                    child: SpinKitFoldingCube(
-                                                      color:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .primary,
-                                                      size: 50.0,
-                                                    ),
-                                                  ),
-                                                );
-                                              }
-                                              List<UsersRow>
-                                                  circleImageUsersRowList =
-                                                  snapshot.data!;
-                                              final circleImageUsersRow =
-                                                  circleImageUsersRowList
-                                                          .isNotEmpty
-                                                      ? circleImageUsersRowList
-                                                          .first
-                                                      : null;
-                                              return Container(
-                                                width: 40.0,
-                                                height: 40.0,
-                                                clipBehavior: Clip.antiAlias,
-                                                decoration: BoxDecoration(
-                                                  shape: BoxShape.circle,
-                                                ),
-                                                child: CachedNetworkImage(
-                                                  fadeInDuration:
-                                                      Duration(milliseconds: 0),
-                                                  fadeOutDuration:
-                                                      Duration(milliseconds: 0),
-                                                  imageUrl: circleImageUsersRow!
-                                                      .photoUrl!,
-                                                  fit: BoxFit.cover,
-                                                ),
-                                              );
-                                            },
+                                            child: CachedNetworkImage(
+                                              fadeInDuration:
+                                                  Duration(milliseconds: 0),
+                                              fadeOutDuration:
+                                                  Duration(milliseconds: 0),
+                                              imageUrl: valueOrDefault<String>(
+                                                listViewChatMessagesInfoViewRow
+                                                    .photoUrl,
+                                                'https://zigbtihbwqghofeurmcw.supabase.co/storage/v1/object/public/kamin/users/avatars/Me.png',
+                                              ),
+                                              fit: BoxFit.cover,
+                                            ),
                                           ),
                                         ),
                                       ),
