@@ -31,6 +31,7 @@ class _ContactsWidgetState extends State<ContactsWidget> {
     _model = createModel(context, () => ContactsModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Contacts'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -71,7 +72,7 @@ class _ContactsWidgetState extends State<ContactsWidget> {
             icon: Icon(
               Icons.close,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 14.0,
+              size: 24.0,
             ),
             onPressed: () async {
               logFirebaseEvent('CONTACTS_PAGE_close_ICN_ON_TAP');
@@ -84,7 +85,7 @@ class _ContactsWidgetState extends State<ContactsWidget> {
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
-                  fontSize: 14.0,
+                  fontSize: 16.0,
                 ),
           ),
           actions: [],
@@ -93,99 +94,85 @@ class _ContactsWidgetState extends State<ContactsWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: FutureBuilder<List<ContactsRow>>(
-            future: ContactsTable().queryRows(
-              queryFn: (q) => q,
-            ),
-            builder: (context, snapshot) {
-              // Customize what your widget looks like when it's loading.
-              if (!snapshot.hasData) {
-                return Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: SpinKitFoldingCube(
-                      color: FlutterFlowTheme.of(context).primary,
-                      size: 50.0,
+          child: Align(
+            alignment: AlignmentDirectional(0.00, -1.00),
+            child: FutureBuilder<List<ContactsRow>>(
+              future: ContactsTable().queryRows(
+                queryFn: (q) => q,
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50.0,
+                      height: 50.0,
+                      child: SpinKitFoldingCube(
+                        color: FlutterFlowTheme.of(context).primary,
+                        size: 50.0,
+                      ),
                     ),
-                  ),
-                );
-              }
-              List<ContactsRow> containerContactsRowList = snapshot.data!;
-              return Container(
-                width: double.infinity,
-                decoration: BoxDecoration(),
-                child: Builder(
-                  builder: (context) {
-                    final contact = containerContactsRowList.toList();
-                    return SingleChildScrollView(
-                      child: Column(
-                        mainAxisSize: MainAxisSize.min,
-                        children: List.generate(contact.length, (contactIndex) {
-                          final contactItem = contact[contactIndex];
-                          return Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                16.0, 20.0, 16.0, 0.0),
-                            child: Container(
-                              width: MediaQuery.sizeOf(context).width * 1.0,
-                              decoration: BoxDecoration(
-                                color:
-                                    FlutterFlowTheme.of(context).primaryBtnText,
-                                borderRadius: BorderRadius.circular(16.0),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    12.0, 12.0, 12.0, 12.0),
-                                child: Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: [
-                                    ClipRRect(
-                                      borderRadius: BorderRadius.circular(8.0),
-                                      child: CachedNetworkImage(
-                                        fadeInDuration:
-                                            Duration(milliseconds: 0),
-                                        fadeOutDuration:
-                                            Duration(milliseconds: 0),
-                                        imageUrl: contactItem.image!,
-                                        width: 96.0,
-                                        height: 96.0,
-                                        fit: BoxFit.cover,
+                  );
+                }
+                List<ContactsRow> containerContactsRowList = snapshot.data!;
+                return Container(
+                  width: 700.0,
+                  decoration: BoxDecoration(),
+                  child: Builder(
+                    builder: (context) {
+                      final contact = containerContactsRowList.toList();
+                      return SingleChildScrollView(
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children:
+                              List.generate(contact.length, (contactIndex) {
+                            final contactItem = contact[contactIndex];
+                            return Padding(
+                              padding: EdgeInsetsDirectional.fromSTEB(
+                                  16.0, 20.0, 16.0, 0.0),
+                              child: Container(
+                                width: MediaQuery.sizeOf(context).width * 1.0,
+                                decoration: BoxDecoration(
+                                  color: FlutterFlowTheme.of(context)
+                                      .primaryBtnText,
+                                  borderRadius: BorderRadius.circular(16.0),
+                                ),
+                                child: Padding(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                      12.0, 12.0, 12.0, 12.0),
+                                  child: Row(
+                                    mainAxisSize: MainAxisSize.min,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius:
+                                            BorderRadius.circular(8.0),
+                                        child: CachedNetworkImage(
+                                          fadeInDuration:
+                                              Duration(milliseconds: 0),
+                                          fadeOutDuration:
+                                              Duration(milliseconds: 0),
+                                          imageUrl: contactItem.image!,
+                                          width: 96.0,
+                                          height: 96.0,
+                                          fit: BoxFit.cover,
+                                        ),
                                       ),
-                                    ),
-                                    Expanded(
-                                      child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            12.0, 0.0, 0.0, 0.0),
-                                        child: Column(
-                                          mainAxisSize: MainAxisSize.max,
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.center,
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            AutoSizeText(
-                                              valueOrDefault<String>(
-                                                contactItem.name,
-                                                'Нет имени',
-                                              ),
-                                              maxLines: 2,
-                                              style:
-                                                  FlutterFlowTheme.of(context)
-                                                      .bodyMedium
-                                                      .override(
-                                                        fontFamily: 'Roboto',
-                                                        color:
-                                                            Color(0xFF112D4E),
-                                                        fontSize: 16.0,
-                                                      ),
-                                            ),
-                                            Padding(
-                                              padding: EdgeInsetsDirectional
-                                                  .fromSTEB(0.0, 2.0, 0.0, 0.0),
-                                              child: AutoSizeText(
+                                      Expanded(
+                                        child: Padding(
+                                          padding:
+                                              EdgeInsetsDirectional.fromSTEB(
+                                                  12.0, 0.0, 0.0, 0.0),
+                                          child: Column(
+                                            mainAxisSize: MainAxisSize.max,
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.center,
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              AutoSizeText(
                                                 valueOrDefault<String>(
-                                                  contactItem.division,
-                                                  'Нет отдела',
+                                                  contactItem.name,
+                                                  'Нет имени',
                                                 ),
                                                 maxLines: 2,
                                                 style:
@@ -194,72 +181,94 @@ class _ContactsWidgetState extends State<ContactsWidget> {
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           color:
-                                                              Color(0xFF6D7885),
-                                                          fontSize: 13.0,
-                                                          fontWeight:
-                                                              FontWeight.normal,
+                                                              Color(0xFF112D4E),
+                                                          fontSize: 16.0,
                                                         ),
                                               ),
-                                            ),
-                                            Row(
-                                              mainAxisSize: MainAxisSize.max,
-                                              children: [
-                                                Flexible(
-                                                  child: Column(
-                                                    mainAxisSize:
-                                                        MainAxisSize.max,
-                                                    children: [
-                                                      Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    0.0,
-                                                                    12.0,
-                                                                    0.0,
-                                                                    0.0),
-                                                        child: AutoSizeText(
-                                                          valueOrDefault<
-                                                              String>(
-                                                            contactItem
-                                                                .description,
-                                                            'нет описания',
-                                                          ),
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                color: Colors
-                                                                    .black,
-                                                                fontSize: 13.0,
-                                                                fontWeight:
-                                                                    FontWeight
-                                                                        .normal,
-                                                              ),
-                                                        ),
-                                                      ),
-                                                    ],
+                                              Padding(
+                                                padding: EdgeInsetsDirectional
+                                                    .fromSTEB(
+                                                        0.0, 2.0, 0.0, 0.0),
+                                                child: AutoSizeText(
+                                                  valueOrDefault<String>(
+                                                    contactItem.division,
+                                                    'Нет отдела',
                                                   ),
+                                                  maxLines: 2,
+                                                  style: FlutterFlowTheme.of(
+                                                          context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        color:
+                                                            Color(0xFF6D7885),
+                                                        fontSize: 13.0,
+                                                        fontWeight:
+                                                            FontWeight.normal,
+                                                      ),
                                                 ),
-                                              ],
-                                            ),
-                                          ],
+                                              ),
+                                              Row(
+                                                mainAxisSize: MainAxisSize.max,
+                                                children: [
+                                                  Flexible(
+                                                    child: Column(
+                                                      mainAxisSize:
+                                                          MainAxisSize.max,
+                                                      children: [
+                                                        Padding(
+                                                          padding:
+                                                              EdgeInsetsDirectional
+                                                                  .fromSTEB(
+                                                                      0.0,
+                                                                      12.0,
+                                                                      0.0,
+                                                                      0.0),
+                                                          child: AutoSizeText(
+                                                            valueOrDefault<
+                                                                String>(
+                                                              contactItem
+                                                                  .description,
+                                                              'нет описания',
+                                                            ),
+                                                            style: FlutterFlowTheme
+                                                                    .of(context)
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  color: Colors
+                                                                      .black,
+                                                                  fontSize:
+                                                                      13.0,
+                                                                  fontWeight:
+                                                                      FontWeight
+                                                                          .normal,
+                                                                ),
+                                                          ),
+                                                        ),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
                               ),
-                            ),
-                          );
-                        }).addToEnd(SizedBox(height: 30.0)),
-                      ),
-                    );
-                  },
-                ),
-              );
-            },
+                            );
+                          }).addToEnd(SizedBox(height: 30.0)),
+                        ),
+                      );
+                    },
+                  ),
+                );
+              },
+            ),
           ),
         ),
       ),

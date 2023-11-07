@@ -39,6 +39,7 @@ class _SubLessonsDetailsSlidesWidgetState
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'SubLessonsDetailsSlides'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -79,7 +80,7 @@ class _SubLessonsDetailsSlidesWidgetState
             icon: Icon(
               Icons.close,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 14.0,
+              size: 24.0,
             ),
             onPressed: () async {
               logFirebaseEvent('SUB_LESSONS_DETAILS_SLIDES_close_ICN_ON_');
@@ -95,7 +96,7 @@ class _SubLessonsDetailsSlidesWidgetState
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
-                  fontSize: 14.0,
+                  fontSize: 16.0,
                 ),
           ),
           actions: [],
@@ -104,103 +105,116 @@ class _SubLessonsDetailsSlidesWidgetState
         ),
         body: SafeArea(
           top: true,
-          child: Stack(
-            children: [
-              Column(
-                mainAxisSize: MainAxisSize.min,
+          child: Align(
+            alignment: AlignmentDirectional(0.00, -1.00),
+            child: Container(
+              width: 700.0,
+              decoration: BoxDecoration(),
+              child: Stack(
                 children: [
-                  Flexible(
-                    child: Padding(
-                      padding:
-                          EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 80.0),
-                      child: Builder(
-                        builder: (context) {
-                          final currentDescription =
-                              widget.currentSubLesson?.descriptions?.toList() ??
+                  Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Flexible(
+                        child: Padding(
+                          padding: EdgeInsetsDirectional.fromSTEB(
+                              0.0, 0.0, 0.0, 80.0),
+                          child: Builder(
+                            builder: (context) {
+                              final currentDescription = widget
+                                      .currentSubLesson?.descriptions
+                                      ?.toList() ??
                                   [];
-                          return PageView.builder(
-                            controller: _model.pageViewController ??=
-                                PageController(
-                                    initialPage:
-                                        min(0, currentDescription.length - 1)),
-                            onPageChanged: (_) async {
-                              logFirebaseEvent(
-                                  'SUB_LESSONS_DETAILS_SLIDES_PageView_dx8i');
-                              logFirebaseEvent('PageView_update_app_state');
-                              setState(() {});
-                            },
-                            scrollDirection: Axis.horizontal,
-                            itemCount: currentDescription.length,
-                            itemBuilder: (context, currentDescriptionIndex) {
-                              final currentDescriptionItem =
-                                  currentDescription[currentDescriptionIndex];
-                              return Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
-                                    20.0, 0.0, 20.0, 0.0),
-                                child: FlutterFlowWebView(
-                                  content: currentDescriptionItem,
-                                  width: MediaQuery.sizeOf(context).width * 1.0,
-                                  height:
-                                      MediaQuery.sizeOf(context).height * 1.0,
-                                  verticalScroll: true,
-                                  horizontalScroll: false,
-                                  html: true,
-                                ),
+                              return PageView.builder(
+                                controller: _model.pageViewController ??=
+                                    PageController(
+                                        initialPage: min(
+                                            0, currentDescription.length - 1)),
+                                onPageChanged: (_) async {
+                                  logFirebaseEvent(
+                                      'SUB_LESSONS_DETAILS_SLIDES_PageView_dx8i');
+                                  logFirebaseEvent('PageView_update_app_state');
+                                  setState(() {});
+                                },
+                                scrollDirection: Axis.horizontal,
+                                itemCount: currentDescription.length,
+                                itemBuilder:
+                                    (context, currentDescriptionIndex) {
+                                  final currentDescriptionItem =
+                                      currentDescription[
+                                          currentDescriptionIndex];
+                                  return Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        20.0, 0.0, 20.0, 0.0),
+                                    child: FlutterFlowWebView(
+                                      content: currentDescriptionItem,
+                                      width: MediaQuery.sizeOf(context).width *
+                                          1.0,
+                                      height:
+                                          MediaQuery.sizeOf(context).height *
+                                              1.0,
+                                      verticalScroll: true,
+                                      horizontalScroll: false,
+                                      html: true,
+                                    ),
+                                  );
+                                },
                               );
                             },
-                          );
-                        },
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                  Align(
+                    alignment: AlignmentDirectional(0.00, 1.00),
+                    child: Container(
+                      width: double.infinity,
+                      height: 80.0,
+                      decoration: BoxDecoration(),
+                      child: Align(
+                        alignment: AlignmentDirectional(0.00, 0.00),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Container(
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEDF2FA),
+                                borderRadius: BorderRadius.circular(50.0),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsetsDirectional.fromSTEB(
+                                    15.0, 3.0, 15.0, 3.0),
+                                child: Text(
+                                  valueOrDefault<String>(
+                                    '${valueOrDefault<String>(
+                                      functions
+                                          .increment(
+                                              _model.pageViewCurrentIndex)
+                                          .toString(),
+                                      '0',
+                                    )}/${widget.currentSubLesson?.descriptions?.length?.toString()}',
+                                    '0/0',
+                                  ),
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        color: Color(0xFFB7DDF7),
+                                        fontSize: 16.0,
+                                      ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
                 ],
               ),
-              Align(
-                alignment: AlignmentDirectional(0.00, 1.00),
-                child: Container(
-                  width: double.infinity,
-                  height: 80.0,
-                  decoration: BoxDecoration(),
-                  child: Align(
-                    alignment: AlignmentDirectional(0.00, 0.00),
-                    child: Row(
-                      mainAxisSize: MainAxisSize.max,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Color(0xFFEDF2FA),
-                            borderRadius: BorderRadius.circular(50.0),
-                          ),
-                          child: Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
-                                15.0, 3.0, 15.0, 3.0),
-                            child: Text(
-                              valueOrDefault<String>(
-                                '${valueOrDefault<String>(
-                                  functions
-                                      .increment(_model.pageViewCurrentIndex)
-                                      .toString(),
-                                  '0',
-                                )}/${widget.currentSubLesson?.descriptions?.length?.toString()}',
-                                '0/0',
-                              ),
-                              style: FlutterFlowTheme.of(context)
-                                  .bodyMedium
-                                  .override(
-                                    fontFamily: 'Roboto',
-                                    color: Color(0xFFB7DDF7),
-                                    fontSize: 16.0,
-                                  ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-              ),
-            ],
+            ),
           ),
         ),
       ),

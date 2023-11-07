@@ -34,6 +34,8 @@ class _CustomDialogMapWidgetState extends State<CustomDialogMapWidget> {
   void initState() {
     super.initState();
     _model = createModel(context, () => CustomDialogMapModel());
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

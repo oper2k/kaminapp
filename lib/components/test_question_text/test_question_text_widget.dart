@@ -57,6 +57,8 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
             ? FFAppState().answers[widget.index!]
             : '');
     _model.textFieldFocusNode ??= FocusNode();
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

@@ -31,6 +31,7 @@ class _ResetPasswordSuccessWidgetState
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'ResetPasswordSuccess'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -71,7 +72,7 @@ class _ResetPasswordSuccessWidgetState
             icon: Icon(
               Icons.arrow_back_rounded,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 14.0,
+              size: 24.0,
             ),
             onPressed: () async {
               logFirebaseEvent('RESET_PASSWORD_SUCCESS_arrow_back_rounde');
@@ -84,7 +85,7 @@ class _ResetPasswordSuccessWidgetState
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
-                  fontSize: 14.0,
+                  fontSize: 16.0,
                 ),
           ),
           actions: [],
@@ -93,77 +94,93 @@ class _ResetPasswordSuccessWidgetState
         ),
         body: SafeArea(
           top: true,
-          child: Padding(
-            padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
-            child: Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Image.asset(
-                  'assets/images/circle_checklist_1.png',
-                  width: 200.0,
-                  height: 200.0,
-                  fit: BoxFit.cover,
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          'Ссылка на сброс пароля отправлена вам на почту',
-                          textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context).titleMedium,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
-                  child: Row(
-                    mainAxisSize: MainAxisSize.max,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          'Продолжить вход',
-                          textAlign: TextAlign.center,
-                          style:
-                              FlutterFlowTheme.of(context).bodyMedium.override(
-                                    fontFamily: 'Roboto',
-                                    fontSize: 12.0,
-                                  ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Padding(
-                  padding: EdgeInsetsDirectional.fromSTEB(0.0, 28.0, 0.0, 0.0),
-                  child: FlutterFlowIconButton(
-                    borderColor: FlutterFlowTheme.of(context).primary,
-                    borderRadius: 30.0,
-                    borderWidth: 1.0,
-                    buttonSize: 60.0,
-                    fillColor: FlutterFlowTheme.of(context).primary,
-                    icon: Icon(
-                      Icons.arrow_right_alt_outlined,
-                      color: FlutterFlowTheme.of(context).primaryBackground,
-                      size: 30.0,
+          child: Align(
+            alignment: AlignmentDirectional(0.00, -1.00),
+            child: Container(
+              width: 700.0,
+              decoration: BoxDecoration(),
+              child: Padding(
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                child: Column(
+                  mainAxisSize: MainAxisSize.max,
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Image.asset(
+                      'assets/images/circle_checklist_1.png',
+                      width: 200.0,
+                      height: 200.0,
+                      fit: BoxFit.cover,
                     ),
-                    onPressed: () async {
-                      logFirebaseEvent(
-                          'RESET_PASSWORD_SUCCESS_arrow_right_alt_o');
-                      logFirebaseEvent('IconButton_navigate_back');
-                      context.pop();
-                    },
-                  ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Ссылка на сброс пароля отправлена вам на почту',
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.of(context)
+                                  .titleMedium
+                                  .override(
+                                    fontFamily: 'Roboto',
+                                    lineHeight: 1.45,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.max,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            child: Text(
+                              'Продолжить вход',
+                              textAlign: TextAlign.center,
+                              style: FlutterFlowTheme.of(context)
+                                  .bodyMedium
+                                  .override(
+                                    fontFamily: 'Roboto',
+                                    fontSize: 14.0,
+                                  ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding:
+                          EdgeInsetsDirectional.fromSTEB(0.0, 28.0, 0.0, 0.0),
+                      child: FlutterFlowIconButton(
+                        borderColor: FlutterFlowTheme.of(context).primary,
+                        borderRadius: 30.0,
+                        borderWidth: 1.0,
+                        buttonSize: 60.0,
+                        fillColor: FlutterFlowTheme.of(context).primary,
+                        icon: Icon(
+                          Icons.arrow_right_alt_outlined,
+                          color: FlutterFlowTheme.of(context).primaryBackground,
+                          size: 30.0,
+                        ),
+                        onPressed: () async {
+                          logFirebaseEvent(
+                              'RESET_PASSWORD_SUCCESS_arrow_right_alt_o');
+                          logFirebaseEvent('IconButton_navigate_back');
+                          context.pop();
+                        },
+                      ),
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),

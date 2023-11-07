@@ -10,6 +10,7 @@ export 'tables/dic.dart';
 export 'tables/tests_answers.dart';
 export 'tables/messages.dart';
 export 'tables/contacts.dart';
+export 'tables/eats.dart';
 export 'tables/firebase_dict.dart';
 export 'tables/course.dart';
 export 'tables/tests.dart';
