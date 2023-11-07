@@ -261,6 +261,8 @@ dynamic deserializeParam<T>(
             return MessagesRow(data);
           case ContactsRow:
             return ContactsRow(data);
+          case EatsRow:
+            return EatsRow(data);
           case FirebaseDictRow:
             return FirebaseDictRow(data);
           case CourseRow:

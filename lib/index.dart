@@ -34,3 +34,4 @@ export '/pages/chat/chat_widget.dart' show ChatWidget;
 export '/pages/all_chats/all_chats_widget.dart' show AllChatsWidget;
 export '/pages/test_end_success/test_end_success_widget.dart'
     show TestEndSuccessWidget;
+export '/pages/map_eat/map_eat_widget.dart' show MapEatWidget;

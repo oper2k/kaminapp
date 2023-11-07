@@ -243,6 +243,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               builder: (context, params) => TestEndSuccessWidget(
                 index: params.getParam('index', ParamType.int),
               ),
+            ),
+            FFRoute(
+              name: 'MapEat',
+              path: 'mapEat',
+              builder: (context, params) => MapEatWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),

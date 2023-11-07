@@ -51,6 +51,8 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
         FFAppState().currentQuestions = widget.name!;
       });
     });
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override

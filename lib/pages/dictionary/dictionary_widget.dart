@@ -31,6 +31,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
     _model = createModel(context, () => DictionaryModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Dictionary'});
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -71,7 +72,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
             icon: Icon(
               Icons.close,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 14.0,
+              size: 24.0,
             ),
             onPressed: () async {
               logFirebaseEvent('DICTIONARY_PAGE_close_ICN_ON_TAP');
@@ -84,7 +85,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
-                  fontSize: 14.0,
+                  fontSize: 16.0,
                 ),
           ),
           actions: [],
@@ -93,215 +94,236 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
         ),
         body: SafeArea(
           top: true,
-          child: FutureBuilder<List<DicRow>>(
-            future: DicTable().queryRows(
-              queryFn: (q) => q.order('sort', ascending: true),
-            ),
-            builder: (context, snapshot) {
-              // Customize what your widget looks like when it's loading.
-              if (!snapshot.hasData) {
-                return Center(
-                  child: SizedBox(
-                    width: 50.0,
-                    height: 50.0,
-                    child: SpinKitFoldingCube(
-                      color: FlutterFlowTheme.of(context).primary,
-                      size: 50.0,
+          child: Align(
+            alignment: AlignmentDirectional(0.00, -1.00),
+            child: FutureBuilder<List<DicRow>>(
+              future: DicTable().queryRows(
+                queryFn: (q) => q.order('sort', ascending: true),
+              ),
+              builder: (context, snapshot) {
+                // Customize what your widget looks like when it's loading.
+                if (!snapshot.hasData) {
+                  return Center(
+                    child: SizedBox(
+                      width: 50.0,
+                      height: 50.0,
+                      child: SpinKitFoldingCube(
+                        color: FlutterFlowTheme.of(context).primary,
+                        size: 50.0,
+                      ),
                     ),
-                  ),
-                );
-              }
-              List<DicRow> containerDicRowList = snapshot.data!;
-              return Container(
-                decoration: BoxDecoration(),
-                child: Stack(
-                  children: [
-                    Column(
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Flexible(
-                          child: Builder(
-                            builder: (context) {
-                              final dict = containerDicRowList.toList();
-                              return PageView.builder(
-                                controller: _model.pageViewController ??=
-                                    PageController(
-                                        initialPage: min(0, dict.length - 1)),
-                                onPageChanged: (_) async {
-                                  logFirebaseEvent(
-                                      'DICTIONARY_PageView_6xk30d4c_ON_WIDGET_S');
-                                  logFirebaseEvent('PageView_update_app_state');
-                                  setState(() {});
-                                },
-                                scrollDirection: Axis.horizontal,
-                                itemCount: dict.length,
-                                itemBuilder: (context, dictIndex) {
-                                  final dictItem = dict[dictIndex];
-                                  return Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
-                                        15.0, 0.0, 15.0, 0.0),
-                                    child: SingleChildScrollView(
-                                      child: Column(
-                                        mainAxisSize: MainAxisSize.max,
-                                        children: [
-                                          Container(
-                                            decoration: BoxDecoration(
-                                              color: Color(0xFFDAEFFB),
-                                              borderRadius:
-                                                  BorderRadius.circular(16.0),
-                                            ),
-                                            child: Column(
-                                              mainAxisSize: MainAxisSize.max,
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Align(
-                                                  alignment:
-                                                      AlignmentDirectional(
-                                                          0.00, 0.00),
-                                                  child: Padding(
-                                                    padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(0.0, 6.0,
-                                                                0.0, 0.0),
-                                                    child: ClipRRect(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8.0),
-                                                      child: CachedNetworkImage(
-                                                        fadeInDuration:
-                                                            Duration(
-                                                                milliseconds:
-                                                                    0),
-                                                        fadeOutDuration:
-                                                            Duration(
-                                                                milliseconds:
-                                                                    0),
-                                                        imageUrl:
-                                                            dictItem.image!,
-                                                        width: 344.0,
-                                                        height: 230.0,
-                                                        fit: BoxFit.cover,
+                  );
+                }
+                List<DicRow> containerDicRowList = snapshot.data!;
+                return Container(
+                  width: 700.0,
+                  decoration: BoxDecoration(),
+                  child: Stack(
+                    children: [
+                      Column(
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Flexible(
+                            child: Builder(
+                              builder: (context) {
+                                final dict = containerDicRowList.toList();
+                                return PageView.builder(
+                                  controller: _model.pageViewController ??=
+                                      PageController(
+                                          initialPage: min(0, dict.length - 1)),
+                                  onPageChanged: (_) async {
+                                    logFirebaseEvent(
+                                        'DICTIONARY_PageView_6xk30d4c_ON_WIDGET_S');
+                                    logFirebaseEvent(
+                                        'PageView_update_app_state');
+                                    setState(() {});
+                                  },
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: dict.length,
+                                  itemBuilder: (context, dictIndex) {
+                                    final dictItem = dict[dictIndex];
+                                    return Padding(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                          15.0, 0.0, 15.0, 0.0),
+                                      child: SingleChildScrollView(
+                                        child: Column(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                color: Color(0xFFDAEFFB),
+                                                borderRadius:
+                                                    BorderRadius.circular(16.0),
+                                              ),
+                                              child: Column(
+                                                mainAxisSize: MainAxisSize.max,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Align(
+                                                    alignment:
+                                                        AlignmentDirectional(
+                                                            0.00, 0.00),
+                                                    child: Padding(
+                                                      padding:
+                                                          EdgeInsetsDirectional
+                                                              .fromSTEB(
+                                                                  6.0,
+                                                                  6.0,
+                                                                  6.0,
+                                                                  6.0),
+                                                      child: ClipRRect(
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8.0),
+                                                        child:
+                                                            CachedNetworkImage(
+                                                          fadeInDuration:
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      0),
+                                                          fadeOutDuration:
+                                                              Duration(
+                                                                  milliseconds:
+                                                                      0),
+                                                          imageUrl:
+                                                              dictItem.image!,
+                                                          width: 344.0,
+                                                          height: 230.0,
+                                                          fit: BoxFit.cover,
+                                                        ),
                                                       ),
                                                     ),
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(
-                                                          24.0, 6.0, 24.0, 0.0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      dictItem.name,
-                                                      'Нет названия',
-                                                    ),
-                                                    textAlign: TextAlign.start,
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF3F72AF),
-                                                          fontSize: 42.0,
-                                                        ),
-                                                  ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(24.0, 12.0,
-                                                          24.0, 12.0),
-                                                  child: Container(
-                                                    width: double.infinity,
-                                                    height: 1.0,
-                                                    decoration: BoxDecoration(
-                                                      color: Color(0xFF3F72AF),
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(24.0, 6.0,
+                                                                24.0, 0.0),
+                                                    child: Text(
+                                                      valueOrDefault<String>(
+                                                        dictItem.name,
+                                                        'Нет названия',
+                                                      ),
+                                                      textAlign:
+                                                          TextAlign.start,
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Roboto',
+                                                                color: Color(
+                                                                    0xFF3F72AF),
+                                                                fontSize: 36.0,
+                                                              ),
                                                     ),
                                                   ),
-                                                ),
-                                                Padding(
-                                                  padding: EdgeInsetsDirectional
-                                                      .fromSTEB(24.0, 0.0, 24.0,
-                                                          24.0),
-                                                  child: Text(
-                                                    valueOrDefault<String>(
-                                                      dictItem.subname,
-                                                      'нет описания',
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(
+                                                                24.0,
+                                                                12.0,
+                                                                24.0,
+                                                                12.0),
+                                                    child: Container(
+                                                      width: double.infinity,
+                                                      height: 1.0,
+                                                      decoration: BoxDecoration(
+                                                        color:
+                                                            Color(0xFF3F72AF),
+                                                      ),
                                                     ),
-                                                    style: FlutterFlowTheme.of(
-                                                            context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          color:
-                                                              Color(0xFF3F72AF),
-                                                        ),
                                                   ),
-                                                ),
-                                              ],
+                                                  Padding(
+                                                    padding:
+                                                        EdgeInsetsDirectional
+                                                            .fromSTEB(24.0, 0.0,
+                                                                24.0, 24.0),
+                                                    child: Text(
+                                                      valueOrDefault<String>(
+                                                        dictItem.subname,
+                                                        'нет описания',
+                                                      ),
+                                                      style:
+                                                          FlutterFlowTheme.of(
+                                                                  context)
+                                                              .bodyMedium
+                                                              .override(
+                                                                fontFamily:
+                                                                    'Roboto',
+                                                                color: Color(
+                                                                    0xFF3F72AF),
+                                                              ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                },
-                              );
-                            },
-                          ),
-                        ),
-                      ],
-                    ),
-                    Align(
-                      alignment: AlignmentDirectional(0.00, 1.00),
-                      child: Container(
-                        width: double.infinity,
-                        height: 80.0,
-                        decoration: BoxDecoration(),
-                        child: Align(
-                          alignment: AlignmentDirectional(0.00, 0.00),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.max,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Container(
-                                decoration: BoxDecoration(
-                                  color: Color(0xFFEDF2FA),
-                                  borderRadius: BorderRadius.circular(50.0),
-                                ),
-                                child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      15.0, 3.0, 15.0, 3.0),
-                                  child: Text(
-                                    valueOrDefault<String>(
-                                      '${valueOrDefault<String>(
-                                        functions
-                                            .increment(
-                                                _model.pageViewCurrentIndex)
-                                            .toString(),
-                                        '0',
-                                      )}/${containerDicRowList.length.toString()}',
-                                      '0/0',
-                                    ),
-                                    style: FlutterFlowTheme.of(context)
-                                        .bodyMedium
-                                        .override(
-                                          fontFamily: 'Roboto',
-                                          color: Color(0xFFB7DDF7),
-                                          fontSize: 16.0,
+                                          ],
                                         ),
+                                      ),
+                                    );
+                                  },
+                                );
+                              },
+                            ),
+                          ),
+                        ],
+                      ),
+                      Align(
+                        alignment: AlignmentDirectional(0.00, 1.00),
+                        child: Container(
+                          width: double.infinity,
+                          height: 80.0,
+                          decoration: BoxDecoration(),
+                          child: Align(
+                            alignment: AlignmentDirectional(0.00, 0.00),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.max,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Container(
+                                  decoration: BoxDecoration(
+                                    color: Color(0xFFEDF2FA),
+                                    borderRadius: BorderRadius.circular(50.0),
+                                  ),
+                                  child: Padding(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                        15.0, 3.0, 15.0, 3.0),
+                                    child: Text(
+                                      valueOrDefault<String>(
+                                        '${valueOrDefault<String>(
+                                          functions
+                                              .increment(
+                                                  _model.pageViewCurrentIndex)
+                                              .toString(),
+                                          '0',
+                                        )}/${containerDicRowList.length.toString()}',
+                                        '0/0',
+                                      ),
+                                      style: FlutterFlowTheme.of(context)
+                                          .bodyMedium
+                                          .override(
+                                            fontFamily: 'Roboto',
+                                            color: Color(0xFFB7DDF7),
+                                            fontSize: 16.0,
+                                          ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ],
+                              ],
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  ],
-                ),
-              );
-            },
+                    ],
+                  ),
+                );
+              },
+            ),
           ),
         ),
       ),

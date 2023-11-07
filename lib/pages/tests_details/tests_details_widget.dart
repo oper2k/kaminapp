@@ -123,6 +123,8 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
           !anim.applyInitialState),
       this,
     );
+
+    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
   @override
@@ -163,7 +165,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
             icon: Icon(
               Icons.close,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 14.0,
+              size: 24.0,
             ),
             onPressed: () async {
               logFirebaseEvent('TESTS_DETAILS_PAGE_close_ICN_ON_TAP');
@@ -176,7 +178,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
-                  fontSize: 14.0,
+                  fontSize: 16.0,
                 ),
           ),
           actions: [],
@@ -212,6 +214,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                 }
                 List<QuestionsRow> containerQuestionsRowList = snapshot.data!;
                 return Container(
+                  width: 700.0,
                   decoration: BoxDecoration(),
                   child: Stack(
                     children: [
