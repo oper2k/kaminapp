@@ -615,7 +615,14 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
                                                 Text(
-                                                  'Дальше',
+                                                  valueOrDefault<String>(
+                                                    containerQuestionsRowList
+                                                                .length !=
+                                                            (_model.index + 1)
+                                                        ? 'Дальше'
+                                                        : 'Завершить',
+                                                    'Дальше',
+                                                  ),
                                                   style: FlutterFlowTheme.of(
                                                           context)
                                                       .bodyMedium

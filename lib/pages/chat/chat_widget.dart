@@ -281,21 +281,64 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                       MainAxisSize.min,
                                                   children: [
                                                     Flexible(
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    16.0,
-                                                                    16.0,
-                                                                    16.0,
-                                                                    16.0),
-                                                        child: Text(
-                                                          listViewChatMessagesInfoViewRow
-                                                              .name!,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .titleSmall,
-                                                        ),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16.0,
+                                                                        16.0,
+                                                                        16.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              listViewChatMessagesInfoViewRow
+                                                                  .name!,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleSmall,
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16.0,
+                                                                        5.0,
+                                                                        16.0,
+                                                                        16.0),
+                                                            child: Text(
+                                                              dateTimeFormat(
+                                                                'relative',
+                                                                listViewChatMessagesInfoViewRow
+                                                                    .createdAt!,
+                                                                locale: FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleSmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    fontSize:
+                                                                        12.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                    fontStyle:
+                                                                        FontStyle
+                                                                            .italic,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                   ],
@@ -352,21 +395,64 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                       MainAxisSize.min,
                                                   children: [
                                                     Flexible(
-                                                      child: Padding(
-                                                        padding:
-                                                            EdgeInsetsDirectional
-                                                                .fromSTEB(
-                                                                    16.0,
-                                                                    16.0,
-                                                                    16.0,
-                                                                    16.0),
-                                                        child: Text(
-                                                          listViewChatMessagesInfoViewRow
-                                                              .name!,
-                                                          style: FlutterFlowTheme
-                                                                  .of(context)
-                                                              .titleSmall,
-                                                        ),
+                                                      child: Column(
+                                                        mainAxisSize:
+                                                            MainAxisSize.max,
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .end,
+                                                        children: [
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16.0,
+                                                                        16.0,
+                                                                        16.0,
+                                                                        0.0),
+                                                            child: Text(
+                                                              listViewChatMessagesInfoViewRow
+                                                                  .name!,
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleSmall,
+                                                            ),
+                                                          ),
+                                                          Padding(
+                                                            padding:
+                                                                EdgeInsetsDirectional
+                                                                    .fromSTEB(
+                                                                        16.0,
+                                                                        5.0,
+                                                                        16.0,
+                                                                        16.0),
+                                                            child: Text(
+                                                              dateTimeFormat(
+                                                                'relative',
+                                                                listViewChatMessagesInfoViewRow
+                                                                    .createdAt!,
+                                                                locale: FFLocalizations.of(
+                                                                        context)
+                                                                    .languageCode,
+                                                              ),
+                                                              style: FlutterFlowTheme
+                                                                      .of(context)
+                                                                  .titleSmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    fontSize:
+                                                                        12.0,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .w300,
+                                                                    fontStyle:
+                                                                        FontStyle
+                                                                            .italic,
+                                                                  ),
+                                                            ),
+                                                          ),
+                                                        ],
                                                       ),
                                                     ),
                                                   ],
