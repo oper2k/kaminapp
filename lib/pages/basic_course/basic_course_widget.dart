@@ -887,23 +887,18 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                           0) &&
                                                                       (testsIndex >
                                                                           0))) {
-                                                                if (testsItem
-                                                                        .name !=
-                                                                    FFAppState()
-                                                                        .testName) {
-                                                                  logFirebaseEvent(
-                                                                      'CurrentTestAnswers_update_app_state');
-                                                                  setState(() {
-                                                                    FFAppState()
-                                                                            .testName =
-                                                                        testsItem
-                                                                            .name!;
-                                                                    FFAppState()
-                                                                        .answers = [];
-                                                                    FFAppState()
-                                                                        .questions = [];
-                                                                  });
-                                                                }
+                                                                logFirebaseEvent(
+                                                                    'CurrentTestAnswers_update_app_state');
+                                                                setState(() {
+                                                                  FFAppState()
+                                                                          .testName =
+                                                                      testsItem
+                                                                          .name!;
+                                                                  FFAppState()
+                                                                      .answers = [];
+                                                                  FFAppState()
+                                                                      .questions = [];
+                                                                });
                                                                 if (currentTestAnswersTestsAnswersRowList
                                                                         .where((e) =>
                                                                             (e.isPass ==
