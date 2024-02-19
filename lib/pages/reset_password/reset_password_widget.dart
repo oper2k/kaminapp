@@ -15,10 +15,10 @@ import 'reset_password_model.dart';
 export 'reset_password_model.dart';
 
 class ResetPasswordWidget extends StatefulWidget {
-  const ResetPasswordWidget({Key? key}) : super(key: key);
+  const ResetPasswordWidget({super.key});
 
   @override
-  _ResetPasswordWidgetState createState() => _ResetPasswordWidgetState();
+  State<ResetPasswordWidget> createState() => _ResetPasswordWidgetState();
 }
 
 class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
@@ -124,7 +124,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
               decoration: BoxDecoration(),

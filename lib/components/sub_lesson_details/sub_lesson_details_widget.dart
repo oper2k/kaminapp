@@ -11,14 +11,14 @@ export 'sub_lesson_details_model.dart';
 
 class SubLessonDetailsWidget extends StatefulWidget {
   const SubLessonDetailsWidget({
-    Key? key,
+    super.key,
     required this.currentLessonDescription,
-  }) : super(key: key);
+  });
 
   final String? currentLessonDescription;
 
   @override
-  _SubLessonDetailsWidgetState createState() => _SubLessonDetailsWidgetState();
+  State<SubLessonDetailsWidget> createState() => _SubLessonDetailsWidgetState();
 }
 
 class _SubLessonDetailsWidgetState extends State<SubLessonDetailsWidget> {

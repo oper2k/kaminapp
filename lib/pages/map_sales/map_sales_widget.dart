@@ -14,10 +14,10 @@ import 'map_sales_model.dart';
 export 'map_sales_model.dart';
 
 class MapSalesWidget extends StatefulWidget {
-  const MapSalesWidget({Key? key}) : super(key: key);
+  const MapSalesWidget({super.key});
 
   @override
-  _MapSalesWidgetState createState() => _MapSalesWidgetState();
+  State<MapSalesWidget> createState() => _MapSalesWidgetState();
 }
 
 class _MapSalesWidgetState extends State<MapSalesWidget> {
@@ -95,7 +95,7 @@ class _MapSalesWidgetState extends State<MapSalesWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
               decoration: BoxDecoration(),
@@ -105,7 +105,7 @@ class _MapSalesWidgetState extends State<MapSalesWidget> {
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         width: 536.0,
                         height: 617.0,
@@ -113,7 +113,7 @@ class _MapSalesWidgetState extends State<MapSalesWidget> {
                           alignment: AlignmentDirectional(0.0, 0.0),
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
@@ -150,18 +150,19 @@ class _MapSalesWidgetState extends State<MapSalesWidget> {
                                         return Material(
                                           color: Colors.transparent,
                                           child: WebViewAware(
-                                              child: GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: CustomDialogMapWidget(
-                                              nameSearch: 'k1sales',
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: CustomDialogMapWidget(
+                                                nameSearch: 'k1sales',
+                                              ),
                                             ),
-                                          )),
+                                          ),
                                         );
                                       },
                                     ).then((value) => setState(() {}));
@@ -200,18 +201,19 @@ class _MapSalesWidgetState extends State<MapSalesWidget> {
                                         return Material(
                                           color: Colors.transparent,
                                           child: WebViewAware(
-                                              child: GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: CustomDialogMapWidget(
-                                              nameSearch: 'k2sales',
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: CustomDialogMapWidget(
+                                                nameSearch: 'k2sales',
+                                              ),
                                             ),
-                                          )),
+                                          ),
                                         );
                                       },
                                     ).then((value) => setState(() {}));

@@ -17,10 +17,10 @@ import 'signin_model.dart';
 export 'signin_model.dart';
 
 class SigninWidget extends StatefulWidget {
-  const SigninWidget({Key? key}) : super(key: key);
+  const SigninWidget({super.key});
 
   @override
-  _SigninWidgetState createState() => _SigninWidgetState();
+  State<SigninWidget> createState() => _SigninWidgetState();
 }
 
 class _SigninWidgetState extends State<SigninWidget>
@@ -134,7 +134,7 @@ class _SigninWidgetState extends State<SigninWidget>
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
               decoration: BoxDecoration(),

@@ -12,14 +12,14 @@ export 'test_end_success_model.dart';
 
 class TestEndSuccessWidget extends StatefulWidget {
   const TestEndSuccessWidget({
-    Key? key,
+    super.key,
     required this.index,
-  }) : super(key: key);
+  });
 
   final int? index;
 
   @override
-  _TestEndSuccessWidgetState createState() => _TestEndSuccessWidgetState();
+  State<TestEndSuccessWidget> createState() => _TestEndSuccessWidgetState();
 }
 
 class _TestEndSuccessWidgetState extends State<TestEndSuccessWidget> {
@@ -96,7 +96,7 @@ class _TestEndSuccessWidgetState extends State<TestEndSuccessWidget> {
           elevation: 0.0,
         ),
         body: Align(
-          alignment: AlignmentDirectional(0.00, -1.00),
+          alignment: AlignmentDirectional(0.0, -1.0),
           child: Container(
             width: 700.0,
             decoration: BoxDecoration(),

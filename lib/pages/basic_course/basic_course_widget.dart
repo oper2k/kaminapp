@@ -16,14 +16,14 @@ export 'basic_course_model.dart';
 
 class BasicCourseWidget extends StatefulWidget {
   const BasicCourseWidget({
-    Key? key,
+    super.key,
     this.currentCourse,
-  }) : super(key: key);
+  });
 
   final CourseRow? currentCourse;
 
   @override
-  _BasicCourseWidgetState createState() => _BasicCourseWidgetState();
+  State<BasicCourseWidget> createState() => _BasicCourseWidgetState();
 }
 
 class _BasicCourseWidgetState extends State<BasicCourseWidget> {
@@ -105,7 +105,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
               decoration: BoxDecoration(),
@@ -299,13 +299,12 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                   decoration: BoxDecoration(),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
-                                                            .fromSTEB(6.0, 6.0,
-                                                                6.0, 6.0),
+                                                        EdgeInsets.all(6.0),
                                                     child: Container(
                                                       width: double.infinity,
                                                       color: Colors.white,
                                                       child: ExpandableNotifier(
+                                                        initialExpanded: false,
                                                         child: ExpandablePanel(
                                                           header: Padding(
                                                             padding:

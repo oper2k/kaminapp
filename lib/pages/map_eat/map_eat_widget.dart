@@ -14,10 +14,10 @@ import 'map_eat_model.dart';
 export 'map_eat_model.dart';
 
 class MapEatWidget extends StatefulWidget {
-  const MapEatWidget({Key? key}) : super(key: key);
+  const MapEatWidget({super.key});
 
   @override
-  _MapEatWidgetState createState() => _MapEatWidgetState();
+  State<MapEatWidget> createState() => _MapEatWidgetState();
 }
 
 class _MapEatWidgetState extends State<MapEatWidget> {
@@ -95,7 +95,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: FutureBuilder<List<EatsRow>>(
               future: EatsTable().queryRows(
                 queryFn: (q) => q.order('created_at', ascending: true),
@@ -137,8 +137,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                                   borderRadius: BorderRadius.circular(16.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 12.0, 12.0, 12.0),
+                                  padding: EdgeInsets.all(12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [

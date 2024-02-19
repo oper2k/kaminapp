@@ -13,18 +13,18 @@ export 'test_question_text_model.dart';
 
 class TestQuestionTextWidget extends StatefulWidget {
   const TestQuestionTextWidget({
-    Key? key,
+    super.key,
     this.parameter1,
     required this.index,
     required this.testName,
-  }) : super(key: key);
+  });
 
   final String? parameter1;
   final int? index;
   final String? testName;
 
   @override
-  _TestQuestionTextWidgetState createState() => _TestQuestionTextWidgetState();
+  State<TestQuestionTextWidget> createState() => _TestQuestionTextWidgetState();
 }
 
 class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
@@ -73,7 +73,7 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, -1.00),
+      alignment: AlignmentDirectional(0.0, -1.0),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
         child: Column(
@@ -94,7 +94,7 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.00, -1.00),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: Padding(
                     padding:
                         EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),

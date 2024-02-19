@@ -14,10 +14,10 @@ import 'map_u_c_model.dart';
 export 'map_u_c_model.dart';
 
 class MapUCWidget extends StatefulWidget {
-  const MapUCWidget({Key? key}) : super(key: key);
+  const MapUCWidget({super.key});
 
   @override
-  _MapUCWidgetState createState() => _MapUCWidgetState();
+  State<MapUCWidget> createState() => _MapUCWidgetState();
 }
 
 class _MapUCWidgetState extends State<MapUCWidget> {
@@ -95,7 +95,7 @@ class _MapUCWidgetState extends State<MapUCWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
               decoration: BoxDecoration(),
@@ -104,7 +104,7 @@ class _MapUCWidgetState extends State<MapUCWidget> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         width: 307.0,
                         height: 1088.0,
@@ -112,7 +112,7 @@ class _MapUCWidgetState extends State<MapUCWidget> {
                           alignment: AlignmentDirectional(0.0, 0.0),
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
@@ -124,7 +124,7 @@ class _MapUCWidgetState extends State<MapUCWidget> {
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.00, 1.00),
+                              alignment: AlignmentDirectional(0.0, 1.0),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -149,18 +149,19 @@ class _MapUCWidgetState extends State<MapUCWidget> {
                                         return Material(
                                           color: Colors.transparent,
                                           child: WebViewAware(
-                                              child: GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: CustomDialogMapWidget(
-                                              nameSearch: 'UC',
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: CustomDialogMapWidget(
+                                                nameSearch: 'UC',
+                                              ),
                                             ),
-                                          )),
+                                          ),
                                         );
                                       },
                                     ).then((value) => setState(() {}));

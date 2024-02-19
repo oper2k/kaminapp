@@ -11,10 +11,10 @@ import 'test_end_model.dart';
 export 'test_end_model.dart';
 
 class TestEndWidget extends StatefulWidget {
-  const TestEndWidget({Key? key}) : super(key: key);
+  const TestEndWidget({super.key});
 
   @override
-  _TestEndWidgetState createState() => _TestEndWidgetState();
+  State<TestEndWidget> createState() => _TestEndWidgetState();
 }
 
 class _TestEndWidgetState extends State<TestEndWidget> {
@@ -90,7 +90,7 @@ class _TestEndWidgetState extends State<TestEndWidget> {
           elevation: 0.0,
         ),
         body: Align(
-          alignment: AlignmentDirectional(0.00, -1.00),
+          alignment: AlignmentDirectional(0.0, -1.0),
           child: Container(
             width: 700.0,
             decoration: BoxDecoration(),

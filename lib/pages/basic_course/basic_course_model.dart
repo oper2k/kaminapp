@@ -20,8 +20,10 @@ class BasicCourseModel extends FlutterFlowModel<BasicCourseWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {}
 
+  @override
   void dispose() {
     unfocusNode.dispose();
   }

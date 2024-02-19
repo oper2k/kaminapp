@@ -21,18 +21,18 @@ export 'tests_details_model.dart';
 
 class TestsDetailsWidget extends StatefulWidget {
   const TestsDetailsWidget({
-    Key? key,
+    super.key,
     required this.currentTest,
     required this.currentCourse,
     required this.currentLesson,
-  }) : super(key: key);
+  });
 
   final TestsRow? currentTest;
   final CourseRow? currentCourse;
   final LessonsRow? currentLesson;
 
   @override
-  _TestsDetailsWidgetState createState() => _TestsDetailsWidgetState();
+  State<TestsDetailsWidget> createState() => _TestsDetailsWidgetState();
 }
 
 class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
@@ -188,7 +188,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: FutureBuilder<List<QuestionsRow>>(
               future: QuestionsTable().queryRows(
                 queryFn: (q) => q
@@ -219,7 +219,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.00, -1.00),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         child: Padding(
                           padding: EdgeInsetsDirectional.fromSTEB(
                               15.0, 0.0, 15.0, 80.0),
@@ -276,7 +276,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                 (questionsItem.type == 'выбор'))
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.00, -1.00),
+                                                    0.0, -1.0),
                                                 child: wrapWithModel(
                                                   model: _model
                                                       .testQuestionsChooseModels
@@ -312,7 +312,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                 (questionsItem.type == 'текст'))
                                               Align(
                                                 alignment: AlignmentDirectional(
-                                                    0.00, -1.00),
+                                                    0.0, -1.0),
                                                 child: wrapWithModel(
                                                   model: _model
                                                       .testQuestionTextModels
@@ -351,7 +351,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 1.00),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         child: Container(
                           width: double.infinity,
                           height: 80.0,
@@ -359,7 +359,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                             color: Color(0xFFF9F7F7),
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
                               padding: EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 15.0, 0.0),
@@ -371,7 +371,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                     Flexible(
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(-1.00, 0.00),
+                                            AlignmentDirectional(-1.0, 0.0),
                                         child: InkWell(
                                           splashColor: Colors.transparent,
                                           focusColor: Colors.transparent,
@@ -450,8 +450,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                     ),
                                   Flexible(
                                     child: Align(
-                                      alignment:
-                                          AlignmentDirectional(1.00, 0.00),
+                                      alignment: AlignmentDirectional(1.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
