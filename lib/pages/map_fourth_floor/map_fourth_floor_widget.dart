@@ -14,10 +14,10 @@ import 'map_fourth_floor_model.dart';
 export 'map_fourth_floor_model.dart';
 
 class MapFourthFloorWidget extends StatefulWidget {
-  const MapFourthFloorWidget({Key? key}) : super(key: key);
+  const MapFourthFloorWidget({super.key});
 
   @override
-  _MapFourthFloorWidgetState createState() => _MapFourthFloorWidgetState();
+  State<MapFourthFloorWidget> createState() => _MapFourthFloorWidgetState();
 }
 
 class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
@@ -96,7 +96,7 @@ class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
               decoration: BoxDecoration(),
@@ -105,7 +105,7 @@ class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         width: 307.0,
                         height: 1088.0,
@@ -113,7 +113,7 @@ class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
                           alignment: AlignmentDirectional(0.0, 0.0),
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
@@ -150,18 +150,19 @@ class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
                                         return Material(
                                           color: Colors.transparent,
                                           child: WebViewAware(
-                                              child: GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: CustomDialogMapWidget(
-                                              nameSearch: 'k403',
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: CustomDialogMapWidget(
+                                                nameSearch: 'k403',
+                                              ),
                                             ),
-                                          )),
+                                          ),
                                         );
                                       },
                                     ).then((value) => setState(() {}));
@@ -200,18 +201,19 @@ class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
                                         return Material(
                                           color: Colors.transparent,
                                           child: WebViewAware(
-                                              child: GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: CustomDialogMapWidget(
-                                              nameSearch: 'k404',
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: CustomDialogMapWidget(
+                                                nameSearch: 'k404',
+                                              ),
                                             ),
-                                          )),
+                                          ),
                                         );
                                       },
                                     ).then((value) => setState(() {}));

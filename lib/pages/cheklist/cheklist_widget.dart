@@ -16,10 +16,10 @@ import 'cheklist_model.dart';
 export 'cheklist_model.dart';
 
 class CheklistWidget extends StatefulWidget {
-  const CheklistWidget({Key? key}) : super(key: key);
+  const CheklistWidget({super.key});
 
   @override
-  _CheklistWidgetState createState() => _CheklistWidgetState();
+  State<CheklistWidget> createState() => _CheklistWidgetState();
 }
 
 class _CheklistWidgetState extends State<CheklistWidget> {
@@ -97,7 +97,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: FutureBuilder<List<UsersRow>>(
               future: (_model.requestCompleter ??= Completer<List<UsersRow>>()
                     ..complete(UsersTable().querySingleRow(
@@ -170,12 +170,12 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                             BorderRadius.circular(16.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
-                                            6.0, 6.0, 6.0, 6.0),
+                                        padding: EdgeInsets.all(6.0),
                                         child: Container(
                                           width: double.infinity,
                                           color: Colors.white,
                                           child: ExpandableNotifier(
+                                            initialExpanded: false,
                                             child: ExpandablePanel(
                                               header: Padding(
                                                 padding: EdgeInsetsDirectional
@@ -270,7 +270,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                           await UsersTable()
                                                                               .update(
                                                                             data: {
-                                                                              'task_done': functions.removeStringFromList(containerUserUsersRow!.taskDone.toList(), checklistItem),
+                                                                              'task_done': functions.removeStringFromList(containerUserUsersRow!.taskDone.toList(), checklistItem).cast<String>(),
                                                                             },
                                                                             matchingRows: (rows) =>
                                                                                 rows.eq(
@@ -323,7 +323,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                           await UsersTable()
                                                                               .update(
                                                                             data: {
-                                                                              'task_done': functions.appendListToListString(containerUserUsersRow?.taskDone?.toList(), checklistItem),
+                                                                              'task_done': functions.appendListToListString(containerUserUsersRow?.taskDone?.toList(), checklistItem).cast<String>(),
                                                                             },
                                                                             matchingRows: (rows) =>
                                                                                 rows.eq(

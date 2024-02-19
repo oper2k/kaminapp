@@ -15,14 +15,14 @@ export 'sub_lessons_details_slides_model.dart';
 
 class SubLessonsDetailsSlidesWidget extends StatefulWidget {
   const SubLessonsDetailsSlidesWidget({
-    Key? key,
+    super.key,
     this.currentSubLesson,
-  }) : super(key: key);
+  });
 
   final SubLessonsRow? currentSubLesson;
 
   @override
-  _SubLessonsDetailsSlidesWidgetState createState() =>
+  State<SubLessonsDetailsSlidesWidget> createState() =>
       _SubLessonsDetailsSlidesWidgetState();
 }
 
@@ -106,7 +106,7 @@ class _SubLessonsDetailsSlidesWidgetState
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
               decoration: BoxDecoration(),
@@ -167,13 +167,13 @@ class _SubLessonsDetailsSlidesWidgetState
                     ],
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, 1.00),
+                    alignment: AlignmentDirectional(0.0, 1.0),
                     child: Container(
                       width: double.infinity,
                       height: 80.0,
                       decoration: BoxDecoration(),
                       child: Align(
-                        alignment: AlignmentDirectional(0.00, 0.00),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,

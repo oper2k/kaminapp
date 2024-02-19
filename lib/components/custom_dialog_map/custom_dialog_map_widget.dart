@@ -11,14 +11,14 @@ export 'custom_dialog_map_model.dart';
 
 class CustomDialogMapWidget extends StatefulWidget {
   const CustomDialogMapWidget({
-    Key? key,
+    super.key,
     required this.nameSearch,
-  }) : super(key: key);
+  });
 
   final String? nameSearch;
 
   @override
-  _CustomDialogMapWidgetState createState() => _CustomDialogMapWidgetState();
+  State<CustomDialogMapWidget> createState() => _CustomDialogMapWidgetState();
 }
 
 class _CustomDialogMapWidgetState extends State<CustomDialogMapWidget> {
@@ -93,7 +93,7 @@ class _CustomDialogMapWidgetState extends State<CustomDialogMapWidget> {
               ),
             ),
             child: Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(21.0, 21.0, 21.0, 21.0),
+              padding: EdgeInsets.all(21.0),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,

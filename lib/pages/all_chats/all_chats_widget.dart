@@ -14,10 +14,10 @@ import 'all_chats_model.dart';
 export 'all_chats_model.dart';
 
 class AllChatsWidget extends StatefulWidget {
-  const AllChatsWidget({Key? key}) : super(key: key);
+  const AllChatsWidget({super.key});
 
   @override
-  _AllChatsWidgetState createState() => _AllChatsWidgetState();
+  State<AllChatsWidget> createState() => _AllChatsWidgetState();
 }
 
 class _AllChatsWidgetState extends State<AllChatsWidget> {
@@ -95,7 +95,7 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: FutureBuilder<List<ChatsRow>>(
               future: ChatsTable().queryRows(
                 queryFn: (q) => q.order('timestamp_last_message'),
@@ -192,9 +192,7 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                                                 BorderRadius.circular(16.0),
                                           ),
                                           child: Padding(
-                                            padding:
-                                                EdgeInsetsDirectional.fromSTEB(
-                                                    12.0, 12.0, 12.0, 12.0),
+                                            padding: EdgeInsets.all(12.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -343,7 +341,7 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                                   ))
                                     Align(
                                       alignment:
-                                          AlignmentDirectional(1.00, -1.00),
+                                          AlignmentDirectional(1.0, -1.0),
                                       child: Padding(
                                         padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 12.0, 0.0),

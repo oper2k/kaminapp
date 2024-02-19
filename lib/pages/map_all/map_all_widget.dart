@@ -11,10 +11,10 @@ import 'map_all_model.dart';
 export 'map_all_model.dart';
 
 class MapAllWidget extends StatefulWidget {
-  const MapAllWidget({Key? key}) : super(key: key);
+  const MapAllWidget({super.key});
 
   @override
-  _MapAllWidgetState createState() => _MapAllWidgetState();
+  State<MapAllWidget> createState() => _MapAllWidgetState();
 }
 
 class _MapAllWidgetState extends State<MapAllWidget> {
@@ -92,7 +92,7 @@ class _MapAllWidgetState extends State<MapAllWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
               decoration: BoxDecoration(),
@@ -107,7 +107,7 @@ class _MapAllWidgetState extends State<MapAllWidget> {
                         alignment: AlignmentDirectional(0.0, 0.0),
                         children: [
                           Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
                               child: Image.asset(
@@ -208,7 +208,7 @@ class _MapAllWidgetState extends State<MapAllWidget> {
                             ),
                           ),
                           Align(
-                            alignment: AlignmentDirectional(0.10, -0.48),
+                            alignment: AlignmentDirectional(0.1, -0.48),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,

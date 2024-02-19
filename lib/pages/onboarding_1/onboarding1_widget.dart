@@ -13,10 +13,10 @@ import 'onboarding1_model.dart';
 export 'onboarding1_model.dart';
 
 class Onboarding1Widget extends StatefulWidget {
-  const Onboarding1Widget({Key? key}) : super(key: key);
+  const Onboarding1Widget({super.key});
 
   @override
-  _Onboarding1WidgetState createState() => _Onboarding1WidgetState();
+  State<Onboarding1Widget> createState() => _Onboarding1WidgetState();
 }
 
 class _Onboarding1WidgetState extends State<Onboarding1Widget>
@@ -93,7 +93,7 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Align(
-          alignment: AlignmentDirectional(0.00, 0.00),
+          alignment: AlignmentDirectional(0.0, 0.0),
           child: Container(
             width: 700.0,
             decoration: BoxDecoration(),

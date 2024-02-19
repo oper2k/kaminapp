@@ -72,6 +72,7 @@ class SigninModel extends FlutterFlowModel<SigninWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     nameControllerValidator = _nameControllerValidator;
     emailControllerValidator = _emailControllerValidator;
@@ -81,6 +82,7 @@ class SigninModel extends FlutterFlowModel<SigninWidget> {
     passRepeateControllerValidator = _passRepeateControllerValidator;
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     nameFocusNode?.dispose();

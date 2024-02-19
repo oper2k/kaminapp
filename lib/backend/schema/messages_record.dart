@@ -44,8 +44,8 @@ class MessagesRecord extends FirestoreRecord {
           ? parent.collection('messages')
           : FirebaseFirestore.instance.collectionGroup('messages');
 
-  static DocumentReference createDoc(DocumentReference parent) =>
-      parent.collection('messages').doc();
+  static DocumentReference createDoc(DocumentReference parent, {String? id}) =>
+      parent.collection('messages').doc(id);
 
   static Stream<MessagesRecord> getDocument(DocumentReference ref) =>
       ref.snapshots().map((s) => MessagesRecord.fromSnapshot(s));

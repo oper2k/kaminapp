@@ -15,14 +15,14 @@ export 'admin_test_detail_model.dart';
 
 class AdminTestDetailWidget extends StatefulWidget {
   const AdminTestDetailWidget({
-    Key? key,
+    super.key,
     required this.currentTestAnswers,
-  }) : super(key: key);
+  });
 
   final TestsAnswersRow? currentTestAnswers;
 
   @override
-  _AdminTestDetailWidgetState createState() => _AdminTestDetailWidgetState();
+  State<AdminTestDetailWidget> createState() => _AdminTestDetailWidgetState();
 }
 
 class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
@@ -99,7 +99,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
           elevation: 0.0,
         ),
         body: Align(
-          alignment: AlignmentDirectional(0.00, -1.00),
+          alignment: AlignmentDirectional(0.0, -1.0),
           child: Container(
             width: 700.0,
             decoration: BoxDecoration(),
@@ -108,7 +108,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
               children: [
                 Expanded(
                   child: Align(
-                    alignment: AlignmentDirectional(0.00, -1.00),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Padding(
                       padding:
                           EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),

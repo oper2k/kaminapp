@@ -12,12 +12,12 @@ export 'test_questions_choose_model.dart';
 
 class TestQuestionsChooseWidget extends StatefulWidget {
   const TestQuestionsChooseWidget({
-    Key? key,
+    super.key,
     this.name,
     this.questions,
     required this.testName,
     required this.index,
-  }) : super(key: key);
+  });
 
   final String? name;
   final List<String>? questions;
@@ -25,7 +25,7 @@ class TestQuestionsChooseWidget extends StatefulWidget {
   final int? index;
 
   @override
-  _TestQuestionsChooseWidgetState createState() =>
+  State<TestQuestionsChooseWidget> createState() =>
       _TestQuestionsChooseWidgetState();
 }
 
@@ -67,7 +67,7 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.00, -1.00),
+      alignment: AlignmentDirectional(0.0, -1.0),
       child: Padding(
         padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
         child: Column(

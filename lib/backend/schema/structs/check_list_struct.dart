@@ -34,8 +34,9 @@ class CheckListStruct extends FFFirebaseStruct {
         description: data['description'] as String?,
       );
 
-  static CheckListStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic> ? CheckListStruct.fromMap(data) : null;
+  static CheckListStruct? maybeFromMap(dynamic data) => data is Map
+      ? CheckListStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'name': _name,

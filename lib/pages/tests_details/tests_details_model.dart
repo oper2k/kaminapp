@@ -36,6 +36,7 @@ class TestsDetailsModel extends FlutterFlowModel<TestsDetailsWidget> {
 
   /// Initialization and disposal methods.
 
+  @override
   void initState(BuildContext context) {
     testQuestionsChooseModels =
         FlutterFlowDynamicModels(() => TestQuestionsChooseModel());
@@ -43,6 +44,7 @@ class TestsDetailsModel extends FlutterFlowModel<TestsDetailsWidget> {
         FlutterFlowDynamicModels(() => TestQuestionTextModel());
   }
 
+  @override
   void dispose() {
     unfocusNode.dispose();
     testQuestionsChooseModels.dispose();

@@ -13,10 +13,10 @@ import 'admin_model.dart';
 export 'admin_model.dart';
 
 class AdminWidget extends StatefulWidget {
-  const AdminWidget({Key? key}) : super(key: key);
+  const AdminWidget({super.key});
 
   @override
-  _AdminWidgetState createState() => _AdminWidgetState();
+  State<AdminWidget> createState() => _AdminWidgetState();
 }
 
 class _AdminWidgetState extends State<AdminWidget> {
@@ -92,7 +92,7 @@ class _AdminWidgetState extends State<AdminWidget> {
           elevation: 0.0,
         ),
         body: Align(
-          alignment: AlignmentDirectional(0.00, -1.00),
+          alignment: AlignmentDirectional(0.0, -1.0),
           child: Container(
             width: 700.0,
             decoration: BoxDecoration(),
@@ -129,7 +129,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                       return Container(
                         decoration: BoxDecoration(),
                         child: Align(
-                          alignment: AlignmentDirectional(0.00, -1.00),
+                          alignment: AlignmentDirectional(0.0, -1.0),
                           child: SingleChildScrollView(
                             child: Column(
                               mainAxisSize: MainAxisSize.max,

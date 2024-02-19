@@ -14,10 +14,10 @@ import 'map_second_floor_model.dart';
 export 'map_second_floor_model.dart';
 
 class MapSecondFloorWidget extends StatefulWidget {
-  const MapSecondFloorWidget({Key? key}) : super(key: key);
+  const MapSecondFloorWidget({super.key});
 
   @override
-  _MapSecondFloorWidgetState createState() => _MapSecondFloorWidgetState();
+  State<MapSecondFloorWidget> createState() => _MapSecondFloorWidgetState();
 }
 
 class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
@@ -96,7 +96,7 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
               decoration: BoxDecoration(),
@@ -105,7 +105,7 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.00, 0.00),
+                      alignment: AlignmentDirectional(0.0, 0.0),
                       child: Container(
                         width: 307.0,
                         height: 1088.0,
@@ -113,7 +113,7 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                           alignment: AlignmentDirectional(0.0, 0.0),
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.00, 0.00),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
@@ -150,18 +150,19 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                         return Material(
                                           color: Colors.transparent,
                                           child: WebViewAware(
-                                              child: GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: CustomDialogMapWidget(
-                                              nameSearch: 'k211',
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: CustomDialogMapWidget(
+                                                nameSearch: 'k211',
+                                              ),
                                             ),
-                                          )),
+                                          ),
                                         );
                                       },
                                     ).then((value) => setState(() {}));
@@ -200,18 +201,19 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                         return Material(
                                           color: Colors.transparent,
                                           child: WebViewAware(
-                                              child: GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: CustomDialogMapWidget(
-                                              nameSearch: 'k210',
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: CustomDialogMapWidget(
+                                                nameSearch: 'k210',
+                                              ),
                                             ),
-                                          )),
+                                          ),
                                         );
                                       },
                                     ).then((value) => setState(() {}));
@@ -250,18 +252,19 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                         return Material(
                                           color: Colors.transparent,
                                           child: WebViewAware(
-                                              child: GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: CustomDialogMapWidget(
-                                              nameSearch: 'k213',
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: CustomDialogMapWidget(
+                                                nameSearch: 'k213',
+                                              ),
                                             ),
-                                          )),
+                                          ),
                                         );
                                       },
                                     ).then((value) => setState(() {}));
@@ -275,7 +278,7 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(-0.64, -0.30),
+                              alignment: AlignmentDirectional(-0.64, -0.3),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -300,18 +303,19 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                         return Material(
                                           color: Colors.transparent,
                                           child: WebViewAware(
-                                              child: GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: CustomDialogMapWidget(
-                                              nameSearch: 'k208',
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: CustomDialogMapWidget(
+                                                nameSearch: 'k208',
+                                              ),
                                             ),
-                                          )),
+                                          ),
                                         );
                                       },
                                     ).then((value) => setState(() {}));
@@ -350,18 +354,19 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                         return Material(
                                           color: Colors.transparent,
                                           child: WebViewAware(
-                                              child: GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: CustomDialogMapWidget(
-                                              nameSearch: 'k214',
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: CustomDialogMapWidget(
+                                                nameSearch: 'k214',
+                                              ),
                                             ),
-                                          )),
+                                          ),
                                         );
                                       },
                                     ).then((value) => setState(() {}));
@@ -400,18 +405,19 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                         return Material(
                                           color: Colors.transparent,
                                           child: WebViewAware(
-                                              child: GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: CustomDialogMapWidget(
-                                              nameSearch: 'k207',
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: CustomDialogMapWidget(
+                                                nameSearch: 'k207',
+                                              ),
                                             ),
-                                          )),
+                                          ),
                                         );
                                       },
                                     ).then((value) => setState(() {}));
@@ -450,18 +456,19 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                         return Material(
                                           color: Colors.transparent,
                                           child: WebViewAware(
-                                              child: GestureDetector(
-                                            onTap: () => _model
-                                                    .unfocusNode.canRequestFocus
-                                                ? FocusScope.of(context)
-                                                    .requestFocus(
-                                                        _model.unfocusNode)
-                                                : FocusScope.of(context)
-                                                    .unfocus(),
-                                            child: CustomDialogMapWidget(
-                                              nameSearch: 'k215',
+                                            child: GestureDetector(
+                                              onTap: () => _model.unfocusNode
+                                                      .canRequestFocus
+                                                  ? FocusScope.of(context)
+                                                      .requestFocus(
+                                                          _model.unfocusNode)
+                                                  : FocusScope.of(context)
+                                                      .unfocus(),
+                                              child: CustomDialogMapWidget(
+                                                nameSearch: 'k215',
+                                              ),
                                             ),
-                                          )),
+                                          ),
                                         );
                                       },
                                     ).then((value) => setState(() {}));

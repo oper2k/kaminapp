@@ -17,14 +17,14 @@ export 'chat_model.dart';
 
 class ChatWidget extends StatefulWidget {
   const ChatWidget({
-    Key? key,
+    super.key,
     required this.chat,
-  }) : super(key: key);
+  });
 
   final ChatsRow? chat;
 
   @override
-  _ChatWidgetState createState() => _ChatWidgetState();
+  State<ChatWidget> createState() => _ChatWidgetState();
 }
 
 class _ChatWidgetState extends State<ChatWidget> {
@@ -105,7 +105,7 @@ class _ChatWidgetState extends State<ChatWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
               decoration: BoxDecoration(),
@@ -506,7 +506,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                     ),
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.00, 1.00),
+                    alignment: AlignmentDirectional(0.0, 1.0),
                     child: Container(
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).primaryBtnText,

@@ -14,10 +14,10 @@ import 'contacts_model.dart';
 export 'contacts_model.dart';
 
 class ContactsWidget extends StatefulWidget {
-  const ContactsWidget({Key? key}) : super(key: key);
+  const ContactsWidget({super.key});
 
   @override
-  _ContactsWidgetState createState() => _ContactsWidgetState();
+  State<ContactsWidget> createState() => _ContactsWidgetState();
 }
 
 class _ContactsWidgetState extends State<ContactsWidget> {
@@ -95,7 +95,7 @@ class _ContactsWidgetState extends State<ContactsWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: FutureBuilder<List<ContactsRow>>(
               future: ContactsTable().queryRows(
                 queryFn: (q) => q,
@@ -138,8 +138,7 @@ class _ContactsWidgetState extends State<ContactsWidget> {
                                   borderRadius: BorderRadius.circular(16.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
-                                      12.0, 12.0, 12.0, 12.0),
+                                  padding: EdgeInsets.all(12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [

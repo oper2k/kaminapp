@@ -14,10 +14,10 @@ import 'dictionary_model.dart';
 export 'dictionary_model.dart';
 
 class DictionaryWidget extends StatefulWidget {
-  const DictionaryWidget({Key? key}) : super(key: key);
+  const DictionaryWidget({super.key});
 
   @override
-  _DictionaryWidgetState createState() => _DictionaryWidgetState();
+  State<DictionaryWidget> createState() => _DictionaryWidgetState();
 }
 
 class _DictionaryWidgetState extends State<DictionaryWidget> {
@@ -95,7 +95,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.00, -1.00),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: FutureBuilder<List<DicRow>>(
               future: DicTable().queryRows(
                 queryFn: (q) => q.order('sort', ascending: true),
@@ -163,15 +163,10 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                                   Align(
                                                     alignment:
                                                         AlignmentDirectional(
-                                                            0.00, 0.00),
+                                                            0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
-                                                              .fromSTEB(
-                                                                  6.0,
-                                                                  6.0,
-                                                                  6.0,
-                                                                  6.0),
+                                                          EdgeInsets.all(6.0),
                                                       child: ClipRRect(
                                                         borderRadius:
                                                             BorderRadius
@@ -274,13 +269,13 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                         ],
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.00, 1.00),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         child: Container(
                           width: double.infinity,
                           height: 80.0,
                           decoration: BoxDecoration(),
                           child: Align(
-                            alignment: AlignmentDirectional(0.00, 0.00),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,

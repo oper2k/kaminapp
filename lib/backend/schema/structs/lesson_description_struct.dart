@@ -35,10 +35,9 @@ class LessonDescriptionStruct extends FFFirebaseStruct {
         image: data['image'] as String?,
       );
 
-  static LessonDescriptionStruct? maybeFromMap(dynamic data) =>
-      data is Map<String, dynamic>
-          ? LessonDescriptionStruct.fromMap(data)
-          : null;
+  static LessonDescriptionStruct? maybeFromMap(dynamic data) => data is Map
+      ? LessonDescriptionStruct.fromMap(data.cast<String, dynamic>())
+      : null;
 
   Map<String, dynamic> toMap() => {
         'description': _description,
