@@ -6,10 +6,6 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'admin_test_detail_model.dart';
 export 'admin_test_detail_model.dart';
 
@@ -49,17 +45,6 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -68,7 +53,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: Color(0xFFF9F7F7),
+          backgroundColor: const Color(0xFFF9F7F7),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -78,7 +63,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
             icon: Icon(
               Icons.close,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 24.0,
+              size: 30.0,
             ),
             onPressed: () async {
               logFirebaseEvent('ADMIN_TEST_DETAIL_PAGE_close_ICN_ON_TAP');
@@ -92,26 +77,27 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
                   fontSize: 16.0,
+                  letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: Align(
-          alignment: AlignmentDirectional(0.0, -1.0),
+          alignment: const AlignmentDirectional(0.0, -1.0),
           child: Container(
             width: 700.0,
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
                   child: Align(
-                    alignment: AlignmentDirectional(0.0, -1.0),
+                    alignment: const AlignmentDirectional(0.0, -1.0),
                     child: Padding(
                       padding:
-                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -121,7 +107,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       16.0, 45.0, 0.0, 0.0),
                                   child: Text(
                                     valueOrDefault<String>(
@@ -133,35 +119,46 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                                         .override(
                                           fontFamily: 'Roboto',
                                           fontSize: 16.0,
+                                          letterSpacing: 0.0,
                                         ),
                                   ),
                                 ),
                               ],
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
                                   widget.currentTestAnswers?.courseName,
                                   'нет курса',
                                 ),
-                                style: FlutterFlowTheme.of(context).bodySmall,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
                                   widget.currentTestAnswers?.textName,
                                   'нет текста',
                                 ),
-                                style: FlutterFlowTheme.of(context).bodySmall,
+                                style: FlutterFlowTheme.of(context)
+                                    .bodySmall
+                                    .override(
+                                      fontFamily: 'Roboto',
+                                      letterSpacing: 0.0,
+                                    ),
                               ),
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 45.0, 0.0, 0.0),
                               child: Text(
                                 'Ответы:',
@@ -170,6 +167,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                                     .override(
                                       fontFamily: 'Roboto',
                                       fontSize: 16.0,
+                                      letterSpacing: 0.0,
                                     ),
                               ),
                             ),
@@ -177,7 +175,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                               builder: (context) {
                                 final answers = widget
                                         .currentTestAnswers?.answers
-                                        ?.toList() ??
+                                        .toList() ??
                                     [];
                                 return Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -186,7 +184,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                                       (answersIndex) {
                                     final answersItem = answers[answersIndex];
                                     return Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -198,17 +196,18 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                                             children: [
                                               Expanded(
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    '${functions.increment(answersIndex).toString()}. ${widget.currentTestAnswers?.questions?[answersIndex]}',
+                                                    '${functions.increment(answersIndex).toString()}. ${widget.currentTestAnswers?.questions[answersIndex]}',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleMedium
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           fontSize: 16.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                   ),
                                                 ),
@@ -220,14 +219,18 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                                             children: [
                                               Expanded(
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 0.0, 0.0, 0.0),
                                                   child: Text(
                                                     answersItem,
                                                     style: FlutterFlowTheme.of(
                                                             context)
-                                                        .bodySmall,
+                                                        .bodySmall
+                                                        .override(
+                                                          fontFamily: 'Roboto',
+                                                          letterSpacing: 0.0,
+                                                        ),
                                                   ),
                                                 ),
                                               ),
@@ -247,10 +250,10 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                   ),
                 ),
                 Container(
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(25.0, 45.0, 25.0, 45.0),
+                        const EdgeInsetsDirectional.fromSTEB(25.0, 45.0, 25.0, 45.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -282,9 +285,9 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                             text: 'Не сдал',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).alternate,
                               textStyle: FlutterFlowTheme.of(context)
@@ -292,9 +295,10 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                                   .override(
                                     fontFamily: 'Roboto',
                                     color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
                               elevation: 0.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -329,9 +333,9 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                             text: 'Сдал',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).success,
                               textStyle: FlutterFlowTheme.of(context)
@@ -339,9 +343,10 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                                   .override(
                                     fontFamily: 'Roboto',
                                     color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
                               elevation: 0.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -349,7 +354,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                             ),
                           ),
                         ),
-                      ].divide(SizedBox(width: 16.0)),
+                      ].divide(const SizedBox(width: 16.0)),
                     ),
                   ),
                 ),

@@ -7,14 +7,11 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'tests_details_model.dart';
 export 'tests_details_model.dart';
@@ -136,15 +133,6 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -153,9 +141,9 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF9F7F7),
+        backgroundColor: const Color(0xFFF9F7F7),
         appBar: AppBar(
-          backgroundColor: Color(0xFFF9F7F7),
+          backgroundColor: const Color(0xFFF9F7F7),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -165,7 +153,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
             icon: Icon(
               Icons.close,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 24.0,
+              size: 30.0,
             ),
             onPressed: () async {
               logFirebaseEvent('TESTS_DETAILS_PAGE_close_ICN_ON_TAP');
@@ -179,16 +167,17 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
                   fontSize: 16.0,
+                  letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
+            alignment: const AlignmentDirectional(0.0, -1.0),
             child: FutureBuilder<List<QuestionsRow>>(
               future: QuestionsTable().queryRows(
                 queryFn: (q) => q
@@ -215,13 +204,13 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                 List<QuestionsRow> containerQuestionsRowList = snapshot.data!;
                 return Container(
                   width: 700.0,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Stack(
                     children: [
                       Align(
-                        alignment: AlignmentDirectional(0.0, -1.0),
+                        alignment: const AlignmentDirectional(0.0, -1.0),
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               15.0, 0.0, 15.0, 80.0),
                           child: SingleChildScrollView(
                             child: Column(
@@ -241,7 +230,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 35.0, 0.0, 0.0),
                                       child: Text(
                                         valueOrDefault<String>(
@@ -253,6 +242,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                             .override(
                                               fontFamily: 'Roboto',
                                               fontSize: 20.0,
+                                              letterSpacing: 0.0,
                                             ),
                                       ),
                                     ),
@@ -275,7 +265,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                     _model.index) &&
                                                 (questionsItem.type == 'выбор'))
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: wrapWithModel(
                                                   model: _model
@@ -311,7 +301,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                     _model.index) &&
                                                 (questionsItem.type == 'текст'))
                                               Align(
-                                                alignment: AlignmentDirectional(
+                                                alignment: const AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: wrapWithModel(
                                                   model: _model
@@ -351,106 +341,55 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                         ),
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 1.0),
+                        alignment: const AlignmentDirectional(0.0, 1.0),
                         child: Container(
                           width: double.infinity,
                           height: 80.0,
-                          decoration: BoxDecoration(
+                          decoration: const BoxDecoration(
                             color: Color(0xFFF9F7F7),
                           ),
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 15.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  if (_model.index != 0)
+                                  if (false)
                                     Flexible(
                                       child: Align(
                                         alignment:
-                                            AlignmentDirectional(-1.0, 0.0),
-                                        child: InkWell(
-                                          splashColor: Colors.transparent,
-                                          focusColor: Colors.transparent,
-                                          hoverColor: Colors.transparent,
-                                          highlightColor: Colors.transparent,
-                                          onTap: () async {
-                                            logFirebaseEvent(
-                                                'TESTS_DETAILS_PAGE_Row_lr50o1a3_ON_TAP');
-                                            logFirebaseEvent(
-                                                'Row_update_app_state');
-                                            setState(() {
-                                              FFAppState().currentAnswer = '';
-                                              FFAppState().currentQuestions =
-                                                  '';
-                                            });
-                                            logFirebaseEvent(
-                                                'Row_update_page_state');
-                                            setState(() {
-                                              _model.index = _model.index + -1;
-                                            });
-                                            logFirebaseEvent(
-                                                'Row_widget_animation');
-                                            if (animationsMap[
-                                                    'testQuestionsChooseOnActionTriggerAnimation'] !=
-                                                null) {
-                                              setState(() =>
-                                                  hasTestQuestionsChooseTriggered =
-                                                      true);
-                                              SchedulerBinding.instance
-                                                  .addPostFrameCallback((_) async =>
-                                                      await animationsMap[
-                                                              'testQuestionsChooseOnActionTriggerAnimation']!
-                                                          .controller
-                                                          .forward(from: 0.0));
-                                            }
-                                            logFirebaseEvent(
-                                                'Row_widget_animation');
-                                            if (animationsMap[
-                                                    'testQuestionTextOnActionTriggerAnimation'] !=
-                                                null) {
-                                              setState(() =>
-                                                  hasTestQuestionTextTriggered =
-                                                      true);
-                                              SchedulerBinding.instance
-                                                  .addPostFrameCallback((_) async =>
-                                                      await animationsMap[
-                                                              'testQuestionTextOnActionTriggerAnimation']!
-                                                          .controller
-                                                          .forward(from: 0.0));
-                                            }
-                                          },
-                                          child: Row(
-                                            mainAxisSize: MainAxisSize.max,
-                                            children: [
-                                              Icon(
-                                                Icons.arrow_back,
-                                                color:
-                                                    FlutterFlowTheme.of(context)
-                                                        .primaryText,
-                                                size: 20.0,
-                                              ),
-                                              Text(
-                                                'Назад',
-                                                style:
-                                                    FlutterFlowTheme.of(context)
-                                                        .bodyMedium
-                                                        .override(
-                                                          fontFamily: 'Roboto',
-                                                          fontSize: 16.0,
-                                                        ),
-                                              ),
-                                            ],
-                                          ),
+                                            const AlignmentDirectional(-1.0, 0.0),
+                                        child: Row(
+                                          mainAxisSize: MainAxisSize.max,
+                                          children: [
+                                            Icon(
+                                              Icons.arrow_back,
+                                              color:
+                                                  FlutterFlowTheme.of(context)
+                                                      .primaryText,
+                                              size: 20.0,
+                                            ),
+                                            Text(
+                                              'Назад',
+                                              style:
+                                                  FlutterFlowTheme.of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        fontSize: 16.0,
+                                                        letterSpacing: 0.0,
+                                                      ),
+                                            ),
+                                          ],
                                         ),
                                       ),
                                     ),
                                   Flexible(
                                     child: Align(
-                                      alignment: AlignmentDirectional(1.0, 0.0),
+                                      alignment: const AlignmentDirectional(1.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -464,64 +403,33 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                             onTap: () async {
                                               logFirebaseEvent(
                                                   'TESTS_DETAILS_PAGE_Row_4vae5s9b_ON_TAP');
-                                              if (FFAppState().answers.length >=
-                                                  functions.increment(
-                                                      _model.index)) {
-                                                logFirebaseEvent(
-                                                    'Row_update_app_state');
-                                                setState(() {
-                                                  FFAppState()
-                                                      .updateAnswersAtIndex(
-                                                    _model.index,
-                                                    (_) => FFAppState()
-                                                        .currentAnswer,
-                                                  );
-                                                  FFAppState()
-                                                      .updateQuestionsAtIndex(
-                                                    _model.index,
-                                                    (_) => FFAppState()
-                                                        .currentQuestions,
-                                                  );
-                                                });
-                                              } else {
-                                                logFirebaseEvent(
-                                                    'Row_update_app_state');
-                                                setState(() {
-                                                  FFAppState().addToAnswers(
-                                                      FFAppState()
-                                                          .currentAnswer);
-                                                  FFAppState().addToQuestions(
-                                                      FFAppState()
-                                                          .currentQuestions);
-                                                });
-                                              }
-
                                               if (containerQuestionsRowList
                                                       .length ==
                                                   functions.increment(
                                                       _model.index)) {
                                                 logFirebaseEvent(
-                                                    'Row_update_app_state');
+                                                    'Row_update_page_state');
                                                 setState(() {
-                                                  FFAppState().currentAnswer =
-                                                      '';
-                                                  FFAppState()
-                                                      .currentQuestions = '';
+                                                  _model.addToAnswersList(
+                                                      FFAppState()
+                                                          .qurrentAnswer);
+                                                  _model.addToQuestionsList(
+                                                      FFAppState()
+                                                          .currentQuestion);
                                                 });
                                                 logFirebaseEvent(
                                                     'Row_backend_call');
                                                 _model.newAnswersCopy =
                                                     await TestsAnswersTable()
                                                         .insert({
-                                                  'answers':
-                                                      FFAppState().answers,
+                                                  'answers': _model.answersList,
                                                   'isPass': false,
                                                   'isFaild': false,
                                                   'course_name': widget
                                                       .currentCourse?.name,
                                                   'text_name': currentUserEmail,
                                                   'questions':
-                                                      FFAppState().questions,
+                                                      _model.questionsList,
                                                   'user': currentUserEmail,
                                                   'rl_test':
                                                       widget.currentTest?.uid,
@@ -543,12 +451,6 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                   content: 'Работай давай!',
                                                 );
                                                 logFirebaseEvent(
-                                                    'Row_update_app_state');
-                                                setState(() {
-                                                  FFAppState().answers = [];
-                                                  FFAppState().questions = [];
-                                                });
-                                                logFirebaseEvent(
                                                     'Row_navigate_to');
                                                 if (Navigator.of(context)
                                                     .canPop()) {
@@ -557,18 +459,16 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                 context.pushNamed('TestEnd');
                                               } else {
                                                 logFirebaseEvent(
-                                                    'Row_update_app_state');
-                                                setState(() {
-                                                  FFAppState().currentAnswer =
-                                                      '';
-                                                  FFAppState()
-                                                      .currentQuestions = '';
-                                                });
-                                                logFirebaseEvent(
                                                     'Row_update_page_state');
                                                 setState(() {
                                                   _model.index =
                                                       _model.index + 1;
+                                                  _model.addToAnswersList(
+                                                      FFAppState()
+                                                          .qurrentAnswer);
+                                                  _model.addToQuestionsList(
+                                                      FFAppState()
+                                                          .currentQuestion);
                                                 });
                                                 logFirebaseEvent(
                                                     'Row_widget_animation');
@@ -628,6 +528,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         fontSize: 16.0,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                 ),
                                                 Icon(

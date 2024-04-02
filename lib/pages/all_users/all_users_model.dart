@@ -1,8 +1,8 @@
 import '/flutter_flow/flutter_flow_util.dart';
-import 'contacts_widget.dart' show ContactsWidget;
+import 'all_users_widget.dart' show AllUsersWidget;
 import 'package:flutter/material.dart';
 
-class ContactsModel extends FlutterFlowModel<ContactsWidget> {
+class AllUsersModel extends FlutterFlowModel<AllUsersWidget> {
   ///  State fields for stateful widgets in this page.
 
   final unfocusNode = FocusNode();

@@ -1,8 +1,5 @@
 import 'dart:convert';
-import 'dart:typed_data';
-import '../schema/structs/index.dart';
 
-import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
@@ -31,13 +28,13 @@ class SendNotificationsCall {
 {
   "app_id": "4d12ee8b-b110-4afa-a165-bcc2ecacbe54",
   "include_external_user_ids": [
-    "${receiverId}"
+    "$receiverId"
   ],
   "headings": {
-    "en": "${heading}"
+    "en": "$heading"
   },
   "contents": {
-    "en": "${content}"
+    "en": "$content"
   },
   "ios_badgeType": "Increase",
   "ios_badgeCount": 1

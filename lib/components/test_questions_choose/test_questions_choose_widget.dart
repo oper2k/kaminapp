@@ -1,11 +1,6 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'test_questions_choose_model.dart';
 export 'test_questions_choose_model.dart';
@@ -43,15 +38,6 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
     super.initState();
     _model = createModel(context, () => TestQuestionsChooseModel());
 
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('TEST_QUESTIONS_CHOOSE_test_questions_cho');
-      logFirebaseEvent('test_questions_choose_update_app_state');
-      setState(() {
-        FFAppState().currentQuestions = widget.name!;
-      });
-    });
-
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
 
@@ -67,9 +53,9 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: AlignmentDirectional(0.0, -1.0),
+      alignment: const AlignmentDirectional(0.0, -1.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -80,13 +66,16 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
                 Expanded(
                   child: Text(
                     widget.name!,
-                    style: FlutterFlowTheme.of(context).bodyMedium,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Roboto',
+                          letterSpacing: 0.0,
+                        ),
                   ),
                 ),
               ],
             ),
             Padding(
-              padding: EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),
+              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),
               child: Builder(
                 builder: (context) {
                   final questions = widget.questions?.toList() ?? [];
@@ -96,30 +85,16 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
                       final questionsItem = questions[questionsIndex];
                       return Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             Builder(
                               builder: (context) {
-                                if (() {
-                                  if (questionsItem ==
-                                      FFAppState().currentAnswer) {
-                                    return false;
-                                  } else if (((widget.testName ==
-                                                  FFAppState().testName) &&
-                                              (FFAppState().answers.length >=
-                                                  functions
-                                                      .increment(widget.index))
-                                          ? FFAppState().answers[widget.index!]
-                                          : '') ==
-                                      questionsItem) {
-                                    return false;
-                                  } else {
-                                    return true;
-                                  }
-                                }()) {
+                                if (questionsItem == FFAppState().qurrentAnswer
+                                    ? false
+                                    : true) {
                                   return InkWell(
                                     splashColor: Colors.transparent,
                                     focusColor: Colors.transparent,
@@ -128,43 +103,13 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
                                     onTap: () async {
                                       logFirebaseEvent(
                                           'TEST_QUESTIONS_CHOOSE_Icon_njgk4i3t_ON_T');
-                                      if (FFAppState().answers.length >=
-                                          functions.increment(widget.index)) {
-                                        logFirebaseEvent(
-                                            'Icon_update_app_state');
-                                        setState(() {
-                                          FFAppState().currentAnswer =
-                                              questionsItem;
-                                        });
-                                        logFirebaseEvent(
-                                            'Icon_update_app_state');
-                                        _model.updatePage(() {
-                                          FFAppState().updateAnswersAtIndex(
-                                            widget.index!,
-                                            (_) => FFAppState().currentAnswer,
-                                          );
-                                          FFAppState().updateQuestionsAtIndex(
-                                            widget.index!,
-                                            (_) =>
-                                                FFAppState().currentQuestions,
-                                          );
-                                        });
-                                      } else {
-                                        logFirebaseEvent(
-                                            'Icon_update_app_state');
-                                        setState(() {
-                                          FFAppState().currentAnswer =
-                                              questionsItem;
-                                        });
-                                        logFirebaseEvent(
-                                            'Icon_update_app_state');
-                                        _model.updatePage(() {
-                                          FFAppState().addToAnswers(
-                                              FFAppState().currentAnswer);
-                                          FFAppState().addToQuestions(
-                                              FFAppState().currentQuestions);
-                                        });
-                                      }
+                                      logFirebaseEvent('Icon_update_app_state');
+                                      setState(() {
+                                        FFAppState().currentQuestion =
+                                            widget.name!;
+                                        FFAppState().qurrentAnswer =
+                                            questionsItem;
+                                      });
                                     },
                                     child: Icon(
                                       Icons.radio_button_off,
@@ -185,19 +130,23 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
                             ),
                             Flexible(
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     5.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   questionsItem,
-                                  style:
-                                      FlutterFlowTheme.of(context).bodyMedium,
+                                  style: FlutterFlowTheme.of(context)
+                                      .bodyMedium
+                                      .override(
+                                        fontFamily: 'Roboto',
+                                        letterSpacing: 0.0,
+                                      ),
                                 ),
                               ),
                             ),
                           ],
                         ),
                       );
-                    }).divide(SizedBox(height: 12.0)),
+                    }).divide(const SizedBox(height: 12.0)),
                   );
                 },
               ),

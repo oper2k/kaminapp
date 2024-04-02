@@ -3,13 +3,8 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'sub_lessons_details_slides_model.dart';
 export 'sub_lessons_details_slides_model.dart';
 
@@ -51,17 +46,6 @@ class _SubLessonsDetailsSlidesWidgetState
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -80,7 +64,7 @@ class _SubLessonsDetailsSlidesWidgetState
             icon: Icon(
               Icons.close,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 24.0,
+              size: 30.0,
             ),
             onPressed: () async {
               logFirebaseEvent('SUB_LESSONS_DETAILS_SLIDES_close_ICN_ON_');
@@ -97,19 +81,20 @@ class _SubLessonsDetailsSlidesWidgetState
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
                   fontSize: 16.0,
+                  letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
+            alignment: const AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: Stack(
                 children: [
                   Column(
@@ -117,13 +102,13 @@ class _SubLessonsDetailsSlidesWidgetState
                     children: [
                       Flexible(
                         child: Padding(
-                          padding: EdgeInsetsDirectional.fromSTEB(
+                          padding: const EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 80.0),
                           child: Builder(
                             builder: (context) {
                               final currentDescription = widget
                                       .currentSubLesson?.descriptions
-                                      ?.toList() ??
+                                      .toList() ??
                                   [];
                               return PageView.builder(
                                 controller: _model.pageViewController ??=
@@ -144,7 +129,7 @@ class _SubLessonsDetailsSlidesWidgetState
                                       currentDescription[
                                           currentDescriptionIndex];
                                   return Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         20.0, 0.0, 20.0, 0.0),
                                     child: FlutterFlowWebView(
                                       content: currentDescriptionItem,
@@ -167,24 +152,24 @@ class _SubLessonsDetailsSlidesWidgetState
                     ],
                   ),
                   Align(
-                    alignment: AlignmentDirectional(0.0, 1.0),
+                    alignment: const AlignmentDirectional(0.0, 1.0),
                     child: Container(
                       width: double.infinity,
                       height: 80.0,
-                      decoration: BoxDecoration(),
+                      decoration: const BoxDecoration(),
                       child: Align(
-                        alignment: AlignmentDirectional(0.0, 0.0),
+                        alignment: const AlignmentDirectional(0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                color: Color(0xFFEDF2FA),
+                                color: const Color(0xFFEDF2FA),
                                 borderRadius: BorderRadius.circular(50.0),
                               ),
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     15.0, 3.0, 15.0, 3.0),
                                 child: Text(
                                   valueOrDefault<String>(
@@ -194,15 +179,16 @@ class _SubLessonsDetailsSlidesWidgetState
                                               _model.pageViewCurrentIndex)
                                           .toString(),
                                       '0',
-                                    )}/${widget.currentSubLesson?.descriptions?.length?.toString()}',
+                                    )}/${widget.currentSubLesson?.descriptions.length.toString()}',
                                     '0/0',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Roboto',
-                                        color: Color(0xFFB7DDF7),
+                                        color: const Color(0xFFB7DDF7),
                                         fontSize: 16.0,
+                                        letterSpacing: 0.0,
                                       ),
                                 ),
                               ),

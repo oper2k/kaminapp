@@ -1,23 +1,16 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:go_router/go_router.dart';
-import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
 
 import '/backend/supabase/supabase.dart';
+
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
-import '/main.dart';
-import '/flutter_flow/flutter_flow_theme.dart';
-import '/flutter_flow/lat_lng.dart';
-import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -82,55 +75,57 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? HomeWidget() : Onboarding1Widget(),
+          appStateNotifier.loggedIn ? const HomeWidget() : const Onboarding1Widget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? HomeWidget() : Onboarding1Widget(),
+              appStateNotifier.loggedIn ? const HomeWidget() : const Onboarding1Widget(),
           routes: [
             FFRoute(
               name: 'Onboarding_1',
               path: 'onboarding1',
-              builder: (context, params) => Onboarding1Widget(),
+              builder: (context, params) => const Onboarding1Widget(),
             ),
             FFRoute(
               name: 'Login',
               path: 'login',
-              builder: (context, params) => LoginWidget(),
+              builder: (context, params) => const LoginWidget(),
             ),
             FFRoute(
               name: 'Signin',
               path: 'signin',
-              builder: (context, params) => SigninWidget(),
+              builder: (context, params) => const SigninWidget(),
             ),
             FFRoute(
               name: 'ResetPassword',
               path: 'resetPassword',
-              builder: (context, params) => ResetPasswordWidget(),
+              builder: (context, params) => const ResetPasswordWidget(),
             ),
             FFRoute(
               name: 'ResetPasswordSuccess',
               path: 'resetPasswordSuccess',
-              builder: (context, params) => ResetPasswordSuccessWidget(),
+              builder: (context, params) => const ResetPasswordSuccessWidget(),
             ),
             FFRoute(
               name: 'Home',
               path: 'home',
-              builder: (context, params) => HomeWidget(),
+              builder: (context, params) => const HomeWidget(),
             ),
             FFRoute(
               name: 'Edit_Profile',
               path: 'editProfile',
-              builder: (context, params) => EditProfileWidget(),
+              builder: (context, params) => const EditProfileWidget(),
             ),
             FFRoute(
               name: 'Basic_Course',
               path: 'basicCourse',
               builder: (context, params) => BasicCourseWidget(
                 currentCourse: params.getParam<CourseRow>(
-                    'currentCourse', ParamType.SupabaseRow),
+                  'currentCourse',
+                  ParamType.SupabaseRow,
+                ),
               ),
             ),
             FFRoute(
@@ -138,7 +133,9 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'subLessonsDetailsSlides',
               builder: (context, params) => SubLessonsDetailsSlidesWidget(
                 currentSubLesson: params.getParam<SubLessonsRow>(
-                    'currentSubLesson', ParamType.SupabaseRow),
+                  'currentSubLesson',
+                  ParamType.SupabaseRow,
+                ),
               ),
             ),
             FFRoute(
@@ -146,109 +143,128 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
               path: 'testsDetails',
               builder: (context, params) => TestsDetailsWidget(
                 currentTest: params.getParam<TestsRow>(
-                    'currentTest', ParamType.SupabaseRow),
+                  'currentTest',
+                  ParamType.SupabaseRow,
+                ),
                 currentCourse: params.getParam<CourseRow>(
-                    'currentCourse', ParamType.SupabaseRow),
+                  'currentCourse',
+                  ParamType.SupabaseRow,
+                ),
                 currentLesson: params.getParam<LessonsRow>(
-                    'currentLesson', ParamType.SupabaseRow),
+                  'currentLesson',
+                  ParamType.SupabaseRow,
+                ),
               ),
             ),
             FFRoute(
               name: 'TestEnd',
               path: 'testEnd',
-              builder: (context, params) => TestEndWidget(),
+              builder: (context, params) => const TestEndWidget(),
             ),
             FFRoute(
               name: 'Admin',
               path: 'admin',
-              builder: (context, params) => AdminWidget(),
+              builder: (context, params) => const AdminWidget(),
             ),
             FFRoute(
               name: 'AdminTestDetail',
               path: 'adminTestDetail',
               builder: (context, params) => AdminTestDetailWidget(
                 currentTestAnswers: params.getParam<TestsAnswersRow>(
-                    'currentTestAnswers', ParamType.SupabaseRow),
+                  'currentTestAnswers',
+                  ParamType.SupabaseRow,
+                ),
               ),
             ),
             FFRoute(
               name: 'Dictionary',
               path: 'dictionary',
-              builder: (context, params) => DictionaryWidget(),
+              builder: (context, params) => const DictionaryWidget(),
             ),
             FFRoute(
               name: 'MapAll',
               path: 'mapAll',
-              builder: (context, params) => MapAllWidget(),
+              builder: (context, params) => const MapAllWidget(),
             ),
             FFRoute(
               name: 'MapUC',
               path: 'mapUC',
-              builder: (context, params) => MapUCWidget(),
+              builder: (context, params) => const MapUCWidget(),
             ),
             FFRoute(
               name: 'MapSecondFloor',
               path: 'mapSecondFloor',
-              builder: (context, params) => MapSecondFloorWidget(),
+              builder: (context, params) => const MapSecondFloorWidget(),
             ),
             FFRoute(
               name: 'MapThirdFloor',
               path: 'mapThirdFloor',
-              builder: (context, params) => MapThirdFloorWidget(),
+              builder: (context, params) => const MapThirdFloorWidget(),
             ),
             FFRoute(
               name: 'MapFourthFloor',
               path: 'mapFourthFloor',
-              builder: (context, params) => MapFourthFloorWidget(),
+              builder: (context, params) => const MapFourthFloorWidget(),
             ),
             FFRoute(
               name: 'MapSales',
               path: 'mapSales',
-              builder: (context, params) => MapSalesWidget(),
+              builder: (context, params) => const MapSalesWidget(),
             ),
             FFRoute(
               name: 'MapBO',
               path: 'mapBO',
-              builder: (context, params) => MapBOWidget(),
+              builder: (context, params) => const MapBOWidget(),
             ),
             FFRoute(
               name: 'MapTO',
               path: 'mapTO',
-              builder: (context, params) => MapTOWidget(),
+              builder: (context, params) => const MapTOWidget(),
             ),
             FFRoute(
               name: 'Cheklist',
               path: 'cheklist',
-              builder: (context, params) => CheklistWidget(),
+              builder: (context, params) => const CheklistWidget(),
             ),
             FFRoute(
               name: 'Contacts',
               path: 'contacts',
-              builder: (context, params) => ContactsWidget(),
+              builder: (context, params) => const ContactsWidget(),
             ),
             FFRoute(
               name: 'Chat',
               path: 'chat',
               builder: (context, params) => ChatWidget(
-                chat: params.getParam<ChatsRow>('chat', ParamType.SupabaseRow),
+                chat: params.getParam<ChatsRow>(
+                  'chat',
+                  ParamType.SupabaseRow,
+                ),
               ),
             ),
             FFRoute(
               name: 'AllChats',
               path: 'allChats',
-              builder: (context, params) => AllChatsWidget(),
+              builder: (context, params) => const AllChatsWidget(),
             ),
             FFRoute(
               name: 'TestEndSuccess',
               path: 'testEndSuccess',
               builder: (context, params) => TestEndSuccessWidget(
-                index: params.getParam('index', ParamType.int),
+                index: params.getParam(
+                  'index',
+                  ParamType.int,
+                ),
               ),
             ),
             FFRoute(
               name: 'MapEat',
               path: 'mapEat',
-              builder: (context, params) => MapEatWidget(),
+              builder: (context, params) => const MapEatWidget(),
+            ),
+            FFRoute(
+              name: 'AllUsers',
+              path: 'allUsers',
+              builder: (context, params) => const AllUsersWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -370,6 +386,7 @@ class FFParameters {
     ParamType type, [
     bool isList = false,
     List<String>? collectionNamePath,
+    StructBuilder<T>? structBuilder,
   ]) {
     if (futureParamValues.containsKey(paramName)) {
       return futureParamValues[paramName];
@@ -383,8 +400,13 @@ class FFParameters {
       return param;
     }
     // Return serialized value.
-    return deserializeParam<T>(param, type, isList,
-        collectionNamePath: collectionNamePath);
+    return deserializeParam<T>(
+      param,
+      type,
+      isList,
+      collectionNamePath: collectionNamePath,
+      structBuilder: structBuilder,
+    );
   }
 }
 
@@ -422,6 +444,7 @@ class FFRoute {
           return null;
         },
         pageBuilder: (context, state) {
+          fixStatusBarOniOS16AndBelow(context);
           final ffParams = FFParameters(state, asyncParams);
           final page = ffParams.hasFutures
               ? FutureBuilder(
@@ -479,7 +502,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

@@ -2,13 +2,8 @@ import '/components/custom_dialog_map/custom_dialog_map_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'map_t_o_model.dart';
 export 'map_t_o_model.dart';
@@ -43,24 +38,13 @@ class _MapTOWidgetState extends State<MapTOWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF9F7F7),
+        backgroundColor: const Color(0xFFF9F7F7),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
@@ -72,7 +56,7 @@ class _MapTOWidgetState extends State<MapTOWidget> {
             icon: Icon(
               Icons.close,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 24.0,
+              size: 30.0,
             ),
             onPressed: () async {
               logFirebaseEvent('MAP_T_O_PAGE_close_ICN_ON_TAP');
@@ -86,34 +70,35 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
                   fontSize: 16.0,
+                  letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
+            alignment: const AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Row(
                   mainAxisSize: MainAxisSize.max,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Container(
+                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      child: SizedBox(
                         width: 830.0,
                         height: 445.0,
                         child: Stack(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
@@ -125,7 +110,7 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(-0.79, -0.43),
+                              alignment: const AlignmentDirectional(-0.79, -0.43),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -139,10 +124,10 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: AlignmentDirectional(
+                                      targetAnchor: const AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: AlignmentDirectional(
+                                      followerAnchor: const AlignmentDirectional(
                                               -1.0, 0.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -157,7 +142,7 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: CustomDialogMapWidget(
+                                              child: const CustomDialogMapWidget(
                                                 nameSearch: 'k1to',
                                               ),
                                             ),
@@ -169,13 +154,13 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(-0.63, 0.84),
+                              alignment: const AlignmentDirectional(-0.63, 0.84),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -189,10 +174,10 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: AlignmentDirectional(
+                                      targetAnchor: const AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: AlignmentDirectional(
+                                      followerAnchor: const AlignmentDirectional(
                                               -1.0, 1.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -207,7 +192,7 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: CustomDialogMapWidget(
+                                              child: const CustomDialogMapWidget(
                                                 nameSearch: 'k2to',
                                               ),
                                             ),
@@ -219,13 +204,13 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(-0.04, -0.43),
+                              alignment: const AlignmentDirectional(-0.04, -0.43),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -239,10 +224,10 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: AlignmentDirectional(
+                                      targetAnchor: const AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: AlignmentDirectional(
+                                      followerAnchor: const AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -257,7 +242,7 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: CustomDialogMapWidget(
+                                              child: const CustomDialogMapWidget(
                                                 nameSearch: 'k3to',
                                               ),
                                             ),
@@ -269,13 +254,13 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.74, -0.81),
+                              alignment: const AlignmentDirectional(0.74, -0.81),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -289,10 +274,10 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: AlignmentDirectional(
+                                      targetAnchor: const AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: AlignmentDirectional(
+                                      followerAnchor: const AlignmentDirectional(
                                               1.0, -1.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -307,7 +292,7 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: CustomDialogMapWidget(
+                                              child: const CustomDialogMapWidget(
                                                 nameSearch: 'k4to',
                                               ),
                                             ),
@@ -319,7 +304,7 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                               ),

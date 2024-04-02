@@ -4,10 +4,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'admin_model.dart';
 export 'admin_model.dart';
@@ -42,15 +40,6 @@ class _AdminWidgetState extends State<AdminWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -61,7 +50,7 @@ class _AdminWidgetState extends State<AdminWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: Color(0xFFF9F7F7),
+          backgroundColor: const Color(0xFFF9F7F7),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -71,7 +60,7 @@ class _AdminWidgetState extends State<AdminWidget> {
             icon: Icon(
               Icons.close,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 24.0,
+              size: 30.0,
             ),
             onPressed: () async {
               logFirebaseEvent('ADMIN_PAGE_close_ICN_ON_TAP');
@@ -85,17 +74,18 @@ class _AdminWidgetState extends State<AdminWidget> {
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
                   fontSize: 16.0,
+                  letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: Align(
-          alignment: AlignmentDirectional(0.0, -1.0),
+          alignment: const AlignmentDirectional(0.0, -1.0),
           child: Container(
             width: 700.0,
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -127,10 +117,11 @@ class _AdminWidgetState extends State<AdminWidget> {
                       List<TestsAnswersRow> containerTestsAnswersRowList =
                           snapshot.data!;
                       return Container(
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Align(
-                          alignment: AlignmentDirectional(0.0, -1.0),
+                          alignment: const AlignmentDirectional(0.0, -1.0),
                           child: SingleChildScrollView(
+                            primary: false,
                             child: Column(
                               mainAxisSize: MainAxisSize.max,
                               children: [
@@ -139,7 +130,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 16.0, 16.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -156,11 +147,11 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                 options: FFButtonOptions(
                                                   width: 130.0,
                                                   height: 56.0,
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 0.0),
                                                   iconPadding:
-                                                      EdgeInsetsDirectional
+                                                      const EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
@@ -172,9 +163,10 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                       .override(
                                                         fontFamily: 'Roboto',
                                                         color: Colors.white,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                   elevation: 0.0,
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Colors.transparent,
                                                     width: 0.0,
                                                   ),
@@ -187,7 +179,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                             Expanded(
                                               flex: 2,
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         9.0, 0.0, 0.0, 0.0),
                                                 child: FFButtonWidget(
@@ -206,11 +198,11 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                     width: 130.0,
                                                     height: 56.0,
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     iconPadding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -224,9 +216,10 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primary,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                     elevation: 0.0,
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                       color: Colors.transparent,
                                                       width: 0.0,
                                                     ),
@@ -241,7 +234,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                         ),
                                       ),
                                       Container(
-                                        decoration: BoxDecoration(),
+                                        decoration: const BoxDecoration(),
                                         child: Builder(
                                           builder: (context) {
                                             final waitTests =
@@ -258,7 +251,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                 final waitTestsItem =
                                                     waitTests[waitTestsIndex];
                                                 return Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(16.0, 20.0,
                                                           16.0, 0.0),
                                                   child: InkWell(
@@ -300,7 +293,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     15.0,
                                                                     16.0,
@@ -345,7 +338,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                                               .start,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               16.0,
                                                                               0.0,
                                                                               0.0,
@@ -359,11 +352,12 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                                             style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                   fontFamily: 'Roboto',
                                                                                   fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
                                                                                 ),
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               16.0,
                                                                               0.0,
                                                                               0.0,
@@ -374,12 +368,14 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                                               waitTestsItem.courseName,
                                                                               'нет названия курса',
                                                                             ),
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).bodySmall,
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: 'Roboto',
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               16.0,
                                                                               0.0,
                                                                               0.0,
@@ -390,8 +386,10 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                                               waitTestsItem.textName,
                                                                               'нет текста',
                                                                             ),
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).bodySmall,
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: 'Roboto',
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
                                                                           ),
                                                                         ),
                                                                       ],
@@ -434,7 +432,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             16.0, 16.0, 16.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -458,11 +456,11 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                 options: FFButtonOptions(
                                                   width: 130.0,
                                                   height: 56.0,
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 0.0),
                                                   iconPadding:
-                                                      EdgeInsetsDirectional
+                                                      const EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
@@ -477,9 +475,10 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                             FlutterFlowTheme.of(
                                                                     context)
                                                                 .primaryText,
+                                                        letterSpacing: 0.0,
                                                       ),
                                                   elevation: 0.0,
-                                                  borderSide: BorderSide(
+                                                  borderSide: const BorderSide(
                                                     color: Colors.transparent,
                                                     width: 0.0,
                                                   ),
@@ -492,7 +491,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                             Expanded(
                                               flex: 2,
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         9.0, 0.0, 0.0, 0.0),
                                                 child: FFButtonWidget(
@@ -504,11 +503,11 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                     width: 130.0,
                                                     height: 56.0,
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     iconPadding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -522,9 +521,10 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                           color: FlutterFlowTheme
                                                                   .of(context)
                                                               .primaryBtnText,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                     elevation: 0.0,
-                                                    borderSide: BorderSide(
+                                                    borderSide: const BorderSide(
                                                       color: Colors.transparent,
                                                       width: 0.0,
                                                     ),
@@ -539,7 +539,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                         ),
                                       ),
                                       Container(
-                                        decoration: BoxDecoration(),
+                                        decoration: const BoxDecoration(),
                                         child: Builder(
                                           builder: (context) {
                                             final allTests =
@@ -555,7 +555,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                 final allTestsItem =
                                                     allTests[allTestsIndex];
                                                 return Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(16.0, 20.0,
                                                           16.0, 0.0),
                                                   child: InkWell(
@@ -597,7 +597,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            EdgeInsetsDirectional
+                                                            const EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     15.0,
                                                                     16.0,
@@ -656,7 +656,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                                               .start,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               16.0,
                                                                               0.0,
                                                                               0.0,
@@ -670,11 +670,12 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                                             style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                   fontFamily: 'Roboto',
                                                                                   fontSize: 16.0,
+                                                                                  letterSpacing: 0.0,
                                                                                 ),
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               16.0,
                                                                               0.0,
                                                                               0.0,
@@ -685,12 +686,14 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                                               allTestsItem.courseName,
                                                                               'нет курса',
                                                                             ),
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).bodySmall,
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: 'Roboto',
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               16.0,
                                                                               0.0,
                                                                               0.0,
@@ -701,8 +704,10 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                                               allTestsItem.textName,
                                                                               'нет текста',
                                                                             ),
-                                                                            style:
-                                                                                FlutterFlowTheme.of(context).bodySmall,
+                                                                            style: FlutterFlowTheme.of(context).bodySmall.override(
+                                                                                  fontFamily: 'Roboto',
+                                                                                  letterSpacing: 0.0,
+                                                                                ),
                                                                           ),
                                                                         ),
                                                                       ],

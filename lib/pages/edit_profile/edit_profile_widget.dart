@@ -12,12 +12,8 @@ import '/custom_code/actions/index.dart' as actions;
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'edit_profile_model.dart';
 export 'edit_profile_model.dart';
 
@@ -63,8 +59,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
           curve: Curves.easeInOut,
           delay: 0.ms,
           duration: 400.ms,
-          begin: Offset(0.0, 46.0),
-          end: Offset(0.0, 0.0),
+          begin: const Offset(0.0, 46.0),
+          end: const Offset(0.0, 0.0),
         ),
       ],
     ),
@@ -96,17 +92,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -115,10 +100,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Align(
-          alignment: AlignmentDirectional(0.0, -1.0),
+          alignment: const AlignmentDirectional(0.0, -1.0),
           child: Container(
             width: 700.0,
-            decoration: BoxDecoration(),
+            decoration: const BoxDecoration(),
             child: FutureBuilder<List<UsersRow>>(
               future: (_model.requestCompleter1 ??= Completer<List<UsersRow>>()
                     ..complete(UsersTable().querySingleRow(
@@ -163,7 +148,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                               'assets/images/9b595a8fdc346d8bbf8d04d439cdc3f3.jpeg',
                             ).image,
                           ),
-                          borderRadius: BorderRadius.only(
+                          borderRadius: const BorderRadius.only(
                             bottomLeft: Radius.circular(32.0),
                             bottomRight: Radius.circular(32.0),
                             topLeft: Radius.circular(0.0),
@@ -174,7 +159,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   12.0, 36.0, 12.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -235,7 +220,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: EdgeInsetsDirectional.fromSTEB(
+                                  padding: const EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Container(
                                     width: 163.0,
@@ -249,29 +234,32 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                           'assets/images/Me.png',
                                         ).image,
                                       ),
-                                      boxShadow: [
+                                      boxShadow: const [
                                         BoxShadow(
                                           blurRadius: 30.0,
                                           color: Color(0x1A000000),
-                                          offset: Offset(0.0, 4.0),
+                                          offset: Offset(
+                                            0.0,
+                                            4.0,
+                                          ),
                                         )
                                       ],
                                       shape: BoxShape.circle,
                                     ),
-                                    alignment: AlignmentDirectional(0.0, 0.0),
+                                    alignment: const AlignmentDirectional(0.0, 0.0),
                                     child: Stack(
                                       children: [
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(100.0),
                                             child: CachedNetworkImage(
                                               fadeInDuration:
-                                                  Duration(milliseconds: 500),
+                                                  const Duration(milliseconds: 500),
                                               fadeOutDuration:
-                                                  Duration(milliseconds: 500),
+                                                  const Duration(milliseconds: 500),
                                               imageUrl: valueOrDefault<String>(
                                                 columnUsersRow?.photoUrl,
                                                 'нет',
@@ -284,7 +272,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              AlignmentDirectional(0.0, 0.0),
+                                              const AlignmentDirectional(0.0, 0.0),
                                           child: FlutterFlowIconButton(
                                             borderColor: Colors.transparent,
                                             borderRadius: 30.0,
@@ -423,14 +411,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                               ],
                             ),
                             Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 26.0, 16.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         10.0, 0.0, 0.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -449,11 +437,12 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 color:
                                                     FlutterFlowTheme.of(context)
                                                         .primaryBackground,
+                                                letterSpacing: 0.0,
                                               ),
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 6.0, 0.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
@@ -467,6 +456,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .primaryBackground,
+                                                  letterSpacing: 0.0,
                                                 ),
                                           ),
                                         ),
@@ -482,14 +472,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: EdgeInsetsDirectional.fromSTEB(
+                                padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -517,6 +507,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           fontSize: 16.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                                   ),
                                                 ],
@@ -529,7 +520,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 children: [
                                                   Container(
                                                     width: 200.0,
-                                                    decoration: BoxDecoration(),
+                                                    decoration: const BoxDecoration(),
                                                     child: TextFormField(
                                                       controller: _model
                                                               .firstNameController ??=
@@ -546,6 +537,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                       ),
                                                       focusNode: _model
                                                           .firstNameFocusNode,
+                                                      autofocus: false,
                                                       obscureText: false,
                                                       decoration:
                                                           InputDecoration(
@@ -553,11 +545,17 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         hintStyle:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodySmall,
+                                                                .bodySmall
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
                                                         enabledBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0xFFB7DDF7),
                                                             width: 1.0,
@@ -570,7 +568,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         focusedBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0xFFB7DDF7),
                                                             width: 1.0,
@@ -583,7 +581,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         errorBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0xFFB7DDF7),
                                                             width: 1.0,
@@ -596,7 +594,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         focusedErrorBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              BorderSide(
+                                                              const BorderSide(
                                                             color: Color(
                                                                 0xFFB7DDF7),
                                                             width: 1.0,
@@ -607,10 +605,15 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                       16.0),
                                                         ),
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium,
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            letterSpacing: 0.0,
+                                                          ),
+                                                      minLines: null,
                                                       keyboardType:
                                                           TextInputType.name,
                                                       validator: _model
@@ -625,7 +628,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -640,15 +643,15 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                   children: [
                                                     Text(
                                                       'Фамилия:',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                fontSize: 16.0,
-                                                              ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            fontSize: 16.0,
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ],
                                                 ),
@@ -662,7 +665,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                     Container(
                                                       width: 200.0,
                                                       decoration:
-                                                          BoxDecoration(),
+                                                          const BoxDecoration(),
                                                       child: TextFormField(
                                                         controller: _model
                                                                 .lastNameController ??=
@@ -679,6 +682,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         ),
                                                         focusNode: _model
                                                             .lastNameFocusNode,
+                                                        autofocus: false,
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
@@ -686,11 +690,17 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           hintStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodySmall,
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0xFFB7DDF7),
                                                               width: 1.0,
@@ -703,7 +713,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0xFFB7DDF7),
                                                               width: 1.0,
@@ -716,7 +726,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           errorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0xFFB7DDF7),
                                                               width: 1.0,
@@ -729,7 +739,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedErrorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0xFFB7DDF7),
                                                               width: 1.0,
@@ -743,7 +753,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        minLines: null,
                                                         keyboardType:
                                                             TextInputType.name,
                                                         validator: _model
@@ -760,7 +777,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -775,15 +792,15 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                   children: [
                                                     Text(
                                                       'Должность:',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                fontSize: 16.0,
-                                                              ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            fontSize: 16.0,
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ],
                                                 ),
@@ -797,7 +814,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                     Container(
                                                       width: 200.0,
                                                       decoration:
-                                                          BoxDecoration(),
+                                                          const BoxDecoration(),
                                                       child: TextFormField(
                                                         controller: _model
                                                                 .positionController ??=
@@ -814,6 +831,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         ),
                                                         focusNode: _model
                                                             .positionFocusNode,
+                                                        autofocus: false,
                                                         obscureText: false,
                                                         decoration:
                                                             InputDecoration(
@@ -821,11 +839,17 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           hintStyle:
                                                               FlutterFlowTheme.of(
                                                                       context)
-                                                                  .bodySmall,
+                                                                  .bodySmall
+                                                                  .override(
+                                                                    fontFamily:
+                                                                        'Roboto',
+                                                                    letterSpacing:
+                                                                        0.0,
+                                                                  ),
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0xFFB7DDF7),
                                                               width: 1.0,
@@ -838,7 +862,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0xFFB7DDF7),
                                                               width: 1.0,
@@ -851,7 +875,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           errorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0xFFB7DDF7),
                                                               width: 1.0,
@@ -864,7 +888,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedErrorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                BorderSide(
+                                                                const BorderSide(
                                                               color: Color(
                                                                   0xFFB7DDF7),
                                                               width: 1.0,
@@ -878,7 +902,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         style:
                                                             FlutterFlowTheme.of(
                                                                     context)
-                                                                .bodyMedium,
+                                                                .bodyMedium
+                                                                .override(
+                                                                  fontFamily:
+                                                                      'Roboto',
+                                                                  letterSpacing:
+                                                                      0.0,
+                                                                ),
+                                                        minLines: null,
                                                         keyboardType:
                                                             TextInputType.name,
                                                         validator: _model
@@ -895,7 +926,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 20.0, 0.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -910,15 +941,15 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                   children: [
                                                     Text(
                                                       'Подразделение:',
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                fontSize: 16.0,
-                                                              ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            fontSize: 16.0,
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ],
                                                 ),
@@ -958,9 +989,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 containerDepartmentsRowList =
                                                 snapshot.data!;
                                             return Container(
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 12.0, 0.0, 0.0),
                                                 child:
@@ -989,10 +1020,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           .dropDownValue = val),
                                                   width: double.infinity,
                                                   height: 50.0,
-                                                  textStyle:
-                                                      FlutterFlowTheme.of(
-                                                              context)
-                                                          .bodyMedium,
+                                                  textStyle: FlutterFlowTheme
+                                                          .of(context)
+                                                      .bodyMedium
+                                                      .override(
+                                                        fontFamily: 'Roboto',
+                                                        letterSpacing: 0.0,
+                                                      ),
                                                   hintText: 'Выбрать...',
                                                   icon: Icon(
                                                     Icons
@@ -1008,10 +1042,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           .primaryBackground,
                                                   elevation: 1.0,
                                                   borderColor:
-                                                      Color(0xFFB7DDF7),
+                                                      const Color(0xFFB7DDF7),
                                                   borderWidth: 1.0,
                                                   borderRadius: 16.0,
-                                                  margin: EdgeInsetsDirectional
+                                                  margin: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 4.0, 16.0, 4.0),
                                                   hidesUnderline: true,
@@ -1025,7 +1059,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                       ],
                                     ),
                                     Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 45.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
@@ -1060,10 +1094,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                           width: double.infinity,
                                           height: 56.0,
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           iconPadding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -1073,9 +1107,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                   .override(
                                                     fontFamily: 'Roboto',
                                                     color: Colors.white,
+                                                    letterSpacing: 0.0,
                                                   ),
                                           elevation: 0.0,
-                                          borderSide: BorderSide(
+                                          borderSide: const BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),

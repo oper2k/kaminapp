@@ -3,15 +3,11 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'cheklist_model.dart';
 export 'cheklist_model.dart';
 
@@ -45,24 +41,13 @@ class _CheklistWidgetState extends State<CheklistWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF9F7F7),
+        backgroundColor: const Color(0xFFF9F7F7),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
@@ -74,7 +59,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
             icon: Icon(
               Icons.close,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 24.0,
+              size: 30.0,
             ),
             onPressed: () async {
               logFirebaseEvent('CHEKLIST_PAGE_close_ICN_ON_TAP');
@@ -88,16 +73,17 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
                   fontSize: 16.0,
+                  letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
+            alignment: const AlignmentDirectional(0.0, -1.0),
             child: FutureBuilder<List<UsersRow>>(
               future: (_model.requestCompleter ??= Completer<List<UsersRow>>()
                     ..complete(UsersTable().querySingleRow(
@@ -128,7 +114,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                         : null;
                 return Container(
                   width: 700.0,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: FutureBuilder<List<ChecklistRow>>(
                     future: ChecklistTable().queryRows(
                       queryFn: (q) => q.order('sort', ascending: true),
@@ -150,7 +136,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                       List<ChecklistRow> containerChecklistRowList =
                           snapshot.data!;
                       return Container(
-                        decoration: BoxDecoration(),
+                        decoration: const BoxDecoration(),
                         child: Builder(
                           builder: (context) {
                             final day = containerChecklistRowList.toList();
@@ -160,7 +146,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                 children: List.generate(day.length, (dayIndex) {
                                   final dayItem = day[dayIndex];
                                   return Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         16.0, 20.0, 16.0, 0.0),
                                     child: Container(
                                       decoration: BoxDecoration(
@@ -170,7 +156,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                             BorderRadius.circular(16.0),
                                       ),
                                       child: Padding(
-                                        padding: EdgeInsets.all(6.0),
+                                        padding: const EdgeInsets.all(6.0),
                                         child: Container(
                                           width: double.infinity,
                                           color: Colors.white,
@@ -178,7 +164,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                             initialExpanded: false,
                                             child: ExpandablePanel(
                                               header: Padding(
-                                                padding: EdgeInsetsDirectional
+                                                padding: const EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         15.0, 0.0, 0.0, 0.0),
                                                 child: Row(
@@ -198,6 +184,8 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                               fontFamily:
                                                                   'Roboto',
                                                               fontSize: 16.0,
+                                                              letterSpacing:
+                                                                  0.0,
                                                             ),
                                                       ),
                                                     ),
@@ -206,9 +194,9 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                               ),
                                               collapsed: Container(),
                                               expanded: Container(
-                                                decoration: BoxDecoration(),
+                                                decoration: const BoxDecoration(),
                                                 child: Padding(
-                                                  padding: EdgeInsetsDirectional
+                                                  padding: const EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 24.0),
                                                   child: Builder(
@@ -237,7 +225,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                     .start,
                                                             children: [
                                                               Padding(
-                                                                padding: EdgeInsetsDirectional
+                                                                padding: const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         15.0,
                                                                         16.0,
@@ -250,7 +238,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                   children: [
                                                                     if (containerUserUsersRow
                                                                             ?.taskDone
-                                                                            ?.contains(checklistItem) ??
+                                                                            .contains(checklistItem) ??
                                                                         true)
                                                                       InkWell(
                                                                         splashColor:
@@ -323,7 +311,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                           await UsersTable()
                                                                               .update(
                                                                             data: {
-                                                                              'task_done': functions.appendListToListString(containerUserUsersRow?.taskDone?.toList(), checklistItem).cast<String>(),
+                                                                              'task_done': functions.appendListToListString(containerUserUsersRow.taskDone.toList(), checklistItem).cast<String>(),
                                                                             },
                                                                             matchingRows: (rows) =>
                                                                                 rows.eq(
@@ -357,7 +345,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                     Expanded(
                                                                       child:
                                                                           Padding(
-                                                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                                                             8.0,
                                                                             10.0,
                                                                             16.0,
@@ -370,6 +358,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                               .override(
                                                                                 fontFamily: 'Roboto',
                                                                                 color: FlutterFlowTheme.of(context).primaryText,
+                                                                                letterSpacing: 0.0,
                                                                               ),
                                                                         ),
                                                                       ),
@@ -397,11 +386,10 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                       return Visibility(
                                                                         visible: (attensionIndex ==
                                                                                 checklistIndex) ||
-                                                                            (dayItem.tasks.length ==
-                                                                                0),
+                                                                            (dayItem.tasks.isEmpty),
                                                                         child:
                                                                             Padding(
-                                                                          padding: EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
                                                                               15.0,
                                                                               16.0,
                                                                               16.0,
@@ -416,7 +404,8 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                                   attensionItem,
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Roboto',
-                                                                                        color: Color(0xFF3F72AF),
+                                                                                        color: const Color(0xFF3F72AF),
+                                                                                        letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.normal,
                                                                                       ),
                                                                                 ),
@@ -458,7 +447,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                       ),
                                     ),
                                   );
-                                }).addToEnd(SizedBox(height: 30.0)),
+                                }).addToEnd(const SizedBox(height: 30.0)),
                               ),
                             );
                           },

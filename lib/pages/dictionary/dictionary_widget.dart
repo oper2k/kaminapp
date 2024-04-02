@@ -2,14 +2,10 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'dictionary_model.dart';
 export 'dictionary_model.dart';
 
@@ -43,24 +39,13 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF9F7F7),
+        backgroundColor: const Color(0xFFF9F7F7),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
@@ -72,7 +57,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
             icon: Icon(
               Icons.close,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 24.0,
+              size: 30.0,
             ),
             onPressed: () async {
               logFirebaseEvent('DICTIONARY_PAGE_close_ICN_ON_TAP');
@@ -86,16 +71,17 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
                   fontSize: 16.0,
+                  letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
+            alignment: const AlignmentDirectional(0.0, -1.0),
             child: FutureBuilder<List<DicRow>>(
               future: DicTable().queryRows(
                 queryFn: (q) => q.order('sort', ascending: true),
@@ -117,7 +103,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                 List<DicRow> containerDicRowList = snapshot.data!;
                 return Container(
                   width: 700.0,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Stack(
                     children: [
                       Column(
@@ -143,7 +129,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                   itemBuilder: (context, dictIndex) {
                                     final dictItem = dict[dictIndex];
                                     return Padding(
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           15.0, 0.0, 15.0, 0.0),
                                       child: SingleChildScrollView(
                                         child: Column(
@@ -151,7 +137,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                           children: [
                                             Container(
                                               decoration: BoxDecoration(
-                                                color: Color(0xFFDAEFFB),
+                                                color: const Color(0xFFDAEFFB),
                                                 borderRadius:
                                                     BorderRadius.circular(16.0),
                                               ),
@@ -162,11 +148,11 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                                 children: [
                                                   Align(
                                                     alignment:
-                                                        AlignmentDirectional(
+                                                        const AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsets.all(6.0),
+                                                          const EdgeInsets.all(6.0),
                                                       child: ClipRRect(
                                                         borderRadius:
                                                             BorderRadius
@@ -174,11 +160,11 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                                         child:
                                                             CachedNetworkImage(
                                                           fadeInDuration:
-                                                              Duration(
+                                                              const Duration(
                                                                   milliseconds:
                                                                       0),
                                                           fadeOutDuration:
-                                                              Duration(
+                                                              const Duration(
                                                                   milliseconds:
                                                                       0),
                                                           imageUrl:
@@ -192,7 +178,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 6.0,
                                                                 24.0, 0.0),
                                                     child: Text(
@@ -202,22 +188,22 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                                       ),
                                                       textAlign:
                                                           TextAlign.start,
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                color: Color(
-                                                                    0xFF3F72AF),
-                                                                fontSize: 36.0,
-                                                              ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            color: const Color(
+                                                                0xFF3F72AF),
+                                                            fontSize: 36.0,
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 24.0,
                                                                 12.0,
@@ -226,7 +212,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                                     child: Container(
                                                       width: double.infinity,
                                                       height: 1.0,
-                                                      decoration: BoxDecoration(
+                                                      decoration: const BoxDecoration(
                                                         color:
                                                             Color(0xFF3F72AF),
                                                       ),
@@ -234,7 +220,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        EdgeInsetsDirectional
+                                                        const EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 24.0),
                                                     child: Text(
@@ -242,16 +228,16 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                                         dictItem.subname,
                                                         'нет описания',
                                                       ),
-                                                      style:
-                                                          FlutterFlowTheme.of(
-                                                                  context)
-                                                              .bodyMedium
-                                                              .override(
-                                                                fontFamily:
-                                                                    'Roboto',
-                                                                color: Color(
-                                                                    0xFF3F72AF),
-                                                              ),
+                                                      style: FlutterFlowTheme
+                                                              .of(context)
+                                                          .bodyMedium
+                                                          .override(
+                                                            fontFamily:
+                                                                'Roboto',
+                                                            color: const Color(
+                                                                0xFF3F72AF),
+                                                            letterSpacing: 0.0,
+                                                          ),
                                                     ),
                                                   ),
                                                 ],
@@ -269,24 +255,24 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                         ],
                       ),
                       Align(
-                        alignment: AlignmentDirectional(0.0, 1.0),
+                        alignment: const AlignmentDirectional(0.0, 1.0),
                         child: Container(
                           width: double.infinity,
                           height: 80.0,
-                          decoration: BoxDecoration(),
+                          decoration: const BoxDecoration(),
                           child: Align(
-                            alignment: AlignmentDirectional(0.0, 0.0),
+                            alignment: const AlignmentDirectional(0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
-                                    color: Color(0xFFEDF2FA),
+                                    color: const Color(0xFFEDF2FA),
                                     borderRadius: BorderRadius.circular(50.0),
                                   ),
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         15.0, 3.0, 15.0, 3.0),
                                     child: Text(
                                       valueOrDefault<String>(
@@ -303,8 +289,9 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Roboto',
-                                            color: Color(0xFFB7DDF7),
+                                            color: const Color(0xFFB7DDF7),
                                             fontSize: 16.0,
+                                            letterSpacing: 0.0,
                                           ),
                                     ),
                                   ),

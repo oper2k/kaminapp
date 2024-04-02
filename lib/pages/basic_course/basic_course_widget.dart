@@ -6,10 +6,8 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'basic_course_model.dart';
 export 'basic_course_model.dart';
@@ -50,15 +48,6 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
     context.watch<FFAppState>();
 
     return GestureDetector(
@@ -67,7 +56,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF9F7F7),
+        backgroundColor: const Color(0xFFF9F7F7),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
@@ -79,7 +68,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
             icon: Icon(
               Icons.arrow_back_rounded,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 24.0,
+              size: 30.0,
             ),
             onPressed: () async {
               logFirebaseEvent('BASIC_COURSE_arrow_back_rounded_ICN_ON_T');
@@ -96,19 +85,20 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
                   fontSize: 16.0,
+                  letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
+            alignment: const AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
@@ -124,7 +114,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                             fit: BoxFit.contain,
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -140,10 +130,10 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                     options: FFButtonOptions(
                                       width: 130.0,
                                       height: 56.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color:
                                           FlutterFlowTheme.of(context).primary,
@@ -152,9 +142,10 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                           .override(
                                             fontFamily: 'Roboto',
                                             color: Colors.white,
+                                            letterSpacing: 0.0,
                                           ),
                                       elevation: 0.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 0.0,
                                       ),
@@ -165,7 +156,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                 Expanded(
                                   flex: 2,
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         9.0, 0.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () async {
@@ -181,10 +172,10 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                       options: FFButtonOptions(
                                         width: 130.0,
                                         height: 56.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primaryBtnText,
@@ -195,9 +186,10 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primary,
+                                              letterSpacing: 0.0,
                                             ),
                                         elevation: 0.0,
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.transparent,
                                           width: 0.0,
                                         ),
@@ -237,7 +229,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                               List<LessonsRow> containerLessonsRowList =
                                   snapshot.data!;
                               return Container(
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Builder(
                                   builder: (context) {
                                     final lessons =
@@ -250,7 +242,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                             lessons[lessonsIndex];
                                         return Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   16.0, 20.0, 16.0, 0.0),
                                           child: FutureBuilder<
                                               List<TestsAnswersRow>>(
@@ -296,10 +288,10 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                           16.0),
                                                 ),
                                                 child: Container(
-                                                  decoration: BoxDecoration(),
+                                                  decoration: const BoxDecoration(),
                                                   child: Padding(
                                                     padding:
-                                                        EdgeInsets.all(6.0),
+                                                        const EdgeInsets.all(6.0),
                                                     child: Container(
                                                       width: double.infinity,
                                                       color: Colors.white,
@@ -308,7 +300,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                         child: ExpandablePanel(
                                                           header: Padding(
                                                             padding:
-                                                                EdgeInsetsDirectional
+                                                                const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         15.0,
                                                                         0.0,
@@ -326,12 +318,9 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                   children: [
                                                                     if (((lessonsIndex ==
                                                                                 0) &&
-                                                                            (allLessonUserAnswersTestsAnswersRowList.where((e) => e.rlLesson == lessonsItem.uid).toList().length ==
-                                                                                0)) ||
-                                                                        ((allLessonUserAnswersTestsAnswersRowList.where((e) => e.rlLesson == lessonsItem.uid).toList().length ==
-                                                                                0) &&
-                                                                            (allLessonUserAnswersTestsAnswersRowList.where((e) => e.rlLesson == containerLessonsRowList[lessonsIndex - 1].uid).toList().length >
-                                                                                0) &&
+                                                                            (allLessonUserAnswersTestsAnswersRowList.where((e) => e.rlLesson == lessonsItem.uid).toList().isEmpty)) ||
+                                                                        ((allLessonUserAnswersTestsAnswersRowList.where((e) => e.rlLesson == lessonsItem.uid).toList().isEmpty) &&
+                                                                            (allLessonUserAnswersTestsAnswersRowList.where((e) => e.rlLesson == containerLessonsRowList[lessonsIndex - 1].uid).toList().isNotEmpty) &&
                                                                             (lessonsIndex >
                                                                                 0)))
                                                                       Icon(
@@ -344,8 +333,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                       ),
                                                                     if ((lessonsIndex >
                                                                             0) &&
-                                                                        (allLessonUserAnswersTestsAnswersRowList.where((e) => e.rlLesson == containerLessonsRowList[lessonsIndex - 1].uid).toList().length ==
-                                                                            0))
+                                                                        (allLessonUserAnswersTestsAnswersRowList.where((e) => e.rlLesson == containerLessonsRowList[lessonsIndex - 1].uid).toList().isEmpty))
                                                                       Icon(
                                                                         Icons
                                                                             .lock_outline,
@@ -358,9 +346,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                             .where((e) =>
                                                                                 e.rlLesson ==
                                                                                 lessonsItem.uid)
-                                                                            .toList()
-                                                                            .length >
-                                                                        0)
+                                                                            .toList().isNotEmpty)
                                                                       FaIcon(
                                                                         FontAwesomeIcons
                                                                             .check,
@@ -374,7 +360,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                 Expanded(
                                                                   child:
                                                                       Padding(
-                                                                    padding: EdgeInsetsDirectional
+                                                                    padding: const EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             16.0,
                                                                             0.0,
@@ -395,6 +381,8 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                                 'Roboto',
                                                                             fontSize:
                                                                                 16.0,
+                                                                            letterSpacing:
+                                                                                0.0,
                                                                           ),
                                                                     ),
                                                                   ),
@@ -406,7 +394,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                               Container(),
                                                           expanded: Container(
                                                             decoration:
-                                                                BoxDecoration(),
+                                                                const BoxDecoration(),
                                                             child: FutureBuilder<
                                                                 List<
                                                                     SubLessonsRow>>(
@@ -484,7 +472,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                             'BASIC_COURSE_PAGE_Column_c0zy2336_ON_TAP');
                                                                         if ((lessonsIndex ==
                                                                                 0) ||
-                                                                            ((allLessonUserAnswersTestsAnswersRowList.where((e) => e.rlLesson == containerLessonsRowList[lessonsIndex - 1].uid).toList().length > 0) &&
+                                                                            ((allLessonUserAnswersTestsAnswersRowList.where((e) => e.rlLesson == containerLessonsRowList[lessonsIndex - 1].uid).toList().isNotEmpty) &&
                                                                                 (lessonsIndex > 0))) {
                                                                           logFirebaseEvent(
                                                                               'Column_navigate_to');
@@ -508,7 +496,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                             MainAxisSize.max,
                                                                         children: [
                                                                           Padding(
-                                                                            padding: EdgeInsetsDirectional.fromSTEB(
+                                                                            padding: const EdgeInsetsDirectional.fromSTEB(
                                                                                 15.0,
                                                                                 0.0,
                                                                                 0.0,
@@ -519,12 +507,13 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                               children: [
                                                                                 Expanded(
                                                                                   child: Padding(
-                                                                                    padding: EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 16.0, 8.0),
+                                                                                    padding: const EdgeInsetsDirectional.fromSTEB(0.0, 10.0, 16.0, 8.0),
                                                                                     child: Text(
                                                                                       columnSubLessonsRow.name!,
                                                                                       style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                             fontFamily: 'Roboto',
                                                                                             color: FlutterFlowTheme.of(context).primaryText,
+                                                                                            letterSpacing: 0.0,
                                                                                           ),
                                                                                     ),
                                                                                   ),
@@ -598,7 +587,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                             fit: BoxFit.contain,
                           ),
                           Padding(
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 16.0, 16.0, 16.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
@@ -620,10 +609,10 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                     options: FFButtonOptions(
                                       width: 130.0,
                                       height: 56.0,
-                                      padding: EdgeInsetsDirectional.fromSTEB(
+                                      padding: const EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 0.0),
                                       iconPadding:
-                                          EdgeInsetsDirectional.fromSTEB(
+                                          const EdgeInsetsDirectional.fromSTEB(
                                               0.0, 0.0, 0.0, 0.0),
                                       color: FlutterFlowTheme.of(context)
                                           .primaryBtnText,
@@ -633,9 +622,10 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                             fontFamily: 'Roboto',
                                             color: FlutterFlowTheme.of(context)
                                                 .primaryText,
+                                            letterSpacing: 0.0,
                                           ),
                                       elevation: 0.0,
-                                      borderSide: BorderSide(
+                                      borderSide: const BorderSide(
                                         color: Colors.transparent,
                                         width: 0.0,
                                       ),
@@ -646,7 +636,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                 Expanded(
                                   flex: 2,
                                   child: Padding(
-                                    padding: EdgeInsetsDirectional.fromSTEB(
+                                    padding: const EdgeInsetsDirectional.fromSTEB(
                                         9.0, 0.0, 0.0, 0.0),
                                     child: FFButtonWidget(
                                       onPressed: () {
@@ -656,10 +646,10 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                       options: FFButtonOptions(
                                         width: 130.0,
                                         height: 56.0,
-                                        padding: EdgeInsetsDirectional.fromSTEB(
+                                        padding: const EdgeInsetsDirectional.fromSTEB(
                                             0.0, 0.0, 0.0, 0.0),
                                         iconPadding:
-                                            EdgeInsetsDirectional.fromSTEB(
+                                            const EdgeInsetsDirectional.fromSTEB(
                                                 0.0, 0.0, 0.0, 0.0),
                                         color: FlutterFlowTheme.of(context)
                                             .primary,
@@ -670,9 +660,10 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                               color:
                                                   FlutterFlowTheme.of(context)
                                                       .primaryBtnText,
+                                              letterSpacing: 0.0,
                                             ),
                                         elevation: 0.0,
-                                        borderSide: BorderSide(
+                                        borderSide: const BorderSide(
                                           color: Colors.transparent,
                                           width: 0.0,
                                         ),
@@ -712,7 +703,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                               List<TestsRow> containerTestsRowList =
                                   snapshot.data!;
                               return Container(
-                                decoration: BoxDecoration(),
+                                decoration: const BoxDecoration(),
                                 child: Builder(
                                   builder: (context) {
                                     final tests =
@@ -755,7 +746,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                         .first
                                                     : null;
                                             return Container(
-                                              decoration: BoxDecoration(),
+                                              decoration: const BoxDecoration(),
                                               child: FutureBuilder<
                                                   List<TestsAnswersRow>>(
                                                 future: TestsAnswersTable()
@@ -796,10 +787,10 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                       previousLessonAnswersTestsAnswersRowList =
                                                       snapshot.data!;
                                                   return Container(
-                                                    decoration: BoxDecoration(),
+                                                    decoration: const BoxDecoration(),
                                                     child: Padding(
                                                       padding:
-                                                          EdgeInsetsDirectional
+                                                          const EdgeInsetsDirectional
                                                               .fromSTEB(
                                                                   16.0,
                                                                   20.0,
@@ -858,32 +849,21 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                   'BASIC_COURSE_CurrentTestAnswers_ON_TAP');
                                                               logFirebaseEvent(
                                                                   'CurrentTestAnswers_update_app_state');
-                                                              setState(() {
-                                                                FFAppState()
-                                                                    .currentAnswer = '';
-                                                                FFAppState()
-                                                                    .currentQuestions = '';
-                                                              });
+                                                              setState(() {});
                                                               if (((testsIndex ==
                                                                           0) &&
                                                                       (currentTestAnswersTestsAnswersRowList
                                                                               .where((e) => e
                                                                                   .isPass!)
-                                                                              .toList()
-                                                                              .length ==
-                                                                          0)) ||
+                                                                              .toList().isEmpty)) ||
                                                                   ((currentTestAnswersTestsAnswersRowList
                                                                               .where((e) => e
                                                                                   .isPass!)
-                                                                              .toList()
-                                                                              .length ==
-                                                                          0) &&
+                                                                              .toList().isEmpty) &&
                                                                       (previousLessonAnswersTestsAnswersRowList
                                                                               .where((e) => e
                                                                                   .isPass!)
-                                                                              .toList()
-                                                                              .length >
-                                                                          0) &&
+                                                                              .toList().isNotEmpty) &&
                                                                       (testsIndex >
                                                                           0))) {
                                                                 logFirebaseEvent(
@@ -893,10 +873,6 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                           .testName =
                                                                       testsItem
                                                                           .name!;
-                                                                  FFAppState()
-                                                                      .answers = [];
-                                                                  FFAppState()
-                                                                      .questions = [];
                                                                 });
                                                                 if (currentTestAnswersTestsAnswersRowList
                                                                         .where((e) =>
@@ -904,9 +880,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                                 false) &&
                                                                             (e.isFaild ==
                                                                                 false))
-                                                                        .toList()
-                                                                        .length >
-                                                                    0) {
+                                                                        .toList().isNotEmpty) {
                                                                   logFirebaseEvent(
                                                                       'CurrentTestAnswers_navigate_to');
 
@@ -947,9 +921,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                 if (currentTestAnswersTestsAnswersRowList
                                                                         .where((e) =>
                                                                             e.isPass!)
-                                                                        .toList()
-                                                                        .length >
-                                                                    0) {
+                                                                        .toList().isNotEmpty) {
                                                                   logFirebaseEvent(
                                                                       'CurrentTestAnswers_navigate_to');
 
@@ -981,7 +953,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                             16.0),
                                                               ),
                                                               child: Padding(
-                                                                padding: EdgeInsetsDirectional
+                                                                padding: const EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         15.0,
                                                                         16.0,
@@ -1005,19 +977,19 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                             mainAxisSize:
                                                                                 MainAxisSize.max,
                                                                             children: [
-                                                                              if (((testsIndex == 0) && (currentTestAnswersTestsAnswersRowList.where((e) => e.isPass!).toList().length == 0)) || ((currentTestAnswersTestsAnswersRowList.where((e) => e.isPass == true).toList().length == 0) && (previousLessonAnswersTestsAnswersRowList.where((e) => e.isPass == true).toList().length > 0) && (testsIndex > 0)))
+                                                                              if (((testsIndex == 0) && (currentTestAnswersTestsAnswersRowList.where((e) => e.isPass!).toList().isEmpty)) || ((currentTestAnswersTestsAnswersRowList.where((e) => e.isPass == true).toList().isEmpty) && (previousLessonAnswersTestsAnswersRowList.where((e) => e.isPass == true).toList().isNotEmpty) && (testsIndex > 0)))
                                                                                 Icon(
                                                                                   Icons.lock_open,
                                                                                   color: FlutterFlowTheme.of(context).secondaryText,
                                                                                   size: 24.0,
                                                                                 ),
-                                                                              if ((testsIndex > 0) && (previousLessonAnswersTestsAnswersRowList.where((e) => e.isPass == true).toList().length == 0))
+                                                                              if ((testsIndex > 0) && (previousLessonAnswersTestsAnswersRowList.where((e) => e.isPass == true).toList().isEmpty))
                                                                                 Icon(
                                                                                   Icons.lock_outline,
                                                                                   color: FlutterFlowTheme.of(context).alternate,
                                                                                   size: 24.0,
                                                                                 ),
-                                                                              if (currentTestAnswersTestsAnswersRowList.where((e) => e.isPass!).toList().length > 0)
+                                                                              if (currentTestAnswersTestsAnswersRowList.where((e) => e.isPass!).toList().isNotEmpty)
                                                                                 FaIcon(
                                                                                   FontAwesomeIcons.check,
                                                                                   color: FlutterFlowTheme.of(context).success,
@@ -1028,7 +1000,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                           Expanded(
                                                                             child:
                                                                                 Padding(
-                                                                              padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
+                                                                              padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 0.0, 0.0),
                                                                               child: Text(
                                                                                 valueOrDefault<String>(
                                                                                   testsItem.name,
@@ -1037,6 +1009,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                                 style: FlutterFlowTheme.of(context).titleMedium.override(
                                                                                       fontFamily: 'Roboto',
                                                                                       fontSize: 16.0,
+                                                                                      letterSpacing: 0.0,
                                                                                     ),
                                                                               ),
                                                                             ),
@@ -1099,9 +1072,9 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                             text: 'Для админа',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).primary,
                               textStyle: FlutterFlowTheme.of(context)
@@ -1109,9 +1082,10 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                   .override(
                                     fontFamily: 'Roboto',
                                     color: Colors.white,
+                                    letterSpacing: 0.0,
                                   ),
                               elevation: 3.0,
-                              borderSide: BorderSide(
+                              borderSide: const BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),

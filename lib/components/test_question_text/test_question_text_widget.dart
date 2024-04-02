@@ -1,13 +1,7 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'test_question_text_model.dart';
 export 'test_question_text_model.dart';
 
@@ -41,21 +35,7 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
     super.initState();
     _model = createModel(context, () => TestQuestionTextModel());
 
-    // On component load action.
-    SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('TEST_QUESTION_TEXT_test_question_text_ON');
-      logFirebaseEvent('test_question_text_update_app_state');
-      setState(() {
-        FFAppState().currentQuestions = widget.parameter1!;
-      });
-    });
-
-    _model.textController ??= TextEditingController(
-        text: (widget.testName == FFAppState().testName) &&
-                (FFAppState().answers.length >=
-                    functions.increment(widget.index))
-            ? FFAppState().answers[widget.index!]
-            : '');
+    _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
@@ -70,12 +50,10 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
 
   @override
   Widget build(BuildContext context) {
-    context.watch<FFAppState>();
-
     return Align(
-      alignment: AlignmentDirectional(0.0, -1.0),
+      alignment: const AlignmentDirectional(0.0, -1.0),
       child: Padding(
-        padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -85,7 +63,10 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
                 Expanded(
                   child: Text(
                     widget.parameter1!,
-                    style: FlutterFlowTheme.of(context).bodyMedium,
+                    style: FlutterFlowTheme.of(context).bodyMedium.override(
+                          fontFamily: 'Roboto',
+                          letterSpacing: 0.0,
+                        ),
                   ),
                 ),
               ],
@@ -94,10 +75,10 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Align(
-                  alignment: AlignmentDirectional(0.0, -1.0),
+                  alignment: const AlignmentDirectional(0.0, -1.0),
                   child: Padding(
                     padding:
-                        EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),
+                        const EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -107,16 +88,16 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
                             focusNode: _model.textFieldFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
                               '_model.textController',
-                              Duration(milliseconds: 100),
+                              const Duration(milliseconds: 100),
                               () async {
                                 logFirebaseEvent(
                                     'TEST_QUESTION_TEXT_TextField_6r55iy17_ON');
                                 logFirebaseEvent('TextField_update_app_state');
                                 setState(() {
-                                  FFAppState().currentAnswer =
-                                      _model.textController.text;
-                                  FFAppState().currentQuestions =
+                                  FFAppState().currentQuestion =
                                       widget.parameter1!;
+                                  FFAppState().qurrentAnswer =
+                                      _model.textController.text;
                                 });
                               },
                             ),
@@ -125,12 +106,13 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
                                   'TEST_QUESTION_TEXT_TextField_6r55iy17_ON');
                               logFirebaseEvent('TextField_update_app_state');
                               setState(() {
-                                FFAppState().currentAnswer =
-                                    _model.textController.text;
-                                FFAppState().currentQuestions =
+                                FFAppState().currentQuestion =
                                     widget.parameter1!;
+                                FFAppState().qurrentAnswer =
+                                    _model.textController.text;
                               });
                             },
+                            autofocus: false,
                             obscureText: false,
                             decoration: InputDecoration(
                               labelStyle: FlutterFlowTheme.of(context)
@@ -140,6 +122,7 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
                                     fontSize: 14.0,
+                                    letterSpacing: 0.0,
                                   ),
                               hintText: 'Напишите ответ',
                               hintStyle: FlutterFlowTheme.of(context)
@@ -148,16 +131,17 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
                                     fontFamily: 'Poppins',
                                     color: FlutterFlowTheme.of(context)
                                         .secondaryText,
+                                    letterSpacing: 0.0,
                                   ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x802E5896),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: BorderSide(
+                                borderSide: const BorderSide(
                                   color: Color(0x802E5896),
                                   width: 1.0,
                                 ),
@@ -181,8 +165,14 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
                               fillColor: FlutterFlowTheme.of(context)
                                   .primaryBackground,
                             ),
-                            style: FlutterFlowTheme.of(context).bodyMedium,
+                            style: FlutterFlowTheme.of(context)
+                                .bodyMedium
+                                .override(
+                                  fontFamily: 'Roboto',
+                                  letterSpacing: 0.0,
+                                ),
                             maxLines: 10,
+                            minLines: null,
                             keyboardType: TextInputType.multiline,
                             validator: _model.textControllerValidator
                                 .asValidator(context),

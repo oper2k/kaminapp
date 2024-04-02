@@ -2,14 +2,10 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'map_eat_model.dart';
 export 'map_eat_model.dart';
 
@@ -43,24 +39,13 @@ class _MapEatWidgetState extends State<MapEatWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF9F7F7),
+        backgroundColor: const Color(0xFFF9F7F7),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
@@ -72,7 +57,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
             icon: Icon(
               Icons.close,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 24.0,
+              size: 30.0,
             ),
             onPressed: () async {
               logFirebaseEvent('MAP_EAT_PAGE_close_ICN_ON_TAP');
@@ -86,16 +71,17 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
                   fontSize: 16.0,
+                  letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
+            alignment: const AlignmentDirectional(0.0, -1.0),
             child: FutureBuilder<List<EatsRow>>(
               future: EatsTable().queryRows(
                 queryFn: (q) => q.order('created_at', ascending: true),
@@ -117,7 +103,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                 List<EatsRow> containerEatsRowList = snapshot.data!;
                 return Container(
                   width: 700.0,
-                  decoration: BoxDecoration(),
+                  decoration: const BoxDecoration(),
                   child: Builder(
                     builder: (context) {
                       final eats = containerEatsRowList.toList();
@@ -127,7 +113,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                           children: List.generate(eats.length, (eatsIndex) {
                             final eatsItem = eats[eatsIndex];
                             return Padding(
-                              padding: EdgeInsetsDirectional.fromSTEB(
+                              padding: const EdgeInsetsDirectional.fromSTEB(
                                   16.0, 20.0, 16.0, 0.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
@@ -137,7 +123,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                                   borderRadius: BorderRadius.circular(16.0),
                                 ),
                                 child: Padding(
-                                  padding: EdgeInsets.all(12.0),
+                                  padding: const EdgeInsets.all(12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -146,9 +132,9 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                                             BorderRadius.circular(8.0),
                                         child: CachedNetworkImage(
                                           fadeInDuration:
-                                              Duration(milliseconds: 0),
+                                              const Duration(milliseconds: 0),
                                           fadeOutDuration:
-                                              Duration(milliseconds: 0),
+                                              const Duration(milliseconds: 0),
                                           imageUrl: eatsItem.image!,
                                           width: 96.0,
                                           height: 96.0,
@@ -158,7 +144,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              EdgeInsetsDirectional.fromSTEB(
+                                              const EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -179,8 +165,9 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           color:
-                                                              Color(0xFF112D4E),
+                                                              const Color(0xFF112D4E),
                                                           fontSize: 16.0,
+                                                          letterSpacing: 0.0,
                                                         ),
                                               ),
                                               Row(
@@ -193,7 +180,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              EdgeInsetsDirectional
+                                                              const EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       12.0,
@@ -215,6 +202,8 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                                                                       .black,
                                                                   fontSize:
                                                                       13.0,
+                                                                  letterSpacing:
+                                                                      0.0,
                                                                   fontWeight:
                                                                       FontWeight
                                                                           .normal,
@@ -235,7 +224,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                                 ),
                               ),
                             );
-                          }).addToEnd(SizedBox(height: 30.0)),
+                          }).addToEnd(const SizedBox(height: 30.0)),
                         ),
                       );
                     },

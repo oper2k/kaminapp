@@ -3,12 +3,7 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/scheduler.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_animate/flutter_animate.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'onboarding1_model.dart';
 export 'onboarding1_model.dart';
 
@@ -74,17 +69,6 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
@@ -93,11 +77,11 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Align(
-          alignment: AlignmentDirectional(0.0, 0.0),
+          alignment: const AlignmentDirectional(0.0, 0.0),
           child: Container(
             width: 700.0,
-            decoration: BoxDecoration(),
-            child: Container(
+            decoration: const BoxDecoration(),
+            child: SizedBox(
               width: MediaQuery.sizeOf(context).width * 1.0,
               height: MediaQuery.sizeOf(context).height * 1.0,
               child: PageView(
@@ -108,16 +92,16 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Spacer(),
+                      const Spacer(),
                       Image.asset(
                         'assets/images/Pose_0017.png',
                         width: MediaQuery.sizeOf(context).width * 1.0,
                         height: 375.0,
                         fit: BoxFit.contain,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 24.0, 16.0, 0.0),
                         child: Text(
                           'Мы очень рады, что ты присоединился к нашей команде',
@@ -126,13 +110,14 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                               .displaySmall
                               .override(
                                 fontFamily: 'Roboto',
-                                color: Color(0xFF112D4E),
+                                color: const Color(0xFF112D4E),
+                                letterSpacing: 0.0,
                                 lineHeight: 1.45,
                               ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 24.0, 16.0, 0.0),
                         child: Text(
                           'Курс, который ты будешь изучать в течение следующих нескольких дней, поможет тебе быстро освоиться и узнать всю необходимую информацию',
@@ -140,12 +125,13 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                           style:
                               FlutterFlowTheme.of(context).bodySmall.override(
                                     fontFamily: 'Roboto',
+                                    letterSpacing: 0.0,
                                     lineHeight: 1.45,
                                   ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 20.0, 16.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
@@ -153,7 +139,7 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                                 'ONBOARDING_1_PAGE_НАЧАТЬ_BTN_ON_TAP');
                             logFirebaseEvent('Button_page_view');
                             await _model.pageViewController?.nextPage(
-                              duration: Duration(milliseconds: 300),
+                              duration: const Duration(milliseconds: 300),
                               curve: Curves.ease,
                             );
                           },
@@ -161,9 +147,9 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                           options: FFButtonOptions(
                             width: 200.0,
                             height: 56.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -171,9 +157,10 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                                 .override(
                                   fontFamily: 'Roboto',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                             elevation: 0.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -181,23 +168,23 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                           ),
                         ),
                       ),
-                      Spacer(flex: 2),
+                      const Spacer(flex: 2),
                     ],
                   ).animateOnPageLoad(
                       animationsMap['columnOnPageLoadAnimation1']!),
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      Spacer(),
+                      const Spacer(),
                       Image.asset(
                         'assets/images/Pose_0017.png',
                         width: MediaQuery.sizeOf(context).width * 1.0,
                         height: 375.0,
                         fit: BoxFit.contain,
                       ),
-                      Spacer(),
+                      const Spacer(),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 24.0, 16.0, 0.0),
                         child: Text(
                           'Когда угодно, где угодно',
@@ -206,22 +193,27 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                               .displaySmall
                               .override(
                                 fontFamily: 'Roboto',
-                                color: Color(0xFF112D4E),
+                                color: const Color(0xFF112D4E),
+                                letterSpacing: 0.0,
                               ),
                         ),
                       ),
                       Padding(
-                        padding: EdgeInsetsDirectional.fromSTEB(
+                        padding: const EdgeInsetsDirectional.fromSTEB(
                             16.0, 24.0, 16.0, 0.0),
                         child: Text(
                           'Учитесь с удовольствием вместе с нами, где бы вы ни находились!',
                           textAlign: TextAlign.center,
-                          style: FlutterFlowTheme.of(context).bodySmall,
+                          style:
+                              FlutterFlowTheme.of(context).bodySmall.override(
+                                    fontFamily: 'Roboto',
+                                    letterSpacing: 0.0,
+                                  ),
                         ),
                       ),
                       Padding(
                         padding:
-                            EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                            const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
                             logFirebaseEvent(
@@ -234,9 +226,9 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                           options: FFButtonOptions(
                             width: 200.0,
                             height: 56.0,
-                            padding: EdgeInsetsDirectional.fromSTEB(
+                            padding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -244,9 +236,10 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                                 .override(
                                   fontFamily: 'Roboto',
                                   color: Colors.white,
+                                  letterSpacing: 0.0,
                                 ),
                             elevation: 0.0,
-                            borderSide: BorderSide(
+                            borderSide: const BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -254,7 +247,7 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                           ),
                         ),
                       ),
-                      Spacer(flex: 2),
+                      const Spacer(flex: 2),
                     ],
                   ).animateOnPageLoad(
                       animationsMap['columnOnPageLoadAnimation2']!),

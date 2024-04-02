@@ -2,13 +2,8 @@ import '/components/custom_dialog_map/custom_dialog_map_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
-import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_spinkit/flutter_spinkit.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'map_third_floor_model.dart';
 export 'map_third_floor_model.dart';
@@ -44,24 +39,13 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
 
   @override
   Widget build(BuildContext context) {
-    if (isiOS) {
-      SystemChrome.setSystemUIOverlayStyle(
-        SystemUiOverlayStyle(
-          statusBarBrightness: Theme.of(context).brightness,
-          systemStatusBarContrastEnforced: true,
-        ),
-      );
-    }
-
-    context.watch<FFAppState>();
-
     return GestureDetector(
       onTap: () => _model.unfocusNode.canRequestFocus
           ? FocusScope.of(context).requestFocus(_model.unfocusNode)
           : FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: Color(0xFFF9F7F7),
+        backgroundColor: const Color(0xFFF9F7F7),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
@@ -73,7 +57,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
             icon: Icon(
               Icons.close,
               color: FlutterFlowTheme.of(context).primaryText,
-              size: 24.0,
+              size: 30.0,
             ),
             onPressed: () async {
               logFirebaseEvent('MAP_THIRD_FLOOR_PAGE_close_ICN_ON_TAP');
@@ -87,33 +71,34 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
                   fontSize: 16.0,
+                  letterSpacing: 0.0,
                 ),
           ),
-          actions: [],
+          actions: const [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: AlignmentDirectional(0.0, -1.0),
+            alignment: const AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
-              decoration: BoxDecoration(),
+              decoration: const BoxDecoration(),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Align(
-                      alignment: AlignmentDirectional(0.0, 0.0),
-                      child: Container(
+                      alignment: const AlignmentDirectional(0.0, 0.0),
+                      child: SizedBox(
                         width: 307.0,
                         height: 1088.0,
                         child: Stack(
-                          alignment: AlignmentDirectional(0.0, 0.0),
+                          alignment: const AlignmentDirectional(0.0, 0.0),
                           children: [
                             Align(
-                              alignment: AlignmentDirectional(0.0, 0.0),
+                              alignment: const AlignmentDirectional(0.0, 0.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
@@ -125,7 +110,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.89, -1.0),
+                              alignment: const AlignmentDirectional(0.89, -1.0),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -140,10 +125,10 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: AlignmentDirectional(
+                                      targetAnchor: const AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: AlignmentDirectional(
+                                      followerAnchor: const AlignmentDirectional(
                                               1.0, -1.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -158,7 +143,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: CustomDialogMapWidget(
+                                              child: const CustomDialogMapWidget(
                                                 nameSearch: 'k310',
                                               ),
                                             ),
@@ -170,13 +155,13 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(-0.66, -0.63),
+                              alignment: const AlignmentDirectional(-0.66, -0.63),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -191,10 +176,10 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: AlignmentDirectional(
+                                      targetAnchor: const AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: AlignmentDirectional(
+                                      followerAnchor: const AlignmentDirectional(
                                               -1.0, 0.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -209,7 +194,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: CustomDialogMapWidget(
+                                              child: const CustomDialogMapWidget(
                                                 nameSearch: 'k309',
                                               ),
                                             ),
@@ -221,13 +206,13 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.85, -0.59),
+                              alignment: const AlignmentDirectional(0.85, -0.59),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -242,10 +227,10 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: AlignmentDirectional(
+                                      targetAnchor: const AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: AlignmentDirectional(
+                                      followerAnchor: const AlignmentDirectional(
                                               1.0, 0.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -260,7 +245,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: CustomDialogMapWidget(
+                                              child: const CustomDialogMapWidget(
                                                 nameSearch: 'k311',
                                               ),
                                             ),
@@ -272,13 +257,13 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(-0.64, -0.33),
+                              alignment: const AlignmentDirectional(-0.64, -0.33),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -293,10 +278,10 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: AlignmentDirectional(
+                                      targetAnchor: const AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: AlignmentDirectional(
+                                      followerAnchor: const AlignmentDirectional(
                                               -1.0, 0.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -311,7 +296,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: CustomDialogMapWidget(
+                                              child: const CustomDialogMapWidget(
                                                 nameSearch: 'k308',
                                               ),
                                             ),
@@ -323,13 +308,13 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.85, -0.2),
+                              alignment: const AlignmentDirectional(0.85, -0.2),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -344,10 +329,10 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: AlignmentDirectional(
+                                      targetAnchor: const AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: AlignmentDirectional(
+                                      followerAnchor: const AlignmentDirectional(
                                               1.0, 0.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -362,7 +347,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: CustomDialogMapWidget(
+                                              child: const CustomDialogMapWidget(
                                                 nameSearch: 'k312',
                                               ),
                                             ),
@@ -374,13 +359,13 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(-0.65, -0.16),
+                              alignment: const AlignmentDirectional(-0.65, -0.16),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -395,10 +380,10 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: AlignmentDirectional(
+                                      targetAnchor: const AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: AlignmentDirectional(
+                                      followerAnchor: const AlignmentDirectional(
                                               -1.0, 0.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -413,7 +398,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: CustomDialogMapWidget(
+                                              child: const CustomDialogMapWidget(
                                                 nameSearch: 'k307',
                                               ),
                                             ),
@@ -425,13 +410,13 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(-0.64, 0.28),
+                              alignment: const AlignmentDirectional(-0.64, 0.28),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -446,10 +431,10 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: AlignmentDirectional(
+                                      targetAnchor: const AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: AlignmentDirectional(
+                                      followerAnchor: const AlignmentDirectional(
                                               -1.0, 0.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -464,7 +449,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: CustomDialogMapWidget(
+                                              child: const CustomDialogMapWidget(
                                                 nameSearch: 'k305',
                                               ),
                                             ),
@@ -476,13 +461,13 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(-0.68, 0.74),
+                              alignment: const AlignmentDirectional(-0.68, 0.74),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -497,10 +482,10 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: AlignmentDirectional(
+                                      targetAnchor: const AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: AlignmentDirectional(
+                                      followerAnchor: const AlignmentDirectional(
                                               -1.0, 1.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -515,7 +500,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: CustomDialogMapWidget(
+                                              child: const CustomDialogMapWidget(
                                                 nameSearch: 'k304',
                                               ),
                                             ),
@@ -527,13 +512,13 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: AlignmentDirectional(0.63, 0.93),
+                              alignment: const AlignmentDirectional(0.63, 0.93),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -548,10 +533,10 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: AlignmentDirectional(
+                                      targetAnchor: const AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: AlignmentDirectional(
+                                      followerAnchor: const AlignmentDirectional(
                                               1.0, 1.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -566,7 +551,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                                           _model.unfocusNode)
                                                   : FocusScope.of(context)
                                                       .unfocus(),
-                                              child: CustomDialogMapWidget(
+                                              child: const CustomDialogMapWidget(
                                                 nameSearch: 'k303',
                                               ),
                                             ),
@@ -578,7 +563,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: BoxDecoration(),
+                                    decoration: const BoxDecoration(),
                                   ),
                                 ),
                               ),
