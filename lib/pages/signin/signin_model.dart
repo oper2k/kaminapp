@@ -9,9 +9,9 @@ class SigninModel extends FlutterFlowModel<SigninWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for Name widget.
   FocusNode? nameFocusNode;
-  TextEditingController? nameController;
-  String? Function(BuildContext, String?)? nameControllerValidator;
-  String? _nameControllerValidator(BuildContext context, String? val) {
+  TextEditingController? nameTextController;
+  String? Function(BuildContext, String?)? nameTextControllerValidator;
+  String? _nameTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Это поле обязательно';
     }
@@ -21,9 +21,9 @@ class SigninModel extends FlutterFlowModel<SigninWidget> {
 
   // State field(s) for Email widget.
   FocusNode? emailFocusNode;
-  TextEditingController? emailController;
-  String? Function(BuildContext, String?)? emailControllerValidator;
-  String? _emailControllerValidator(BuildContext context, String? val) {
+  TextEditingController? emailTextController;
+  String? Function(BuildContext, String?)? emailTextControllerValidator;
+  String? _emailTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Это поле обязательно';
     }
@@ -33,10 +33,10 @@ class SigninModel extends FlutterFlowModel<SigninWidget> {
 
   // State field(s) for Pass widget.
   FocusNode? passFocusNode;
-  TextEditingController? passController;
+  TextEditingController? passTextController;
   late bool passVisibility;
-  String? Function(BuildContext, String?)? passControllerValidator;
-  String? _passControllerValidator(BuildContext context, String? val) {
+  String? Function(BuildContext, String?)? passTextControllerValidator;
+  String? _passTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Это поле обязательно';
     }
@@ -46,10 +46,11 @@ class SigninModel extends FlutterFlowModel<SigninWidget> {
 
   // State field(s) for PassRepeate widget.
   FocusNode? passRepeateFocusNode;
-  TextEditingController? passRepeateController;
+  TextEditingController? passRepeateTextController;
   late bool passRepeateVisibility;
-  String? Function(BuildContext, String?)? passRepeateControllerValidator;
-  String? _passRepeateControllerValidator(BuildContext context, String? val) {
+  String? Function(BuildContext, String?)? passRepeateTextControllerValidator;
+  String? _passRepeateTextControllerValidator(
+      BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Это поле обязательно';
     }
@@ -59,27 +60,27 @@ class SigninModel extends FlutterFlowModel<SigninWidget> {
 
   @override
   void initState(BuildContext context) {
-    nameControllerValidator = _nameControllerValidator;
-    emailControllerValidator = _emailControllerValidator;
+    nameTextControllerValidator = _nameTextControllerValidator;
+    emailTextControllerValidator = _emailTextControllerValidator;
     passVisibility = false;
-    passControllerValidator = _passControllerValidator;
+    passTextControllerValidator = _passTextControllerValidator;
     passRepeateVisibility = false;
-    passRepeateControllerValidator = _passRepeateControllerValidator;
+    passRepeateTextControllerValidator = _passRepeateTextControllerValidator;
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     nameFocusNode?.dispose();
-    nameController?.dispose();
+    nameTextController?.dispose();
 
     emailFocusNode?.dispose();
-    emailController?.dispose();
+    emailTextController?.dispose();
 
     passFocusNode?.dispose();
-    passController?.dispose();
+    passTextController?.dispose();
 
     passRepeateFocusNode?.dispose();
-    passRepeateController?.dispose();
+    passRepeateTextController?.dispose();
   }
 }

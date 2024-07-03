@@ -24,28 +24,7 @@ class _SigninWidgetState extends State<SigninWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'formOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 300.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: const Offset(0.0, 46.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -53,17 +32,40 @@ class _SigninWidgetState extends State<SigninWidget>
     _model = createModel(context, () => SigninModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Signin'});
-    _model.nameController ??= TextEditingController();
+    _model.nameTextController ??= TextEditingController();
     _model.nameFocusNode ??= FocusNode();
 
-    _model.emailController ??= TextEditingController();
+    _model.emailTextController ??= TextEditingController();
     _model.emailFocusNode ??= FocusNode();
 
-    _model.passController ??= TextEditingController();
+    _model.passTextController ??= TextEditingController();
     _model.passFocusNode ??= FocusNode();
 
-    _model.passRepeateController ??= TextEditingController();
+    _model.passRepeateTextController ??= TextEditingController();
     _model.passRepeateFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'formOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 300.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: const Offset(0.0, 46.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -197,7 +199,7 @@ class _SigninWidgetState extends State<SigninWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.nameController,
+                                  controller: _model.nameTextController,
                                   focusNode: _model.nameFocusNode,
                                   autofocus: false,
                                   obscureText: false,
@@ -259,9 +261,8 @@ class _SigninWidgetState extends State<SigninWidget>
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                       ),
-                                  minLines: null,
                                   keyboardType: TextInputType.emailAddress,
-                                  validator: _model.nameControllerValidator
+                                  validator: _model.nameTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -276,7 +277,7 @@ class _SigninWidgetState extends State<SigninWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.emailController,
+                                  controller: _model.emailTextController,
                                   focusNode: _model.emailFocusNode,
                                   autofocus: false,
                                   obscureText: false,
@@ -338,9 +339,8 @@ class _SigninWidgetState extends State<SigninWidget>
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                       ),
-                                  minLines: null,
                                   keyboardType: TextInputType.emailAddress,
-                                  validator: _model.emailControllerValidator
+                                  validator: _model.emailTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -355,7 +355,7 @@ class _SigninWidgetState extends State<SigninWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.passController,
+                                  controller: _model.passTextController,
                                   focusNode: _model.passFocusNode,
                                   autofocus: false,
                                   obscureText: !_model.passVisibility,
@@ -432,8 +432,7 @@ class _SigninWidgetState extends State<SigninWidget>
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                       ),
-                                  minLines: null,
-                                  validator: _model.passControllerValidator
+                                  validator: _model.passTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -448,7 +447,7 @@ class _SigninWidgetState extends State<SigninWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.passRepeateController,
+                                  controller: _model.passRepeateTextController,
                                   focusNode: _model.passRepeateFocusNode,
                                   autofocus: false,
                                   obscureText: !_model.passRepeateVisibility,
@@ -525,9 +524,8 @@ class _SigninWidgetState extends State<SigninWidget>
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                       ),
-                                  minLines: null,
                                   validator: _model
-                                      .passRepeateControllerValidator
+                                      .passRepeateTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -549,8 +547,8 @@ class _SigninWidgetState extends State<SigninWidget>
                             }
                             logFirebaseEvent('Button_auth');
                             GoRouter.of(context).prepareAuthEvent();
-                            if (_model.passController.text !=
-                                _model.passRepeateController.text) {
+                            if (_model.passTextController.text !=
+                                _model.passRepeateTextController.text) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text(
@@ -564,8 +562,8 @@ class _SigninWidgetState extends State<SigninWidget>
                             final user =
                                 await authManager.createAccountWithEmail(
                               context,
-                              _model.emailController.text,
-                              _model.passController.text,
+                              _model.emailTextController.text,
+                              _model.passTextController.text,
                             );
                             if (user == null) {
                               return;
@@ -573,9 +571,9 @@ class _SigninWidgetState extends State<SigninWidget>
 
                             logFirebaseEvent('Button_backend_call');
                             await UsersTable().insert({
-                              'email': _model.emailController.text,
-                              'display_name': _model.nameController.text,
-                              'first_name': _model.nameController.text,
+                              'email': _model.emailTextController.text,
+                              'display_name': _model.nameTextController.text,
+                              'first_name': _model.nameTextController.text,
                               'isAdmin': false,
                               'uid': currentUserUid,
                             });

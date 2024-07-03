@@ -93,24 +93,21 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
                                 logFirebaseEvent(
                                     'TEST_QUESTION_TEXT_TextField_6r55iy17_ON');
                                 logFirebaseEvent('TextField_update_app_state');
-                                setState(() {
-                                  FFAppState().currentQuestion =
-                                      widget.parameter1!;
-                                  FFAppState().qurrentAnswer =
-                                      _model.textController.text;
-                                });
+                                FFAppState().currentQuestion =
+                                    widget.parameter1!;
+                                FFAppState().qurrentAnswer =
+                                    _model.textController.text;
+                                setState(() {});
                               },
                             ),
                             onFieldSubmitted: (_) async {
                               logFirebaseEvent(
                                   'TEST_QUESTION_TEXT_TextField_6r55iy17_ON');
                               logFirebaseEvent('TextField_update_app_state');
-                              setState(() {
-                                FFAppState().currentQuestion =
-                                    widget.parameter1!;
-                                FFAppState().qurrentAnswer =
-                                    _model.textController.text;
-                              });
+                              FFAppState().currentQuestion = widget.parameter1!;
+                              FFAppState().qurrentAnswer =
+                                  _model.textController.text;
+                              setState(() {});
                             },
                             autofocus: false,
                             obscureText: false,
@@ -172,7 +169,6 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
                                   letterSpacing: 0.0,
                                 ),
                             maxLines: 10,
-                            minLines: null,
                             keyboardType: TextInputType.multiline,
                             validator: _model.textControllerValidator
                                 .asValidator(context),

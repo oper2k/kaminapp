@@ -19,12 +19,14 @@ class LessonDescriptionStruct extends FFFirebaseStruct {
   String? _description;
   String get description => _description ?? '';
   set description(String? val) => _description = val;
+
   bool hasDescription() => _description != null;
 
   // "image" field.
   String? _image;
   String get image => _image ?? '';
   set image(String? val) => _image = val;
+
   bool hasImage() => _image != null;
 
   static LessonDescriptionStruct fromMap(Map<String, dynamic> data) =>

@@ -1,5 +1,8 @@
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
+
+import '/flutter_flow/flutter_flow_util.dart';
 import 'api_manager.dart';
 
 export 'api_manager.dart' show ApiCallResponse;
@@ -9,7 +12,7 @@ const _kPrivateApiFunctionName = 'ffPrivateApiCall';
 /// Start One Signal Group Code
 
 class OneSignalGroup {
-  static String baseUrl = 'https://onesignal.com/api/v1';
+  static String getBaseUrl() => 'https://onesignal.com/api/v1';
   static Map<String, String> headers = {
     'Authorization': 'Basic YWYzMjBlMzEtMWZmMC00MzQ0LWI1MzMtZGVhY2U4OWQ0OWQw',
     'accept': 'application/json',
@@ -24,6 +27,8 @@ class SendNotificationsCall {
     String? heading = '',
     String? content = '',
   }) async {
+    final baseUrl = OneSignalGroup.getBaseUrl();
+
     final ffApiRequestBody = '''
 {
   "app_id": "4d12ee8b-b110-4afa-a165-bcc2ecacbe54",
@@ -41,7 +46,7 @@ class SendNotificationsCall {
 }''';
     return ApiManager.instance.makeApiCall(
       callName: 'Send notifications',
-      apiUrl: '${OneSignalGroup.baseUrl}/notifications',
+      apiUrl: '$baseUrl/notifications',
       callType: ApiCallType.POST,
       headers: {
         'Authorization':
@@ -56,6 +61,7 @@ class SendNotificationsCall {
       encodeBodyUtf8: false,
       decodeUtf8: false,
       cache: false,
+      isStreamingApi: false,
       alwaysAllowBody: false,
     );
   }
@@ -79,11 +85,21 @@ class ApiPagingParams {
       'PagingParams(nextPageNumber: $nextPageNumber, numItems: $numItems, lastResponse: $lastResponse,)';
 }
 
+String _toEncodable(dynamic item) {
+  if (item is DocumentReference) {
+    return item.path;
+  }
+  return item;
+}
+
 String _serializeList(List? list) {
   list ??= <String>[];
   try {
-    return json.encode(list);
+    return json.encode(list, toEncodable: _toEncodable);
   } catch (_) {
+    if (kDebugMode) {
+      print("List serialization failed. Returning empty list.");
+    }
     return '[]';
   }
 }
@@ -91,8 +107,11 @@ String _serializeList(List? list) {
 String _serializeJson(dynamic jsonVar, [bool isList = false]) {
   jsonVar ??= (isList ? [] : {});
   try {
-    return json.encode(jsonVar);
+    return json.encode(jsonVar, toEncodable: _toEncodable);
   } catch (_) {
+    if (kDebugMode) {
+      print("Json serialization failed. Returning empty json.");
+    }
     return isList ? '[]' : '{}';
   }
 }

@@ -30,41 +30,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 200.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 300.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'rowOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 300.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: const Offset(0.0, 46.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -79,6 +45,42 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
     _model.lastNameFocusNode ??= FocusNode();
 
     _model.positionFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 200.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 300.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'rowOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 300.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: const Offset(0.0, 46.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -523,7 +525,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                     decoration: const BoxDecoration(),
                                                     child: TextFormField(
                                                       controller: _model
-                                                              .firstNameController ??=
+                                                              .firstNameTextController ??=
                                                           TextEditingController(
                                                         text: columnUsersRow
                                                                         ?.firstName !=
@@ -613,11 +615,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                 'Roboto',
                                                             letterSpacing: 0.0,
                                                           ),
-                                                      minLines: null,
                                                       keyboardType:
                                                           TextInputType.name,
                                                       validator: _model
-                                                          .firstNameControllerValidator
+                                                          .firstNameTextControllerValidator
                                                           .asValidator(context),
                                                     ),
                                                   ),
@@ -668,7 +669,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           const BoxDecoration(),
                                                       child: TextFormField(
                                                         controller: _model
-                                                                .lastNameController ??=
+                                                                .lastNameTextController ??=
                                                             TextEditingController(
                                                           text: columnUsersRow
                                                                           ?.lastName !=
@@ -760,11 +761,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
-                                                        minLines: null,
                                                         keyboardType:
                                                             TextInputType.name,
                                                         validator: _model
-                                                            .lastNameControllerValidator
+                                                            .lastNameTextControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -817,7 +817,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           const BoxDecoration(),
                                                       child: TextFormField(
                                                         controller: _model
-                                                                .positionController ??=
+                                                                .positionTextController ??=
                                                             TextEditingController(
                                                           text: columnUsersRow
                                                                           ?.position !=
@@ -909,11 +909,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                                   letterSpacing:
                                                                       0.0,
                                                                 ),
-                                                        minLines: null,
                                                         keyboardType:
                                                             TextInputType.name,
                                                         validator: _model
-                                                            .positionControllerValidator
+                                                            .positionTextControllerValidator
                                                             .asValidator(
                                                                 context),
                                                       ),
@@ -1070,13 +1069,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                           await UsersTable().update(
                                             data: {
                                               'first_name': _model
-                                                  .firstNameController.text,
+                                                  .firstNameTextController.text,
                                               'last_name': _model
-                                                  .lastNameController.text,
+                                                  .lastNameTextController.text,
                                               'position': _model
-                                                  .positionController.text,
+                                                  .positionTextController.text,
                                               'display_name':
-                                                  '${_model.firstNameController.text} ${_model.lastNameController.text}',
+                                                  '${_model.firstNameTextController.text} ${_model.lastNameTextController.text}',
                                               'division': _model.dropDownValue,
                                             },
                                             matchingRows: (rows) => rows.eq(

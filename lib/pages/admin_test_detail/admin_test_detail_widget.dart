@@ -279,6 +279,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                                 heading: 'Тест не сдан :(',
                                 content: 'Попробуй еще раз',
                               );
+
                               logFirebaseEvent('Button_navigate_back');
                               context.safePop();
                             },
@@ -327,6 +328,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                                 heading: 'Поздравляем!',
                                 content: 'Тест успешно сдан :)',
                               );
+
                               logFirebaseEvent('Button_navigate_back');
                               context.safePop();
                             },

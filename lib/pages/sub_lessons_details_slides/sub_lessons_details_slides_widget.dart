@@ -113,12 +113,17 @@ class _SubLessonsDetailsSlidesWidgetState
                               return PageView.builder(
                                 controller: _model.pageViewController ??=
                                     PageController(
-                                        initialPage: min(
-                                            0, currentDescription.length - 1)),
+                                        initialPage: max(
+                                            0,
+                                            min(
+                                                0,
+                                                currentDescription.length -
+                                                    1))),
                                 onPageChanged: (_) async {
                                   logFirebaseEvent(
                                       'SUB_LESSONS_DETAILS_SLIDES_PageView_dx8i');
                                   logFirebaseEvent('PageView_update_app_state');
+
                                   setState(() {});
                                 },
                                 scrollDirection: Axis.horizontal,

@@ -18,16 +18,16 @@ class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
   Completer<List<UsersRow>>? requestCompleter1;
   // State field(s) for FirstName widget.
   FocusNode? firstNameFocusNode;
-  TextEditingController? firstNameController;
-  String? Function(BuildContext, String?)? firstNameControllerValidator;
+  TextEditingController? firstNameTextController;
+  String? Function(BuildContext, String?)? firstNameTextControllerValidator;
   // State field(s) for LastName widget.
   FocusNode? lastNameFocusNode;
-  TextEditingController? lastNameController;
-  String? Function(BuildContext, String?)? lastNameControllerValidator;
+  TextEditingController? lastNameTextController;
+  String? Function(BuildContext, String?)? lastNameTextControllerValidator;
   // State field(s) for Position widget.
   FocusNode? positionFocusNode;
-  TextEditingController? positionController;
-  String? Function(BuildContext, String?)? positionControllerValidator;
+  TextEditingController? positionTextController;
+  String? Function(BuildContext, String?)? positionTextControllerValidator;
   // State field(s) for DropDown widget.
   String? dropDownValue;
   FormFieldController<String>? dropDownValueController;
@@ -39,13 +39,13 @@ class EditProfileModel extends FlutterFlowModel<EditProfileWidget> {
   void dispose() {
     unfocusNode.dispose();
     firstNameFocusNode?.dispose();
-    firstNameController?.dispose();
+    firstNameTextController?.dispose();
 
     lastNameFocusNode?.dispose();
-    lastNameController?.dispose();
+    lastNameTextController?.dispose();
 
     positionFocusNode?.dispose();
-    positionController?.dispose();
+    positionTextController?.dispose();
   }
 
   /// Additional helper methods.

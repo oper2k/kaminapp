@@ -104,12 +104,11 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
                                       logFirebaseEvent(
                                           'TEST_QUESTIONS_CHOOSE_Icon_njgk4i3t_ON_T');
                                       logFirebaseEvent('Icon_update_app_state');
-                                      setState(() {
-                                        FFAppState().currentQuestion =
-                                            widget.name!;
-                                        FFAppState().qurrentAnswer =
-                                            questionsItem;
-                                      });
+                                      FFAppState().currentQuestion =
+                                          widget.name!;
+                                      FFAppState().qurrentAnswer =
+                                          questionsItem;
+                                      setState(() {});
                                     },
                                     child: Icon(
                                       Icons.radio_button_off,

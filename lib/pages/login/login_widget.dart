@@ -22,28 +22,7 @@ class _LoginWidgetState extends State<LoginWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 300.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: const Offset(0.0, 46.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -51,11 +30,34 @@ class _LoginWidgetState extends State<LoginWidget>
     _model = createModel(context, () => LoginModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Login'});
-    _model.emailController ??= TextEditingController();
+    _model.emailTextController ??= TextEditingController();
     _model.emailFocusNode ??= FocusNode();
 
-    _model.passController ??= TextEditingController();
+    _model.passTextController ??= TextEditingController();
     _model.passFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 300.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: const Offset(0.0, 46.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -184,7 +186,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.emailController,
+                                  controller: _model.emailTextController,
                                   focusNode: _model.emailFocusNode,
                                   autofocus: false,
                                   obscureText: false,
@@ -246,9 +248,8 @@ class _LoginWidgetState extends State<LoginWidget>
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                       ),
-                                  minLines: null,
                                   keyboardType: TextInputType.emailAddress,
-                                  validator: _model.emailControllerValidator
+                                  validator: _model.emailTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -263,7 +264,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.passController,
+                                  controller: _model.passTextController,
                                   focusNode: _model.passFocusNode,
                                   autofocus: false,
                                   obscureText: !_model.passVisibility,
@@ -340,8 +341,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                         letterSpacing: 0.0,
                                         fontWeight: FontWeight.w500,
                                       ),
-                                  minLines: null,
-                                  validator: _model.passControllerValidator
+                                  validator: _model.passTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -365,8 +365,8 @@ class _LoginWidgetState extends State<LoginWidget>
 
                             final user = await authManager.signInWithEmail(
                               context,
-                              _model.emailController.text,
-                              _model.passController.text,
+                              _model.emailTextController.text,
+                              _model.passTextController.text,
                             );
                             if (user == null) {
                               return;

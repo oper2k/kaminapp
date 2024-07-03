@@ -164,9 +164,8 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                             'BASIC_COURSE_PAGE_ТЕСТЫ_BTN_ON_TAP');
                                         logFirebaseEvent(
                                             'Button_update_app_state');
-                                        FFAppState().update(() {
-                                          FFAppState().showTests = true;
-                                        });
+                                        FFAppState().showTests = true;
+                                        FFAppState().update(() {});
                                       },
                                       text: 'Тесты',
                                       options: FFButtonOptions(
@@ -601,9 +600,8 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                           'BASIC_COURSE_БАЗОВЫЙ_КУРС_BTN_ON_TAP');
                                       logFirebaseEvent(
                                           'Button_update_app_state');
-                                      FFAppState().update(() {
-                                        FFAppState().showTests = false;
-                                      });
+                                      FFAppState().showTests = false;
+                                      FFAppState().update(() {});
                                     },
                                     text: widget.currentCourse!.name!,
                                     options: FFButtonOptions(
@@ -849,6 +847,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                   'BASIC_COURSE_CurrentTestAnswers_ON_TAP');
                                                               logFirebaseEvent(
                                                                   'CurrentTestAnswers_update_app_state');
+
                                                               setState(() {});
                                                               if (((testsIndex ==
                                                                           0) &&
@@ -868,12 +867,11 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                           0))) {
                                                                 logFirebaseEvent(
                                                                     'CurrentTestAnswers_update_app_state');
-                                                                setState(() {
-                                                                  FFAppState()
-                                                                          .testName =
-                                                                      testsItem
-                                                                          .name!;
-                                                                });
+                                                                FFAppState()
+                                                                        .testName =
+                                                                    testsItem
+                                                                        .name!;
+                                                                setState(() {});
                                                                 if (currentTestAnswersTestsAnswersRowList
                                                                         .where((e) =>
                                                                             (e.isPass ==

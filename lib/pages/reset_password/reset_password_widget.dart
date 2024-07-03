@@ -22,28 +22,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
 
   final scaffoldKey = GlobalKey<ScaffoldState>();
 
-  final animationsMap = {
-    'formOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 1.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 300.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-        MoveEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 400.ms,
-          begin: const Offset(0.0, 46.0),
-          end: const Offset(0.0, 0.0),
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -52,8 +31,31 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'ResetPassword'});
-    _model.emailController ??= TextEditingController();
+    _model.emailTextController ??= TextEditingController();
     _model.emailFocusNode ??= FocusNode();
+
+    animationsMap.addAll({
+      'formOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 300.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+          MoveEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 400.0.ms,
+            begin: const Offset(0.0, 46.0),
+            end: const Offset(0.0, 0.0),
+          ),
+        ],
+      ),
+    });
 
     WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
   }
@@ -189,7 +191,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                 padding: const EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: TextFormField(
-                                  controller: _model.emailController,
+                                  controller: _model.emailTextController,
                                   focusNode: _model.emailFocusNode,
                                   autofocus: false,
                                   obscureText: false,
@@ -251,9 +253,8 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                       ),
-                                  minLines: null,
                                   keyboardType: TextInputType.emailAddress,
-                                  validator: _model.emailControllerValidator
+                                  validator: _model.emailTextControllerValidator
                                       .asValidator(context),
                                 ),
                               ),
@@ -274,7 +275,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                               return;
                             }
                             logFirebaseEvent('Button_auth');
-                            if (_model.emailController.text.isEmpty) {
+                            if (_model.emailTextController.text.isEmpty) {
                               ScaffoldMessenger.of(context).showSnackBar(
                                 const SnackBar(
                                   content: Text(
@@ -285,7 +286,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                               return;
                             }
                             await authManager.resetPassword(
-                              email: _model.emailController.text,
+                              email: _model.emailTextController.text,
                               context: context,
                             );
                             logFirebaseEvent('Button_navigate_to');

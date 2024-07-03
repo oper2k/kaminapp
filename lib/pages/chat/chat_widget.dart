@@ -592,7 +592,6 @@ class _ChatWidgetState extends State<ChatWidget> {
                                       letterSpacing: 0.0,
                                     ),
                                 maxLines: null,
-                                minLines: null,
                                 keyboardType: TextInputType.multiline,
                                 validator: _model.textControllerValidator
                                     .asValidator(context),
@@ -653,6 +652,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                     heading: 'Новое сообшение',
                                     content: _model.textController.text,
                                   );
+
                                   logFirebaseEvent(
                                       'IconButton_clear_text_fields_pin_codes');
                                   setState(() {

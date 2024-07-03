@@ -9,9 +9,9 @@ class ResetPasswordModel extends FlutterFlowModel<ResetPasswordWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for Email widget.
   FocusNode? emailFocusNode;
-  TextEditingController? emailController;
-  String? Function(BuildContext, String?)? emailControllerValidator;
-  String? _emailControllerValidator(BuildContext context, String? val) {
+  TextEditingController? emailTextController;
+  String? Function(BuildContext, String?)? emailTextControllerValidator;
+  String? _emailTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Это поле обязательно';
     }
@@ -24,13 +24,13 @@ class ResetPasswordModel extends FlutterFlowModel<ResetPasswordWidget> {
 
   @override
   void initState(BuildContext context) {
-    emailControllerValidator = _emailControllerValidator;
+    emailTextControllerValidator = _emailTextControllerValidator;
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     emailFocusNode?.dispose();
-    emailController?.dispose();
+    emailTextController?.dispose();
   }
 }

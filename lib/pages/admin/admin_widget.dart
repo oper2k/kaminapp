@@ -188,10 +188,9 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                         'ADMIN_PAGE_ВСЕ_ТЕСТЫ_BTN_ON_TAP');
                                                     logFirebaseEvent(
                                                         'Button_update_app_state');
-                                                    FFAppState().update(() {
-                                                      FFAppState().showTests =
-                                                          true;
-                                                    });
+                                                    FFAppState().showTests =
+                                                        true;
+                                                    FFAppState().update(() {});
                                                   },
                                                   text: 'Все тесты',
                                                   options: FFButtonOptions(
@@ -447,10 +446,9 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                       'ADMIN_PAGE_ЖДУТ_ПРОВЕРКИ_BTN_ON_TAP');
                                                   logFirebaseEvent(
                                                       'Button_update_app_state');
-                                                  FFAppState().update(() {
-                                                    FFAppState().showTests =
-                                                        false;
-                                                  });
+                                                  FFAppState().showTests =
+                                                      false;
+                                                  FFAppState().update(() {});
                                                 },
                                                 text: 'Ждут проверки',
                                                 options: FFButtonOptions(

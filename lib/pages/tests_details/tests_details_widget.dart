@@ -39,49 +39,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
   final scaffoldKey = GlobalKey<ScaffoldState>();
   var hasTestQuestionsChooseTriggered = false;
   var hasTestQuestionTextTriggered = false;
-  final animationsMap = {
-    'columnOnPageLoadAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onPageLoad,
-      effects: [
-        VisibilityEffect(duration: 200.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 200.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'testQuestionsChooseOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        VisibilityEffect(duration: 1.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-    'testQuestionTextOnActionTriggerAnimation': AnimationInfo(
-      trigger: AnimationTrigger.onActionTrigger,
-      applyInitialState: true,
-      effects: [
-        VisibilityEffect(duration: 1.ms),
-        FadeEffect(
-          curve: Curves.easeInOut,
-          delay: 0.ms,
-          duration: 600.ms,
-          begin: 0.0,
-          end: 1.0,
-        ),
-      ],
-    ),
-  };
+  final animationsMap = <String, AnimationInfo>{};
 
   @override
   void initState() {
@@ -114,6 +72,49 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
       }
     });
 
+    animationsMap.addAll({
+      'columnOnPageLoadAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onPageLoad,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 200.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 200.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'testQuestionsChooseOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+      'testQuestionTextOnActionTriggerAnimation': AnimationInfo(
+        trigger: AnimationTrigger.onActionTrigger,
+        applyInitialState: true,
+        effectsBuilder: () => [
+          VisibilityEffect(duration: 1.ms),
+          FadeEffect(
+            curve: Curves.easeInOut,
+            delay: 0.0.ms,
+            duration: 600.0.ms,
+            begin: 0.0,
+            end: 1.0,
+          ),
+        ],
+      ),
+    });
     setupAnimations(
       animationsMap.values.where((anim) =>
           anim.trigger == AnimationTrigger.onActionTrigger ||
@@ -409,14 +410,12 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                       _model.index)) {
                                                 logFirebaseEvent(
                                                     'Row_update_page_state');
-                                                setState(() {
-                                                  _model.addToAnswersList(
-                                                      FFAppState()
-                                                          .qurrentAnswer);
-                                                  _model.addToQuestionsList(
-                                                      FFAppState()
-                                                          .currentQuestion);
-                                                });
+                                                _model.addToAnswersList(
+                                                    FFAppState().qurrentAnswer);
+                                                _model.addToQuestionsList(
+                                                    FFAppState()
+                                                        .currentQuestion);
+                                                setState(() {});
                                                 logFirebaseEvent(
                                                     'Row_backend_call');
                                                 _model.newAnswersCopy =
@@ -450,6 +449,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                       'Новый тест на проверку',
                                                   content: 'Работай давай!',
                                                 );
+
                                                 logFirebaseEvent(
                                                     'Row_navigate_to');
                                                 if (Navigator.of(context)
@@ -460,16 +460,13 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                               } else {
                                                 logFirebaseEvent(
                                                     'Row_update_page_state');
-                                                setState(() {
-                                                  _model.index =
-                                                      _model.index + 1;
-                                                  _model.addToAnswersList(
-                                                      FFAppState()
-                                                          .qurrentAnswer);
-                                                  _model.addToQuestionsList(
-                                                      FFAppState()
-                                                          .currentQuestion);
-                                                });
+                                                _model.index = _model.index + 1;
+                                                _model.addToAnswersList(
+                                                    FFAppState().qurrentAnswer);
+                                                _model.addToQuestionsList(
+                                                    FFAppState()
+                                                        .currentQuestion);
+                                                setState(() {});
                                                 logFirebaseEvent(
                                                     'Row_widget_animation');
                                                 if (animationsMap[

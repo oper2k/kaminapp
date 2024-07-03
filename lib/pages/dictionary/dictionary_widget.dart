@@ -116,12 +116,14 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                 return PageView.builder(
                                   controller: _model.pageViewController ??=
                                       PageController(
-                                          initialPage: min(0, dict.length - 1)),
+                                          initialPage:
+                                              max(0, min(0, dict.length - 1))),
                                   onPageChanged: (_) async {
                                     logFirebaseEvent(
                                         'DICTIONARY_PageView_6xk30d4c_ON_WIDGET_S');
                                     logFirebaseEvent(
                                         'PageView_update_app_state');
+
                                     setState(() {});
                                   },
                                   scrollDirection: Axis.horizontal,

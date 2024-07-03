@@ -23,20 +23,25 @@ class TestQuestionsStruct extends FFFirebaseStruct {
   String? _name;
   String get name => _name ?? '';
   set name(String? val) => _name = val;
+
   bool hasName() => _name != null;
 
   // "chooseAnswers" field.
   List<String>? _chooseAnswers;
   List<String> get chooseAnswers => _chooseAnswers ?? const [];
   set chooseAnswers(List<String>? val) => _chooseAnswers = val;
-  void updateChooseAnswers(Function(List<String>) updateFn) =>
-      updateFn(_chooseAnswers ??= []);
+
+  void updateChooseAnswers(Function(List<String>) updateFn) {
+    updateFn(_chooseAnswers ??= []);
+  }
+
   bool hasChooseAnswers() => _chooseAnswers != null;
 
   // "type" field.
   String? _type;
   String get type => _type ?? '';
   set type(String? val) => _type = val;
+
   bool hasType() => _type != null;
 
   static TestQuestionsStruct fromMap(Map<String, dynamic> data) =>
@@ -65,7 +70,7 @@ class TestQuestionsStruct extends FFFirebaseStruct {
         'chooseAnswers': serializeParam(
           _chooseAnswers,
           ParamType.String,
-          true,
+          isList: true,
         ),
         'type': serializeParam(
           _type,

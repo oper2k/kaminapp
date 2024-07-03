@@ -9,9 +9,9 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
   final formKey = GlobalKey<FormState>();
   // State field(s) for Email widget.
   FocusNode? emailFocusNode;
-  TextEditingController? emailController;
-  String? Function(BuildContext, String?)? emailControllerValidator;
-  String? _emailControllerValidator(BuildContext context, String? val) {
+  TextEditingController? emailTextController;
+  String? Function(BuildContext, String?)? emailTextControllerValidator;
+  String? _emailTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Это поле обязательно';
     }
@@ -24,10 +24,10 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
 
   // State field(s) for Pass widget.
   FocusNode? passFocusNode;
-  TextEditingController? passController;
+  TextEditingController? passTextController;
   late bool passVisibility;
-  String? Function(BuildContext, String?)? passControllerValidator;
-  String? _passControllerValidator(BuildContext context, String? val) {
+  String? Function(BuildContext, String?)? passTextControllerValidator;
+  String? _passTextControllerValidator(BuildContext context, String? val) {
     if (val == null || val.isEmpty) {
       return 'Это поле обязательно';
     }
@@ -37,18 +37,18 @@ class LoginModel extends FlutterFlowModel<LoginWidget> {
 
   @override
   void initState(BuildContext context) {
-    emailControllerValidator = _emailControllerValidator;
+    emailTextControllerValidator = _emailTextControllerValidator;
     passVisibility = false;
-    passControllerValidator = _passControllerValidator;
+    passTextControllerValidator = _passTextControllerValidator;
   }
 
   @override
   void dispose() {
     unfocusNode.dispose();
     emailFocusNode?.dispose();
-    emailController?.dispose();
+    emailTextController?.dispose();
 
     passFocusNode?.dispose();
-    passController?.dispose();
+    passTextController?.dispose();
   }
 }
