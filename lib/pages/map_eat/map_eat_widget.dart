@@ -27,7 +27,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
     _model = createModel(context, () => MapEatModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'MapEat'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -40,9 +40,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFFF9F7F7),
@@ -101,12 +99,14 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                   );
                 }
                 List<EatsRow> containerEatsRowList = snapshot.data!;
+
                 return Container(
                   width: 700.0,
                   decoration: const BoxDecoration(),
                   child: Builder(
                     builder: (context) {
                       final eats = containerEatsRowList.toList();
+
                       return SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.min,

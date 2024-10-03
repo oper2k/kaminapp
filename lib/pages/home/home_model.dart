@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 class HomeModel extends FlutterFlowModel<HomeWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Stores action output result for [Backend Call - Insert Row] action in IconButton widget.
   ChatsRow? newChat2;
   // Stores action output result for [Backend Call - Insert Row] action in IconButton widget.
@@ -16,7 +15,5 @@ class HomeModel extends FlutterFlowModel<HomeWidget> {
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    unfocusNode.dispose();
-  }
+  void dispose() {}
 }

@@ -26,7 +26,7 @@ class _MapSalesWidgetState extends State<MapSalesWidget> {
     _model = createModel(context, () => MapSalesModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'MapSales'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -39,9 +39,7 @@ class _MapSalesWidgetState extends State<MapSalesWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFFF9F7F7),
@@ -136,12 +134,8 @@ class _MapSalesWidgetState extends State<MapSalesWidget> {
                                           color: Colors.transparent,
                                           child: WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
+                                              onTap: () =>
+                                                  FocusScope.of(dialogContext)
                                                       .unfocus(),
                                               child: const CustomDialogMapWidget(
                                                 nameSearch: 'k1sales',
@@ -150,7 +144,7 @@ class _MapSalesWidgetState extends State<MapSalesWidget> {
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    );
                                   },
                                   child: Container(
                                     width: 84.0,
@@ -187,12 +181,8 @@ class _MapSalesWidgetState extends State<MapSalesWidget> {
                                           color: Colors.transparent,
                                           child: WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
+                                              onTap: () =>
+                                                  FocusScope.of(dialogContext)
                                                       .unfocus(),
                                               child: const CustomDialogMapWidget(
                                                 nameSearch: 'k2sales',
@@ -201,7 +191,7 @@ class _MapSalesWidgetState extends State<MapSalesWidget> {
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    );
                                   },
                                   child: Container(
                                     width: 84.0,

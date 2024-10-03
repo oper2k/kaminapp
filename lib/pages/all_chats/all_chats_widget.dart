@@ -27,7 +27,7 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
     _model = createModel(context, () => AllChatsModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'AllChats'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -40,9 +40,7 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFFF9F7F7),
@@ -101,12 +99,14 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                   );
                 }
                 List<ChatsRow> containerChatsRowList = snapshot.data!;
+
                 return Container(
                   width: 700.0,
                   decoration: const BoxDecoration(),
                   child: Builder(
                     builder: (context) {
                       final chats = containerChatsRowList.toList();
+
                       return SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -142,10 +142,12 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                                       }
                                       List<UsersRow> containerUsersRowList =
                                           snapshot.data!;
+
                                       final containerUsersRow =
                                           containerUsersRowList.isNotEmpty
                                               ? containerUsersRowList.first
                                               : null;
+
                                       return InkWell(
                                         splashColor: Colors.transparent,
                                         focusColor: Colors.transparent,
@@ -287,7 +289,7 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                                                                       0.0),
                                                           child: Text(
                                                             dateTimeFormat(
-                                                              'relative',
+                                                              "relative",
                                                               chatsItem
                                                                   .timestampLastMessage!,
                                                               locale: FFLocalizations

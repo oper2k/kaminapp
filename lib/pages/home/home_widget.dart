@@ -163,7 +163,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
       ),
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -178,9 +178,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -211,9 +209,11 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                   );
                 }
                 List<UsersRow> columnUsersRowList = snapshot.data!;
+
                 final columnUsersRow = columnUsersRowList.isNotEmpty
                     ? columnUsersRowList.first
                     : null;
+
                 return SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -426,6 +426,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                     }
                                     List<TestsRow> containerTestsRowList =
                                         snapshot.data!;
+
                                     return Container(
                                       decoration: const BoxDecoration(),
                                       child:
@@ -460,6 +461,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                           List<TestsAnswersRow>
                                               containerTestsAnswersRowList =
                                               snapshot.data!;
+
                                           return Container(
                                             decoration: const BoxDecoration(),
                                             child: Visibility(
@@ -523,6 +525,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                                     functions
                                                                         .progress()
                                                                         .toList();
+
                                                                 return Row(
                                                                   mainAxisSize:
                                                                       MainAxisSize
@@ -666,7 +669,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                 );
                                               }
 
-                                              setState(() {});
+                                              safeSetState(() {});
                                             },
                                           ),
                                         ),
@@ -696,6 +699,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                             List<ChatsRow>
                                                 containerChatsRowList =
                                                 snapshot.data!;
+
                                             // Return an empty Container when the item does not exist.
                                             if (snapshot.data!.isEmpty) {
                                               return Container();
@@ -705,6 +709,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                     ? containerChatsRowList
                                                         .first
                                                     : null;
+
                                             return Container(
                                               decoration: const BoxDecoration(),
                                               child: FlutterFlowIconButton(
@@ -779,7 +784,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                                     }
                                                   }
 
-                                                  setState(() {});
+                                                  safeSetState(() {});
                                                 },
                                               ),
                                             );
@@ -1003,6 +1008,7 @@ class _HomeWidgetState extends State<HomeWidget> with TickerProviderStateMixin {
                                       }
                                       List<CourseRow> rowCourseRowList =
                                           snapshot.data!;
+
                                       return Row(
                                         mainAxisSize: MainAxisSize.max,
                                         children: List.generate(

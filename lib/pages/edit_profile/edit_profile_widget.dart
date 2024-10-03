@@ -82,7 +82,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
       ),
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -95,9 +95,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -130,9 +128,11 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                   );
                 }
                 List<UsersRow> columnUsersRowList = snapshot.data!;
+
                 final columnUsersRow = columnUsersRowList.isNotEmpty
                     ? columnUsersRowList.first
                     : null;
+
                 return SingleChildScrollView(
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
@@ -313,7 +313,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                       validateFileFormat(
                                                           m.storagePath,
                                                           context))) {
-                                                setState(() => _model
+                                                safeSetState(() => _model
                                                     .isDataUploading = true);
                                                 var selectedUploadedFiles =
                                                     <FFUploadedFile>[];
@@ -362,7 +362,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         selectedMedia.length &&
                                                     downloadUrls.length ==
                                                         selectedMedia.length) {
-                                                  setState(() {
+                                                  safeSetState(() {
                                                     _model.uploadedLocalFile =
                                                         selectedUploadedFiles
                                                             .first;
@@ -372,7 +372,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                   showUploadMessage(
                                                       context, 'Успешно!');
                                                 } else {
-                                                  setState(() {});
+                                                  safeSetState(() {});
                                                   showUploadMessage(context,
                                                       'Ошибка загрузки файла');
                                                   return;
@@ -393,13 +393,13 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                               );
                                               logFirebaseEvent(
                                                   'IconButton_refresh_database_request');
-                                              setState(() => _model
+                                              safeSetState(() => _model
                                                   .requestCompleter2 = null);
                                               await _model
                                                   .waitForRequestCompleted2();
                                               logFirebaseEvent(
                                                   'IconButton_refresh_database_request');
-                                              setState(() => _model
+                                              safeSetState(() => _model
                                                   .requestCompleter1 = null);
                                               await _model
                                                   .waitForRequestCompleted1();
@@ -987,6 +987,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                             List<DepartmentsRow>
                                                 containerDepartmentsRowList =
                                                 snapshot.data!;
+
                                             return Container(
                                               decoration: const BoxDecoration(),
                                               child: Padding(
@@ -1014,8 +1015,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           .map((e) => e.name)
                                                           .withoutNulls
                                                           .toList(),
-                                                  onChanged: (val) => setState(
-                                                      () => _model
+                                                  onChanged: (val) =>
+                                                      safeSetState(() => _model
                                                           .dropDownValue = val),
                                                   width: double.infinity,
                                                   height: 50.0,
@@ -1063,7 +1064,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                       child: FFButtonWidget(
                                         onPressed: () async {
                                           logFirebaseEvent(
-                                              'EDIT_PROFILE_PAGE_СОХРАНИТЬ_BTN_ON_TAP');
+                                              'EDIT_PROFILE_PAGE__BTN_ON_TAP');
                                           logFirebaseEvent(
                                               'Button_backend_call');
                                           await UsersTable().update(

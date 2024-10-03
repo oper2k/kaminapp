@@ -28,7 +28,7 @@ class _AdminWidgetState extends State<AdminWidget> {
     _model = createModel(context, () => AdminModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Admin'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -43,9 +43,7 @@ class _AdminWidgetState extends State<AdminWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -116,6 +114,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                       }
                       List<TestsAnswersRow> containerTestsAnswersRowList =
                           snapshot.data!;
+
                       return Container(
                         decoration: const BoxDecoration(),
                         child: Align(
@@ -185,7 +184,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                 child: FFButtonWidget(
                                                   onPressed: () async {
                                                     logFirebaseEvent(
-                                                        'ADMIN_PAGE_ВСЕ_ТЕСТЫ_BTN_ON_TAP');
+                                                        'ADMIN_PAGE___BTN_ON_TAP');
                                                     logFirebaseEvent(
                                                         'Button_update_app_state');
                                                     FFAppState().showTests =
@@ -242,6 +241,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                         (e.isPass == false) &&
                                                         (e.isFaild == false))
                                                     .toList();
+
                                             return Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children: List.generate(
@@ -443,7 +443,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                               child: FFButtonWidget(
                                                 onPressed: () async {
                                                   logFirebaseEvent(
-                                                      'ADMIN_PAGE_ЖДУТ_ПРОВЕРКИ_BTN_ON_TAP');
+                                                      'ADMIN_PAGE___BTN_ON_TAP');
                                                   logFirebaseEvent(
                                                       'Button_update_app_state');
                                                   FFAppState().showTests =
@@ -545,6 +545,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                     .where((e) =>
                                                         e.isPass! || e.isFaild!)
                                                     .toList();
+
                                             return Column(
                                               mainAxisSize: MainAxisSize.max,
                                               children:

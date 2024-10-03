@@ -38,7 +38,7 @@ class _ChatWidgetState extends State<ChatWidget> {
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -53,9 +53,7 @@ class _ChatWidgetState extends State<ChatWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFFF9F7F7),
@@ -153,13 +151,14 @@ class _ChatWidgetState extends State<ChatWidget> {
                         List<ChatMessagesInfoViewRow>
                             listViewChatMessagesInfoViewRowList =
                             snapshot.data!;
+
                         return RefreshIndicator(
                           onRefresh: () async {
                             logFirebaseEvent(
                                 'CHAT_ListView_ywdphcij_ON_PULL_TO_REFRES');
                             logFirebaseEvent(
                                 'ListView_refresh_database_request');
-                            setState(() => _model.requestCompleter = null);
+                            safeSetState(() => _model.requestCompleter = null);
                             await _model.waitForRequestCompleted();
                           },
                           child: ListView.builder(
@@ -312,7 +311,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                                         16.0),
                                                             child: Text(
                                                               dateTimeFormat(
-                                                                'relative',
+                                                                "relative",
                                                                 listViewChatMessagesInfoViewRow
                                                                     .createdAt!,
                                                                 locale: FFLocalizations.of(
@@ -437,7 +436,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                                         16.0),
                                                             child: Text(
                                                               dateTimeFormat(
-                                                                'relative',
+                                                                "relative",
                                                                 listViewChatMessagesInfoViewRow
                                                                     .createdAt!,
                                                                 locale: FFLocalizations.of(
@@ -639,7 +638,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                   );
                                   logFirebaseEvent(
                                       'IconButton_refresh_database_request');
-                                  setState(
+                                  safeSetState(
                                       () => _model.requestCompleter = null);
                                   await _model.waitForRequestCompleted();
                                   logFirebaseEvent('IconButton_backend_call');
@@ -655,7 +654,7 @@ class _ChatWidgetState extends State<ChatWidget> {
 
                                   logFirebaseEvent(
                                       'IconButton_clear_text_fields_pin_codes');
-                                  setState(() {
+                                  safeSetState(() {
                                     _model.textController?.clear();
                                   });
                                 }

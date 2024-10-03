@@ -3,15 +3,9 @@ import 'map_all_widget.dart' show MapAllWidget;
 import 'package:flutter/material.dart';
 
 class MapAllModel extends FlutterFlowModel<MapAllWidget> {
-  ///  State fields for stateful widgets in this page.
-
-  final unfocusNode = FocusNode();
-
   @override
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    unfocusNode.dispose();
-  }
+  void dispose() {}
 }

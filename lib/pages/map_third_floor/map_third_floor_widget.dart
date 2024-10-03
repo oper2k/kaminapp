@@ -27,7 +27,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'MapThirdFloor'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -40,9 +40,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFFF9F7F7),
@@ -136,12 +134,8 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           color: Colors.transparent,
                                           child: WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
+                                              onTap: () =>
+                                                  FocusScope.of(dialogContext)
                                                       .unfocus(),
                                               child: const CustomDialogMapWidget(
                                                 nameSearch: 'k310',
@@ -150,7 +144,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    );
                                   },
                                   child: Container(
                                     width: 84.0,
@@ -187,12 +181,8 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           color: Colors.transparent,
                                           child: WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
+                                              onTap: () =>
+                                                  FocusScope.of(dialogContext)
                                                       .unfocus(),
                                               child: const CustomDialogMapWidget(
                                                 nameSearch: 'k309',
@@ -201,7 +191,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    );
                                   },
                                   child: Container(
                                     width: 84.0,
@@ -238,12 +228,8 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           color: Colors.transparent,
                                           child: WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
+                                              onTap: () =>
+                                                  FocusScope.of(dialogContext)
                                                       .unfocus(),
                                               child: const CustomDialogMapWidget(
                                                 nameSearch: 'k311',
@@ -252,7 +238,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    );
                                   },
                                   child: Container(
                                     width: 84.0,
@@ -289,12 +275,8 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           color: Colors.transparent,
                                           child: WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
+                                              onTap: () =>
+                                                  FocusScope.of(dialogContext)
                                                       .unfocus(),
                                               child: const CustomDialogMapWidget(
                                                 nameSearch: 'k308',
@@ -303,7 +285,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    );
                                   },
                                   child: Container(
                                     width: 84.0,
@@ -340,12 +322,8 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           color: Colors.transparent,
                                           child: WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
+                                              onTap: () =>
+                                                  FocusScope.of(dialogContext)
                                                       .unfocus(),
                                               child: const CustomDialogMapWidget(
                                                 nameSearch: 'k312',
@@ -354,7 +332,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    );
                                   },
                                   child: Container(
                                     width: 84.0,
@@ -391,12 +369,8 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           color: Colors.transparent,
                                           child: WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
+                                              onTap: () =>
+                                                  FocusScope.of(dialogContext)
                                                       .unfocus(),
                                               child: const CustomDialogMapWidget(
                                                 nameSearch: 'k307',
@@ -405,7 +379,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    );
                                   },
                                   child: Container(
                                     width: 84.0,
@@ -442,12 +416,8 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           color: Colors.transparent,
                                           child: WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
+                                              onTap: () =>
+                                                  FocusScope.of(dialogContext)
                                                       .unfocus(),
                                               child: const CustomDialogMapWidget(
                                                 nameSearch: 'k305',
@@ -456,7 +426,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    );
                                   },
                                   child: Container(
                                     width: 84.0,
@@ -493,12 +463,8 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           color: Colors.transparent,
                                           child: WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
+                                              onTap: () =>
+                                                  FocusScope.of(dialogContext)
                                                       .unfocus(),
                                               child: const CustomDialogMapWidget(
                                                 nameSearch: 'k304',
@@ -507,7 +473,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    );
                                   },
                                   child: Container(
                                     width: 84.0,
@@ -544,12 +510,8 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           color: Colors.transparent,
                                           child: WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
+                                              onTap: () =>
+                                                  FocusScope.of(dialogContext)
                                                       .unfocus(),
                                               child: const CustomDialogMapWidget(
                                                 nameSearch: 'k303',
@@ -558,7 +520,7 @@ class _MapThirdFloorWidgetState extends State<MapThirdFloorWidget> {
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    );
                                   },
                                   child: Container(
                                     width: 84.0,

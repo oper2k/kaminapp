@@ -38,7 +38,7 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
     super.initState();
     _model = createModel(context, () => TestQuestionsChooseModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -79,6 +79,7 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
               child: Builder(
                 builder: (context) {
                   final questions = widget.questions?.toList() ?? [];
+
                   return Column(
                     mainAxisSize: MainAxisSize.max,
                     children: List.generate(questions.length, (questionsIndex) {
@@ -108,7 +109,7 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
                                           widget.name!;
                                       FFAppState().qurrentAnswer =
                                           questionsItem;
-                                      setState(() {});
+                                      safeSetState(() {});
                                     },
                                     child: Icon(
                                       Icons.radio_button_off,

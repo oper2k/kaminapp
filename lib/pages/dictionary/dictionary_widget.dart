@@ -27,7 +27,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
     _model = createModel(context, () => DictionaryModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Dictionary'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -40,9 +40,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFFF9F7F7),
@@ -101,6 +99,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                   );
                 }
                 List<DicRow> containerDicRowList = snapshot.data!;
+
                 return Container(
                   width: 700.0,
                   decoration: const BoxDecoration(),
@@ -113,6 +112,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                             child: Builder(
                               builder: (context) {
                                 final dict = containerDicRowList.toList();
+
                                 return PageView.builder(
                                   controller: _model.pageViewController ??=
                                       PageController(
@@ -124,7 +124,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                     logFirebaseEvent(
                                         'PageView_update_app_state');
 
-                                    setState(() {});
+                                    safeSetState(() {});
                                   },
                                   scrollDirection: Axis.horizontal,
                                   itemCount: dict.length,

@@ -34,7 +34,7 @@ class _SubLessonsDetailsSlidesWidgetState
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'SubLessonsDetailsSlides'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -47,9 +47,7 @@ class _SubLessonsDetailsSlidesWidgetState
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBtnText,
@@ -110,6 +108,7 @@ class _SubLessonsDetailsSlidesWidgetState
                                       .currentSubLesson?.descriptions
                                       .toList() ??
                                   [];
+
                               return PageView.builder(
                                 controller: _model.pageViewController ??=
                                     PageController(
@@ -124,7 +123,7 @@ class _SubLessonsDetailsSlidesWidgetState
                                       'SUB_LESSONS_DETAILS_SLIDES_PageView_dx8i');
                                   logFirebaseEvent('PageView_update_app_state');
 
-                                  setState(() {});
+                                  safeSetState(() {});
                                 },
                                 scrollDirection: Axis.horizontal,
                                 itemCount: currentDescription.length,

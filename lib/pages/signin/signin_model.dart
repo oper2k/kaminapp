@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 class SigninModel extends FlutterFlowModel<SigninWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   final formKey = GlobalKey<FormState>();
   // State field(s) for Name widget.
   FocusNode? nameFocusNode;
@@ -70,7 +69,6 @@ class SigninModel extends FlutterFlowModel<SigninWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     nameFocusNode?.dispose();
     nameTextController?.dispose();
 

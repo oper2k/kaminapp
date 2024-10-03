@@ -27,7 +27,7 @@ class _ContactsWidgetState extends State<ContactsWidget> {
     _model = createModel(context, () => ContactsModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Contacts'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -40,9 +40,7 @@ class _ContactsWidgetState extends State<ContactsWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFFF9F7F7),
@@ -101,12 +99,14 @@ class _ContactsWidgetState extends State<ContactsWidget> {
                   );
                 }
                 List<ContactsRow> containerContactsRowList = snapshot.data!;
+
                 return Container(
                   width: 700.0,
                   decoration: const BoxDecoration(),
                   child: Builder(
                     builder: (context) {
                       final contact = containerContactsRowList.toList();
+
                       return SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.min,

@@ -59,7 +59,7 @@ class _LoginWidgetState extends State<LoginWidget>
       ),
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -72,9 +72,7 @@ class _LoginWidgetState extends State<LoginWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -319,7 +317,7 @@ class _LoginWidgetState extends State<LoginWidget>
                                       ),
                                     ),
                                     suffixIcon: InkWell(
-                                      onTap: () => setState(
+                                      onTap: () => safeSetState(
                                         () => _model.passVisibility =
                                             !_model.passVisibility,
                                       ),
@@ -354,7 +352,7 @@ class _LoginWidgetState extends State<LoginWidget>
                             const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            logFirebaseEvent('LOGIN_PAGE_ВОЙТИ_BTN_ON_TAP');
+                            logFirebaseEvent('LOGIN_PAGE__BTN_ON_TAP');
                             logFirebaseEvent('Button_validate_form');
                             if (_model.formKey.currentState == null ||
                                 !_model.formKey.currentState!.validate()) {
@@ -410,8 +408,7 @@ class _LoginWidgetState extends State<LoginWidget>
                             const EdgeInsetsDirectional.fromSTEB(0.0, 16.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            logFirebaseEvent(
-                                'LOGIN_PAGE_ЗАРЕГИСТРИРОВАТЬСЯ_BTN_ON_TAP');
+                            logFirebaseEvent('LOGIN_PAGE__BTN_ON_TAP');
                             logFirebaseEvent('Button_navigate_to');
 
                             context.pushNamed('Signin');

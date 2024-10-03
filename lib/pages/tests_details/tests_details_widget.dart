@@ -56,7 +56,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
       logFirebaseEvent('TestsDetails_widget_animation');
       if (animationsMap['testQuestionsChooseOnActionTriggerAnimation'] !=
           null) {
-        setState(() => hasTestQuestionsChooseTriggered = true);
+        safeSetState(() => hasTestQuestionsChooseTriggered = true);
         SchedulerBinding.instance.addPostFrameCallback((_) async =>
             await animationsMap['testQuestionsChooseOnActionTriggerAnimation']!
                 .controller
@@ -64,7 +64,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
       }
       logFirebaseEvent('TestsDetails_widget_animation');
       if (animationsMap['testQuestionTextOnActionTriggerAnimation'] != null) {
-        setState(() => hasTestQuestionTextTriggered = true);
+        safeSetState(() => hasTestQuestionTextTriggered = true);
         SchedulerBinding.instance.addPostFrameCallback((_) async =>
             await animationsMap['testQuestionTextOnActionTriggerAnimation']!
                 .controller
@@ -122,7 +122,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
       this,
     );
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -137,9 +137,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFFF9F7F7),
@@ -203,6 +201,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                   );
                 }
                 List<QuestionsRow> containerQuestionsRowList = snapshot.data!;
+
                 return Container(
                   width: 700.0,
                   decoration: const BoxDecoration(),
@@ -253,6 +252,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                   builder: (context) {
                                     final questions =
                                         containerQuestionsRowList.toList();
+
                                     return Column(
                                       mainAxisSize: MainAxisSize.min,
                                       children: List.generate(questions.length,
@@ -276,7 +276,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                     questionsIndex,
                                                   ),
                                                   updateCallback: () =>
-                                                      setState(() {}),
+                                                      safeSetState(() {}),
                                                   child:
                                                       TestQuestionsChooseWidget(
                                                     key: Key(
@@ -312,7 +312,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                     questionsIndex,
                                                   ),
                                                   updateCallback: () =>
-                                                      setState(() {}),
+                                                      safeSetState(() {}),
                                                   child: TestQuestionTextWidget(
                                                     key: Key(
                                                       'Keyhjs_${questionsItem.uid}',
@@ -415,7 +415,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                 _model.addToQuestionsList(
                                                     FFAppState()
                                                         .currentQuestion);
-                                                setState(() {});
+                                                safeSetState(() {});
                                                 logFirebaseEvent(
                                                     'Row_backend_call');
                                                 _model.newAnswersCopy =
@@ -432,11 +432,11 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                   'user': currentUserEmail,
                                                   'rl_test':
                                                       widget.currentTest?.uid,
-                                                  'rl_course':
-                                                      widget.currentCourse?.uid,
+                                                  'rl_course': widget
+                                                      .currentCourse?.uid,
                                                   'rl_user': currentUserUid,
-                                                  'rl_lesson':
-                                                      widget.currentLesson?.uid,
+                                                  'rl_lesson': widget
+                                                      .currentLesson?.uid,
                                                 });
                                                 logFirebaseEvent(
                                                     'Row_backend_call');
@@ -466,13 +466,13 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                 _model.addToQuestionsList(
                                                     FFAppState()
                                                         .currentQuestion);
-                                                setState(() {});
+                                                safeSetState(() {});
                                                 logFirebaseEvent(
                                                     'Row_widget_animation');
                                                 if (animationsMap[
                                                         'testQuestionsChooseOnActionTriggerAnimation'] !=
                                                     null) {
-                                                  setState(() =>
+                                                  safeSetState(() =>
                                                       hasTestQuestionsChooseTriggered =
                                                           true);
                                                   SchedulerBinding.instance
@@ -490,7 +490,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                 if (animationsMap[
                                                         'testQuestionTextOnActionTriggerAnimation'] !=
                                                     null) {
-                                                  setState(() =>
+                                                  safeSetState(() =>
                                                       hasTestQuestionTextTriggered =
                                                           true);
                                                   SchedulerBinding.instance
@@ -505,7 +505,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                 }
                                               }
 
-                                              setState(() {});
+                                              safeSetState(() {});
                                             },
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,

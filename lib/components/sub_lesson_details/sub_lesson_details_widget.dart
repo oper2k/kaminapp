@@ -30,7 +30,7 @@ class _SubLessonDetailsWidgetState extends State<SubLessonDetailsWidget> {
     super.initState();
     _model = createModel(context, () => SubLessonDetailsModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override

@@ -31,7 +31,6 @@ class TestsDetailsModel extends FlutterFlowModel<TestsDetailsWidget> {
 
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   // Models for test_questions_choose dynamic component.
   late FlutterFlowDynamicModels<TestQuestionsChooseModel>
       testQuestionsChooseModels;
@@ -50,7 +49,6 @@ class TestsDetailsModel extends FlutterFlowModel<TestsDetailsWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     testQuestionsChooseModels.dispose();
     testQuestionTextModels.dispose();
   }

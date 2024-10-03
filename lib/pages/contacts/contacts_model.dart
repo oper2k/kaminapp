@@ -3,15 +3,9 @@ import 'contacts_widget.dart' show ContactsWidget;
 import 'package:flutter/material.dart';
 
 class ContactsModel extends FlutterFlowModel<ContactsWidget> {
-  ///  State fields for stateful widgets in this page.
-
-  final unfocusNode = FocusNode();
-
   @override
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    unfocusNode.dispose();
-  }
+  void dispose() {}
 }

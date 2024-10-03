@@ -32,7 +32,7 @@ class _CustomDialogMapWidgetState extends State<CustomDialogMapWidget> {
     super.initState();
     _model = createModel(context, () => CustomDialogMapModel());
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -66,8 +66,10 @@ class _CustomDialogMapWidgetState extends State<CustomDialogMapWidget> {
           );
         }
         List<MapRow> containerMapRowList = snapshot.data!;
+
         final containerMapRow =
             containerMapRowList.isNotEmpty ? containerMapRowList.first : null;
+
         return Material(
           color: Colors.transparent,
           elevation: 0.0,
@@ -136,7 +138,7 @@ class _CustomDialogMapWidgetState extends State<CustomDialogMapWidget> {
                     onTap: () async {
                       logFirebaseEvent(
                           'CUSTOM_DIALOG_MAP_Icon_xagjc74h_ON_TAP');
-                      logFirebaseEvent('Icon_close_dialog,_drawer,_etc');
+                      logFirebaseEvent('Icon_close_dialog_drawer_etc');
                       Navigator.pop(context);
                     },
                     child: Icon(

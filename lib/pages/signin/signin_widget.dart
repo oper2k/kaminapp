@@ -67,7 +67,7 @@ class _SigninWidgetState extends State<SigninWidget>
       ),
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -80,9 +80,7 @@ class _SigninWidgetState extends State<SigninWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -410,7 +408,7 @@ class _SigninWidgetState extends State<SigninWidget>
                                       ),
                                     ),
                                     suffixIcon: InkWell(
-                                      onTap: () => setState(
+                                      onTap: () => safeSetState(
                                         () => _model.passVisibility =
                                             !_model.passVisibility,
                                       ),
@@ -502,7 +500,7 @@ class _SigninWidgetState extends State<SigninWidget>
                                       ),
                                     ),
                                     suffixIcon: InkWell(
-                                      onTap: () => setState(
+                                      onTap: () => safeSetState(
                                         () => _model.passRepeateVisibility =
                                             !_model.passRepeateVisibility,
                                       ),
@@ -538,8 +536,7 @@ class _SigninWidgetState extends State<SigninWidget>
                             const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            logFirebaseEvent(
-                                'SIGNIN_ЗАРЕГИСТРИРОВАТЬСЯ_BTN_ON_TAP');
+                            logFirebaseEvent('SIGNIN_PAGE__BTN_ON_TAP');
                             logFirebaseEvent('Button_validate_form');
                             if (_model.formKey.currentState == null ||
                                 !_model.formKey.currentState!.validate()) {

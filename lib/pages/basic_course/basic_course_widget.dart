@@ -36,7 +36,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'Basic_Course'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -51,9 +51,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
     context.watch<FFAppState>();
 
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFFF9F7F7),
@@ -161,7 +159,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                     child: FFButtonWidget(
                                       onPressed: () async {
                                         logFirebaseEvent(
-                                            'BASIC_COURSE_PAGE_ТЕСТЫ_BTN_ON_TAP');
+                                            'BASIC_COURSE_PAGE__BTN_ON_TAP');
                                         logFirebaseEvent(
                                             'Button_update_app_state');
                                         FFAppState().showTests = true;
@@ -227,12 +225,14 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                               }
                               List<LessonsRow> containerLessonsRowList =
                                   snapshot.data!;
+
                               return Container(
                                 decoration: const BoxDecoration(),
                                 child: Builder(
                                   builder: (context) {
                                     final lessons =
                                         containerLessonsRowList.toList();
+
                                     return Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: List.generate(lessons.length,
@@ -277,6 +277,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                               List<TestsAnswersRow>
                                                   allLessonUserAnswersTestsAnswersRowList =
                                                   snapshot.data!;
+
                                               return Container(
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
@@ -438,6 +439,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                     columnSubLessonsRowList =
                                                                     snapshot
                                                                         .data!;
+
                                                                 return Column(
                                                                   mainAxisSize:
                                                                       MainAxisSize
@@ -597,7 +599,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                   child: FFButtonWidget(
                                     onPressed: () async {
                                       logFirebaseEvent(
-                                          'BASIC_COURSE_БАЗОВЫЙ_КУРС_BTN_ON_TAP');
+                                          'BASIC_COURSE_PAGE___BTN_ON_TAP');
                                       logFirebaseEvent(
                                           'Button_update_app_state');
                                       FFAppState().showTests = false;
@@ -700,12 +702,14 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                               }
                               List<TestsRow> containerTestsRowList =
                                   snapshot.data!;
+
                               return Container(
                                 decoration: const BoxDecoration(),
                                 child: Builder(
                                   builder: (context) {
                                     final tests =
                                         containerTestsRowList.toList();
+
                                     return Column(
                                       mainAxisSize: MainAxisSize.max,
                                       children: List.generate(tests.length,
@@ -737,12 +741,14 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                             List<LessonsRow>
                                                 containerLessonsRowList =
                                                 snapshot.data!;
+
                                             final containerLessonsRow =
                                                 containerLessonsRowList
                                                         .isNotEmpty
                                                     ? containerLessonsRowList
                                                         .first
                                                     : null;
+
                                             return Container(
                                               decoration: const BoxDecoration(),
                                               child: FutureBuilder<
@@ -784,6 +790,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                   List<TestsAnswersRow>
                                                       previousLessonAnswersTestsAnswersRowList =
                                                       snapshot.data!;
+
                                                   return Container(
                                                     decoration: const BoxDecoration(),
                                                     child: Padding(
@@ -832,6 +839,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                           List<TestsAnswersRow>
                                                               currentTestAnswersTestsAnswersRowList =
                                                               snapshot.data!;
+
                                                           return InkWell(
                                                             splashColor: Colors
                                                                 .transparent,
@@ -848,7 +856,8 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                               logFirebaseEvent(
                                                                   'CurrentTestAnswers_update_app_state');
 
-                                                              setState(() {});
+                                                              safeSetState(
+                                                                  () {});
                                                               if (((testsIndex ==
                                                                           0) &&
                                                                       (currentTestAnswersTestsAnswersRowList
@@ -871,7 +880,8 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                                                                         .testName =
                                                                     testsItem
                                                                         .name!;
-                                                                setState(() {});
+                                                                safeSetState(
+                                                                    () {});
                                                                 if (currentTestAnswersTestsAnswersRowList
                                                                         .where((e) =>
                                                                             (e.isPass ==
@@ -1062,7 +1072,7 @@ class _BasicCourseWidgetState extends State<BasicCourseWidget> {
                           FFButtonWidget(
                             onPressed: () async {
                               logFirebaseEvent(
-                                  'BASIC_COURSE_PAGE_ДЛЯ_АДМИНА_BTN_ON_TAP');
+                                  'BASIC_COURSE_PAGE___BTN_ON_TAP');
                               logFirebaseEvent('Button_navigate_to');
 
                               context.pushNamed('Admin');

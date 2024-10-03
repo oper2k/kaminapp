@@ -57,7 +57,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
       ),
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -70,9 +70,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -268,7 +266,7 @@ class _ResetPasswordWidgetState extends State<ResetPasswordWidget>
                         child: FFButtonWidget(
                           onPressed: () async {
                             logFirebaseEvent(
-                                'RESET_PASSWORD_СБРОС_ПАРОЛЯ_BTN_ON_TAP');
+                                'RESET_PASSWORD_PAGE___BTN_ON_TAP');
                             logFirebaseEvent('Button_validate_form');
                             if (_model.formKey.currentState == null ||
                                 !_model.formKey.currentState!.validate()) {

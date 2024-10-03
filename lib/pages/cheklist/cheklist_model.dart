@@ -7,16 +7,13 @@ import 'package:flutter/material.dart';
 class CheklistModel extends FlutterFlowModel<CheklistWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   Completer<List<UsersRow>>? requestCompleter;
 
   @override
   void initState(BuildContext context) {}
 
   @override
-  void dispose() {
-    unfocusNode.dispose();
-  }
+  void dispose() {}
 
   /// Additional helper methods.
   Future waitForRequestCompleted({

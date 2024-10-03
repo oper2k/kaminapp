@@ -30,7 +30,7 @@ class _TestEndSuccessWidgetState extends State<TestEndSuccessWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'TestEndSuccess'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -43,9 +43,7 @@ class _TestEndSuccessWidgetState extends State<TestEndSuccessWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,

@@ -7,7 +7,6 @@ import 'package:flutter/material.dart';
 class ChatModel extends FlutterFlowModel<ChatWidget> {
   ///  State fields for stateful widgets in this page.
 
-  final unfocusNode = FocusNode();
   Completer<List<ChatMessagesInfoViewRow>>? requestCompleter;
   // State field(s) for TextField widget.
   FocusNode? textFieldFocusNode;
@@ -19,7 +18,6 @@ class ChatModel extends FlutterFlowModel<ChatWidget> {
 
   @override
   void dispose() {
-    unfocusNode.dispose();
     textFieldFocusNode?.dispose();
     textController?.dispose();
   }

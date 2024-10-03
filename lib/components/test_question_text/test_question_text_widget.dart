@@ -38,7 +38,7 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -97,17 +97,18 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
                                     widget.parameter1!;
                                 FFAppState().qurrentAnswer =
                                     _model.textController.text;
-                                setState(() {});
+                                safeSetState(() {});
                               },
                             ),
                             onFieldSubmitted: (_) async {
                               logFirebaseEvent(
                                   'TEST_QUESTION_TEXT_TextField_6r55iy17_ON');
                               logFirebaseEvent('TextField_update_app_state');
-                              FFAppState().currentQuestion = widget.parameter1!;
+                              FFAppState().currentQuestion =
+                                  widget.parameter1!;
                               FFAppState().qurrentAnswer =
                                   _model.textController.text;
-                              setState(() {});
+                              safeSetState(() {});
                             },
                             autofocus: false,
                             obscureText: false,

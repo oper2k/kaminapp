@@ -33,7 +33,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
 
     logFirebaseEvent('screen_view',
         parameters: {'screen_name': 'AdminTestDetail'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -46,9 +46,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -177,6 +175,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                                         .currentTestAnswers?.answers
                                         .toList() ??
                                     [];
+
                                 return Column(
                                   mainAxisSize: MainAxisSize.max,
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -262,7 +261,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                           child: FFButtonWidget(
                             onPressed: () async {
                               logFirebaseEvent(
-                                  'ADMIN_TEST_DETAIL_НЕ_СДАЛ_BTN_ON_TAP');
+                                  'ADMIN_TEST_DETAIL_PAGE___BTN_ON_TAP');
                               logFirebaseEvent('Button_backend_call');
                               await TestsAnswersTable().update(
                                 data: {
@@ -311,7 +310,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                           child: FFButtonWidget(
                             onPressed: () async {
                               logFirebaseEvent(
-                                  'ADMIN_TEST_DETAIL_PAGE_СДАЛ_BTN_ON_TAP');
+                                  'ADMIN_TEST_DETAIL_PAGE__BTN_ON_TAP');
                               logFirebaseEvent('Button_backend_call');
                               await TestsAnswersTable().update(
                                 data: {

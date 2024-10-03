@@ -58,7 +58,7 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
       ),
     });
 
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -71,9 +71,7 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
@@ -136,8 +134,7 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                             16.0, 20.0, 16.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            logFirebaseEvent(
-                                'ONBOARDING_1_PAGE_НАЧАТЬ_BTN_ON_TAP');
+                            logFirebaseEvent('ONBOARDING_1_PAGE__BTN_ON_TAP');
                             logFirebaseEvent('Button_page_view');
                             await _model.pageViewController?.nextPage(
                               duration: const Duration(milliseconds: 300),
@@ -217,8 +214,7 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                             const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            logFirebaseEvent(
-                                'ONBOARDING_1_PAGE_НАЧАТЬ_BTN_ON_TAP');
+                            logFirebaseEvent('ONBOARDING_1_PAGE__BTN_ON_TAP');
                             logFirebaseEvent('Button_navigate_to');
 
                             context.goNamed('Login');

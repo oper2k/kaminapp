@@ -29,7 +29,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
     _model = createModel(context, () => CheklistModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'Cheklist'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -42,9 +42,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFFF9F7F7),
@@ -108,10 +106,12 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                   );
                 }
                 List<UsersRow> containerUserUsersRowList = snapshot.data!;
+
                 final containerUserUsersRow =
                     containerUserUsersRowList.isNotEmpty
                         ? containerUserUsersRowList.first
                         : null;
+
                 return Container(
                   width: 700.0,
                   decoration: const BoxDecoration(),
@@ -135,11 +135,13 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                       }
                       List<ChecklistRow> containerChecklistRowList =
                           snapshot.data!;
+
                       return Container(
                         decoration: const BoxDecoration(),
                         child: Builder(
                           builder: (context) {
                             final day = containerChecklistRowList.toList();
+
                             return SingleChildScrollView(
                               child: Column(
                                 mainAxisSize: MainAxisSize.max,
@@ -204,6 +206,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                       final checklist = dayItem
                                                           .tasks
                                                           .toList();
+
                                                       return Column(
                                                         mainAxisSize:
                                                             MainAxisSize.max,
@@ -268,7 +271,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                           );
                                                                           logFirebaseEvent(
                                                                               'Image_refresh_database_request');
-                                                                          setState(() =>
+                                                                          safeSetState(() =>
                                                                               _model.requestCompleter = null);
                                                                           await _model
                                                                               .waitForRequestCompleted();
@@ -321,7 +324,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                           );
                                                                           logFirebaseEvent(
                                                                               'Image_refresh_database_request');
-                                                                          setState(() =>
+                                                                          safeSetState(() =>
                                                                               _model.requestCompleter = null);
                                                                           await _model
                                                                               .waitForRequestCompleted();
@@ -372,6 +375,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                   final attension = dayItem
                                                                       .attension
                                                                       .toList();
+
                                                                   return Column(
                                                                     mainAxisSize:
                                                                         MainAxisSize

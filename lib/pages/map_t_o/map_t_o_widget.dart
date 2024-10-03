@@ -26,7 +26,7 @@ class _MapTOWidgetState extends State<MapTOWidget> {
     _model = createModel(context, () => MapTOModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'MapTO'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -39,9 +39,7 @@ class _MapTOWidgetState extends State<MapTOWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFFF9F7F7),
@@ -135,12 +133,8 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                           color: Colors.transparent,
                                           child: WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
+                                              onTap: () =>
+                                                  FocusScope.of(dialogContext)
                                                       .unfocus(),
                                               child: const CustomDialogMapWidget(
                                                 nameSearch: 'k1to',
@@ -149,7 +143,7 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    );
                                   },
                                   child: Container(
                                     width: 84.0,
@@ -185,12 +179,8 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                           color: Colors.transparent,
                                           child: WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
+                                              onTap: () =>
+                                                  FocusScope.of(dialogContext)
                                                       .unfocus(),
                                               child: const CustomDialogMapWidget(
                                                 nameSearch: 'k2to',
@@ -199,7 +189,7 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    );
                                   },
                                   child: Container(
                                     width: 84.0,
@@ -235,12 +225,8 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                           color: Colors.transparent,
                                           child: WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
+                                              onTap: () =>
+                                                  FocusScope.of(dialogContext)
                                                       .unfocus(),
                                               child: const CustomDialogMapWidget(
                                                 nameSearch: 'k3to',
@@ -249,7 +235,7 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    );
                                   },
                                   child: Container(
                                     width: 84.0,
@@ -285,12 +271,8 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                           color: Colors.transparent,
                                           child: WebViewAware(
                                             child: GestureDetector(
-                                              onTap: () => _model.unfocusNode
-                                                      .canRequestFocus
-                                                  ? FocusScope.of(context)
-                                                      .requestFocus(
-                                                          _model.unfocusNode)
-                                                  : FocusScope.of(context)
+                                              onTap: () =>
+                                                  FocusScope.of(dialogContext)
                                                       .unfocus(),
                                               child: const CustomDialogMapWidget(
                                                 nameSearch: 'k4to',
@@ -299,7 +281,7 @@ class _MapTOWidgetState extends State<MapTOWidget> {
                                           ),
                                         );
                                       },
-                                    ).then((value) => setState(() {}));
+                                    );
                                   },
                                   child: Container(
                                     width: 84.0,

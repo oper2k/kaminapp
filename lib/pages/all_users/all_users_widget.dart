@@ -28,7 +28,7 @@ class _AllUsersWidgetState extends State<AllUsersWidget> {
     _model = createModel(context, () => AllUsersModel());
 
     logFirebaseEvent('screen_view', parameters: {'screen_name': 'AllUsers'});
-    WidgetsBinding.instance.addPostFrameCallback((_) => setState(() {}));
+    WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
   @override
@@ -41,9 +41,7 @@ class _AllUsersWidgetState extends State<AllUsersWidget> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _model.unfocusNode.canRequestFocus
-          ? FocusScope.of(context).requestFocus(_model.unfocusNode)
-          : FocusScope.of(context).unfocus(),
+      onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
         backgroundColor: const Color(0xFFF9F7F7),
@@ -100,6 +98,7 @@ class _AllUsersWidgetState extends State<AllUsersWidget> {
                 );
               }
               List<UsersRow> listViewUsersRowList = snapshot.data!;
+
               return ListView.separated(
                 padding: const EdgeInsets.fromLTRB(
                   0,
@@ -211,7 +210,7 @@ class _AllUsersWidgetState extends State<AllUsersWidget> {
                                       child: Text(
                                         valueOrDefault<String>(
                                           dateTimeFormat(
-                                            'd  MMM y',
+                                            "d  MMM y",
                                             listViewUsersRow.createdTime,
                                             locale: FFLocalizations.of(context)
                                                 .languageCode,
