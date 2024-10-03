@@ -5,9 +5,14 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import '/custom_code/actions/index.dart' as actions;
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'signin_model.dart';
 export 'signin_model.dart';
 
@@ -31,7 +36,6 @@ class _SigninWidgetState extends State<SigninWidget>
     super.initState();
     _model = createModel(context, () => SigninModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Signin'});
     _model.nameTextController ??= TextEditingController();
     _model.nameFocusNode ??= FocusNode();
 
@@ -60,8 +64,8 @@ class _SigninWidgetState extends State<SigninWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 400.0.ms,
-            begin: const Offset(0.0, 46.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 46.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -98,8 +102,6 @@ class _SigninWidgetState extends State<SigninWidget>
               size: 30.0,
             ),
             onPressed: () async {
-              logFirebaseEvent('SIGNIN_arrow_back_rounded_ICN_ON_TAP');
-              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),
@@ -112,22 +114,22 @@ class _SigninWidgetState extends State<SigninWidget>
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Form(
                 key: _model.formKey,
                 autovalidateMode: AutovalidateMode.disabled,
                 child: Padding(
-                  padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                  padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.max,
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -150,7 +152,7 @@ class _SigninWidgetState extends State<SigninWidget>
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 17.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 17.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -172,13 +174,13 @@ class _SigninWidgetState extends State<SigninWidget>
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 21.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 21.0, 0.0, 0.0),
                         child: Container(
                           width: MediaQuery.sizeOf(context).width * 1.0,
                           decoration: BoxDecoration(
                             color: FlutterFlowTheme.of(context)
                                 .secondaryBackground,
-                            boxShadow: const [
+                            boxShadow: [
                               BoxShadow(
                                 blurRadius: 10.0,
                                 color: Color(0x27000000),
@@ -194,7 +196,7 @@ class _SigninWidgetState extends State<SigninWidget>
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.nameTextController,
@@ -211,42 +213,42 @@ class _SigninWidgetState extends State<SigninWidget>
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
-                                    enabledBorder: const UnderlineInputBorder(
+                                    enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
                                       ),
                                     ),
-                                    focusedBorder: const UnderlineInputBorder(
+                                    focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
                                       ),
                                     ),
-                                    errorBorder: const UnderlineInputBorder(
+                                    errorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
                                       ),
                                     ),
-                                    focusedErrorBorder: const UnderlineInputBorder(
+                                    focusedErrorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
                                       ),
@@ -267,12 +269,12 @@ class _SigninWidgetState extends State<SigninWidget>
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: 1.0,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   color: Color(0x19112D4E),
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.emailTextController,
@@ -289,42 +291,42 @@ class _SigninWidgetState extends State<SigninWidget>
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
-                                    enabledBorder: const UnderlineInputBorder(
+                                    enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
                                       ),
                                     ),
-                                    focusedBorder: const UnderlineInputBorder(
+                                    focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
                                       ),
                                     ),
-                                    errorBorder: const UnderlineInputBorder(
+                                    errorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
                                       ),
                                     ),
-                                    focusedErrorBorder: const UnderlineInputBorder(
+                                    focusedErrorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
                                       ),
@@ -345,12 +347,12 @@ class _SigninWidgetState extends State<SigninWidget>
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: 1.0,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   color: Color(0x19112D4E),
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.passTextController,
@@ -367,42 +369,42 @@ class _SigninWidgetState extends State<SigninWidget>
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
-                                    enabledBorder: const UnderlineInputBorder(
+                                    enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
                                       ),
                                     ),
-                                    focusedBorder: const UnderlineInputBorder(
+                                    focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
                                       ),
                                     ),
-                                    errorBorder: const UnderlineInputBorder(
+                                    errorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
                                       ),
                                     ),
-                                    focusedErrorBorder: const UnderlineInputBorder(
+                                    focusedErrorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
                                       ),
@@ -417,7 +419,7 @@ class _SigninWidgetState extends State<SigninWidget>
                                         _model.passVisibility
                                             ? Icons.visibility_outlined
                                             : Icons.visibility_off_outlined,
-                                        color: const Color(0xFF98A2B3),
+                                        color: Color(0xFF98A2B3),
                                         size: 22.0,
                                       ),
                                     ),
@@ -437,12 +439,12 @@ class _SigninWidgetState extends State<SigninWidget>
                               Container(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
                                 height: 1.0,
-                                decoration: const BoxDecoration(
+                                decoration: BoxDecoration(
                                   color: Color(0x19112D4E),
                                 ),
                               ),
                               Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: TextFormField(
                                   controller: _model.passRepeateTextController,
@@ -459,42 +461,42 @@ class _SigninWidgetState extends State<SigninWidget>
                                           letterSpacing: 0.0,
                                           fontWeight: FontWeight.normal,
                                         ),
-                                    enabledBorder: const UnderlineInputBorder(
+                                    enabledBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
                                       ),
                                     ),
-                                    focusedBorder: const UnderlineInputBorder(
+                                    focusedBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
                                       ),
                                     ),
-                                    errorBorder: const UnderlineInputBorder(
+                                    errorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
                                       ),
                                     ),
-                                    focusedErrorBorder: const UnderlineInputBorder(
+                                    focusedErrorBorder: UnderlineInputBorder(
                                       borderSide: BorderSide(
                                         color: Color(0x00000000),
                                         width: 1.0,
                                       ),
-                                      borderRadius: BorderRadius.only(
+                                      borderRadius: const BorderRadius.only(
                                         topLeft: Radius.circular(4.0),
                                         topRight: Radius.circular(4.0),
                                       ),
@@ -509,7 +511,7 @@ class _SigninWidgetState extends State<SigninWidget>
                                         _model.passRepeateVisibility
                                             ? Icons.visibility_outlined
                                             : Icons.visibility_off_outlined,
-                                        color: const Color(0xFF98A2B3),
+                                        color: Color(0xFF98A2B3),
                                         size: 22.0,
                                       ),
                                     ),
@@ -533,21 +535,18 @@ class _SigninWidgetState extends State<SigninWidget>
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            logFirebaseEvent('SIGNIN_PAGE__BTN_ON_TAP');
-                            logFirebaseEvent('Button_validate_form');
                             if (_model.formKey.currentState == null ||
                                 !_model.formKey.currentState!.validate()) {
                               return;
                             }
-                            logFirebaseEvent('Button_auth');
                             GoRouter.of(context).prepareAuthEvent();
                             if (_model.passTextController.text !=
                                 _model.passRepeateTextController.text) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
+                                SnackBar(
                                   content: Text(
                                     'Пароли не совпадают',
                                   ),
@@ -566,7 +565,6 @@ class _SigninWidgetState extends State<SigninWidget>
                               return;
                             }
 
-                            logFirebaseEvent('Button_backend_call');
                             await UsersTable().insert({
                               'email': _model.emailTextController.text,
                               'display_name': _model.nameTextController.text,
@@ -574,11 +572,9 @@ class _SigninWidgetState extends State<SigninWidget>
                               'isAdmin': false,
                               'uid': currentUserUid,
                             });
-                            logFirebaseEvent('Button_custom_action');
                             await actions.onesignalLogin(
                               currentUserUid,
                             );
-                            logFirebaseEvent('Button_navigate_to');
 
                             context.goNamedAuth('Home', context.mounted);
                           },
@@ -586,9 +582,9 @@ class _SigninWidgetState extends State<SigninWidget>
                           options: FFButtonOptions(
                             width: double.infinity,
                             height: 56.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -599,7 +595,7 @@ class _SigninWidgetState extends State<SigninWidget>
                                   letterSpacing: 0.0,
                                 ),
                             elevation: 0.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),

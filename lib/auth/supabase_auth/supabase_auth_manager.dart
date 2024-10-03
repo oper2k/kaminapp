@@ -28,7 +28,7 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-            content: Text('Ошибка: [error]'.replaceAll('[error]', e.message))),
+            content: Text('Ошибка: [error]'.replaceAll('[error]', e.message!))),
       );
     }
   }
@@ -48,12 +48,12 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-            content: Text('Ошибка: [error]'.replaceAll('[error]', e.message))),
+            content: Text('Ошибка: [error]'.replaceAll('[error]', e.message!))),
       );
       return;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Email change confirmation email sent')),
+      SnackBar(content: Text('Email change confirmation email sent')),
     );
   }
 
@@ -68,12 +68,12 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-            content: Text('Ошибка: [error]'.replaceAll('[error]', e.message))),
+            content: Text('Ошибка: [error]'.replaceAll('[error]', e.message!))),
       );
       return null;
     }
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('Еmail выслан на почту')),
+      SnackBar(content: Text('Еmail выслан на почту')),
     );
   }
 
@@ -121,7 +121,7 @@ class SupabaseAuthManager extends AuthManager with EmailSignInManager {
     } on AuthException catch (e) {
       final errorMsg = e.message.contains('User already registered') ?? false
           ? 'Error: The email is already in use by a different account'
-          : 'Ошибка: [error]'.replaceAll('[error]', e.message);
+          : 'Ошибка: [error]'.replaceAll('[error]', e.message!);
       ScaffoldMessenger.of(context).hideCurrentSnackBar();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(content: Text(errorMsg)),

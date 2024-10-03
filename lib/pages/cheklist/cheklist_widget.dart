@@ -3,11 +3,14 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'dart:async';
 import 'package:expandable/expandable.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'cheklist_model.dart';
 export 'cheklist_model.dart';
 
@@ -28,7 +31,6 @@ class _CheklistWidgetState extends State<CheklistWidget> {
     super.initState();
     _model = createModel(context, () => CheklistModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Cheklist'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -45,7 +47,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFF9F7F7),
+        backgroundColor: Color(0xFFF9F7F7),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
@@ -60,8 +62,6 @@ class _CheklistWidgetState extends State<CheklistWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              logFirebaseEvent('CHEKLIST_PAGE_close_ICN_ON_TAP');
-              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),
@@ -74,14 +74,14 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: FutureBuilder<List<UsersRow>>(
               future: (_model.requestCompleter ??= Completer<List<UsersRow>>()
                     ..complete(UsersTable().querySingleRow(
@@ -114,7 +114,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
 
                 return Container(
                   width: 700.0,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: FutureBuilder<List<ChecklistRow>>(
                     future: ChecklistTable().queryRows(
                       queryFn: (q) => q.order('sort', ascending: true),
@@ -137,7 +137,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                           snapshot.data!;
 
                       return Container(
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Builder(
                           builder: (context) {
                             final day = containerChecklistRowList.toList();
@@ -148,7 +148,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                 children: List.generate(day.length, (dayIndex) {
                                   final dayItem = day[dayIndex];
                                   return Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         16.0, 20.0, 16.0, 0.0),
                                     child: Container(
                                       decoration: BoxDecoration(
@@ -158,7 +158,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                             BorderRadius.circular(16.0),
                                       ),
                                       child: Padding(
-                                        padding: const EdgeInsets.all(6.0),
+                                        padding: EdgeInsets.all(6.0),
                                         child: Container(
                                           width: double.infinity,
                                           color: Colors.white,
@@ -166,7 +166,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                             initialExpanded: false,
                                             child: ExpandablePanel(
                                               header: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         15.0, 0.0, 0.0, 0.0),
                                                 child: Row(
@@ -196,9 +196,9 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                               ),
                                               collapsed: Container(),
                                               expanded: Container(
-                                                decoration: const BoxDecoration(),
+                                                decoration: BoxDecoration(),
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 24.0),
                                                   child: Builder(
@@ -228,7 +228,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                     .start,
                                                             children: [
                                                               Padding(
-                                                                padding: const EdgeInsetsDirectional
+                                                                padding: EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         15.0,
                                                                         16.0,
@@ -241,7 +241,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                   children: [
                                                                     if (containerUserUsersRow
                                                                             ?.taskDone
-                                                                            .contains(checklistItem) ??
+                                                                            ?.contains(checklistItem) ??
                                                                         true)
                                                                       InkWell(
                                                                         splashColor:
@@ -254,10 +254,6 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                             Colors.transparent,
                                                                         onTap:
                                                                             () async {
-                                                                          logFirebaseEvent(
-                                                                              'CHEKLIST_PAGE_Image_2jzjw6j8_ON_TAP');
-                                                                          logFirebaseEvent(
-                                                                              'Image_backend_call');
                                                                           await UsersTable()
                                                                               .update(
                                                                             data: {
@@ -269,8 +265,6 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                               currentUserUid,
                                                                             ),
                                                                           );
-                                                                          logFirebaseEvent(
-                                                                              'Image_refresh_database_request');
                                                                           safeSetState(() =>
                                                                               _model.requestCompleter = null);
                                                                           await _model
@@ -307,14 +301,10 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                             Colors.transparent,
                                                                         onTap:
                                                                             () async {
-                                                                          logFirebaseEvent(
-                                                                              'CHEKLIST_PAGE_Image_gs2w85gh_ON_TAP');
-                                                                          logFirebaseEvent(
-                                                                              'Image_backend_call');
                                                                           await UsersTable()
                                                                               .update(
                                                                             data: {
-                                                                              'task_done': functions.appendListToListString(containerUserUsersRow.taskDone.toList(), checklistItem).cast<String>(),
+                                                                              'task_done': functions.appendListToListString(containerUserUsersRow?.taskDone?.toList(), checklistItem).cast<String>(),
                                                                             },
                                                                             matchingRows: (rows) =>
                                                                                 rows.eq(
@@ -322,8 +312,6 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                               currentUserUid,
                                                                             ),
                                                                           );
-                                                                          logFirebaseEvent(
-                                                                              'Image_refresh_database_request');
                                                                           safeSetState(() =>
                                                                               _model.requestCompleter = null);
                                                                           await _model
@@ -348,7 +336,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                     Expanded(
                                                                       child:
                                                                           Padding(
-                                                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                        padding: EdgeInsetsDirectional.fromSTEB(
                                                                             8.0,
                                                                             10.0,
                                                                             16.0,
@@ -390,10 +378,11 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                       return Visibility(
                                                                         visible: (attensionIndex ==
                                                                                 checklistIndex) ||
-                                                                            (dayItem.tasks.isEmpty),
+                                                                            (dayItem.tasks.length ==
+                                                                                0),
                                                                         child:
                                                                             Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               15.0,
                                                                               16.0,
                                                                               16.0,
@@ -408,7 +397,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                                                                   attensionItem,
                                                                                   style: FlutterFlowTheme.of(context).bodyMedium.override(
                                                                                         fontFamily: 'Roboto',
-                                                                                        color: const Color(0xFF3F72AF),
+                                                                                        color: Color(0xFF3F72AF),
                                                                                         letterSpacing: 0.0,
                                                                                         fontWeight: FontWeight.normal,
                                                                                       ),
@@ -451,7 +440,7 @@ class _CheklistWidgetState extends State<CheklistWidget> {
                                       ),
                                     ),
                                   );
-                                }).addToEnd(const SizedBox(height: 30.0)),
+                                }).addToEnd(SizedBox(height: 30.0)),
                               ),
                             );
                           },

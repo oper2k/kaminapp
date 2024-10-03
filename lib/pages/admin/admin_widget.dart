@@ -6,6 +6,7 @@ import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'admin_model.dart';
 export 'admin_model.dart';
@@ -27,7 +28,6 @@ class _AdminWidgetState extends State<AdminWidget> {
     super.initState();
     _model = createModel(context, () => AdminModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Admin'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -48,7 +48,7 @@ class _AdminWidgetState extends State<AdminWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: const Color(0xFFF9F7F7),
+          backgroundColor: Color(0xFFF9F7F7),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -61,8 +61,6 @@ class _AdminWidgetState extends State<AdminWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              logFirebaseEvent('ADMIN_PAGE_close_ICN_ON_TAP');
-              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),
@@ -75,15 +73,15 @@ class _AdminWidgetState extends State<AdminWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: Align(
-          alignment: const AlignmentDirectional(0.0, -1.0),
+          alignment: AlignmentDirectional(0.0, -1.0),
           child: Container(
             width: 700.0,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -116,9 +114,9 @@ class _AdminWidgetState extends State<AdminWidget> {
                           snapshot.data!;
 
                       return Container(
-                        decoration: const BoxDecoration(),
+                        decoration: BoxDecoration(),
                         child: Align(
-                          alignment: const AlignmentDirectional(0.0, -1.0),
+                          alignment: AlignmentDirectional(0.0, -1.0),
                           child: SingleChildScrollView(
                             primary: false,
                             child: Column(
@@ -129,7 +127,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 16.0, 16.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -146,11 +144,11 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                 options: FFButtonOptions(
                                                   width: 130.0,
                                                   height: 56.0,
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 0.0),
                                                   iconPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
@@ -165,7 +163,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                                   elevation: 0.0,
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                     width: 0.0,
                                                   ),
@@ -178,15 +176,11 @@ class _AdminWidgetState extends State<AdminWidget> {
                                             Expanded(
                                               flex: 2,
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         9.0, 0.0, 0.0, 0.0),
                                                 child: FFButtonWidget(
                                                   onPressed: () async {
-                                                    logFirebaseEvent(
-                                                        'ADMIN_PAGE___BTN_ON_TAP');
-                                                    logFirebaseEvent(
-                                                        'Button_update_app_state');
                                                     FFAppState().showTests =
                                                         true;
                                                     FFAppState().update(() {});
@@ -196,11 +190,11 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                     width: 130.0,
                                                     height: 56.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -217,7 +211,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                     elevation: 0.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 0.0,
                                                     ),
@@ -232,7 +226,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                         ),
                                       ),
                                       Container(
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Builder(
                                           builder: (context) {
                                             final waitTests =
@@ -250,7 +244,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                 final waitTestsItem =
                                                     waitTests[waitTestsIndex];
                                                 return Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(16.0, 20.0,
                                                           16.0, 0.0),
                                                   child: InkWell(
@@ -263,11 +257,6 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                     highlightColor:
                                                         Colors.transparent,
                                                     onTap: () async {
-                                                      logFirebaseEvent(
-                                                          'ADMIN_PAGE_Container_vzy6e12w_ON_TAP');
-                                                      logFirebaseEvent(
-                                                          'Container_navigate_to');
-
                                                       context.pushNamed(
                                                         'AdminTestDetail',
                                                         queryParameters: {
@@ -292,7 +281,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     15.0,
                                                                     16.0,
@@ -337,7 +326,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                                               .start,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               16.0,
                                                                               0.0,
                                                                               0.0,
@@ -356,7 +345,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               16.0,
                                                                               0.0,
                                                                               0.0,
@@ -374,7 +363,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               16.0,
                                                                               0.0,
                                                                               0.0,
@@ -431,7 +420,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                     mainAxisSize: MainAxisSize.max,
                                     children: [
                                       Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             16.0, 16.0, 16.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
@@ -442,10 +431,6 @@ class _AdminWidgetState extends State<AdminWidget> {
                                               flex: 4,
                                               child: FFButtonWidget(
                                                 onPressed: () async {
-                                                  logFirebaseEvent(
-                                                      'ADMIN_PAGE___BTN_ON_TAP');
-                                                  logFirebaseEvent(
-                                                      'Button_update_app_state');
                                                   FFAppState().showTests =
                                                       false;
                                                   FFAppState().update(() {});
@@ -454,11 +439,11 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                 options: FFButtonOptions(
                                                   width: 130.0,
                                                   height: 56.0,
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           0.0, 0.0, 0.0, 0.0),
                                                   iconPadding:
-                                                      const EdgeInsetsDirectional
+                                                      EdgeInsetsDirectional
                                                           .fromSTEB(0.0, 0.0,
                                                               0.0, 0.0),
                                                   color: FlutterFlowTheme.of(
@@ -476,7 +461,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                         letterSpacing: 0.0,
                                                       ),
                                                   elevation: 0.0,
-                                                  borderSide: const BorderSide(
+                                                  borderSide: BorderSide(
                                                     color: Colors.transparent,
                                                     width: 0.0,
                                                   ),
@@ -489,7 +474,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                             Expanded(
                                               flex: 2,
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         9.0, 0.0, 0.0, 0.0),
                                                 child: FFButtonWidget(
@@ -501,11 +486,11 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                     width: 130.0,
                                                     height: 56.0,
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     iconPadding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(0.0, 0.0,
                                                                 0.0, 0.0),
                                                     color: FlutterFlowTheme.of(
@@ -522,7 +507,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                           letterSpacing: 0.0,
                                                         ),
                                                     elevation: 0.0,
-                                                    borderSide: const BorderSide(
+                                                    borderSide: BorderSide(
                                                       color: Colors.transparent,
                                                       width: 0.0,
                                                     ),
@@ -537,7 +522,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                         ),
                                       ),
                                       Container(
-                                        decoration: const BoxDecoration(),
+                                        decoration: BoxDecoration(),
                                         child: Builder(
                                           builder: (context) {
                                             final allTests =
@@ -554,7 +539,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                 final allTestsItem =
                                                     allTests[allTestsIndex];
                                                 return Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(16.0, 20.0,
                                                           16.0, 0.0),
                                                   child: InkWell(
@@ -567,11 +552,6 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                     highlightColor:
                                                         Colors.transparent,
                                                     onTap: () async {
-                                                      logFirebaseEvent(
-                                                          'ADMIN_PAGE_Container_c4qv95qh_ON_TAP');
-                                                      logFirebaseEvent(
-                                                          'Container_navigate_to');
-
                                                       context.pushNamed(
                                                         'AdminTestDetail',
                                                         queryParameters: {
@@ -596,7 +576,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                       ),
                                                       child: Padding(
                                                         padding:
-                                                            const EdgeInsetsDirectional
+                                                            EdgeInsetsDirectional
                                                                 .fromSTEB(
                                                                     15.0,
                                                                     16.0,
@@ -655,7 +635,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                                               .start,
                                                                       children: [
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               16.0,
                                                                               0.0,
                                                                               0.0,
@@ -674,7 +654,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               16.0,
                                                                               0.0,
                                                                               0.0,
@@ -692,7 +672,7 @@ class _AdminWidgetState extends State<AdminWidget> {
                                                                           ),
                                                                         ),
                                                                         Padding(
-                                                                          padding: const EdgeInsetsDirectional.fromSTEB(
+                                                                          padding: EdgeInsetsDirectional.fromSTEB(
                                                                               16.0,
                                                                               0.0,
                                                                               0.0,

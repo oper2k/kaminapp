@@ -9,7 +9,7 @@ class DicTable extends SupabaseTable<DicRow> {
 }
 
 class DicRow extends SupabaseDataRow {
-  DicRow(super.data);
+  DicRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => DicTable();

@@ -3,6 +3,8 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'custom_dialog_map_model.dart';
 export 'custom_dialog_map_model.dart';
 
@@ -48,7 +50,7 @@ class _CustomDialogMapWidgetState extends State<CustomDialogMapWidget> {
       future: MapTable().querySingleRow(
         queryFn: (q) => q.eq(
           'nameSearch',
-          widget.nameSearch,
+          widget!.nameSearch,
         ),
       ),
       builder: (context, snapshot) {
@@ -77,7 +79,7 @@ class _CustomDialogMapWidgetState extends State<CustomDialogMapWidget> {
             borderRadius: BorderRadius.circular(12.0),
           ),
           child: Container(
-            constraints: const BoxConstraints(
+            constraints: BoxConstraints(
               minWidth: 150.0,
               maxWidth: 250.0,
             ),
@@ -85,12 +87,12 @@ class _CustomDialogMapWidgetState extends State<CustomDialogMapWidget> {
               color: FlutterFlowTheme.of(context).secondaryBackground,
               borderRadius: BorderRadius.circular(12.0),
               border: Border.all(
-                color: const Color(0xFF3F72AF),
+                color: Color(0xFF3F72AF),
                 width: 1.0,
               ),
             ),
             child: Padding(
-              padding: const EdgeInsets.all(21.0),
+              padding: EdgeInsets.all(21.0),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -112,13 +114,13 @@ class _CustomDialogMapWidgetState extends State<CustomDialogMapWidget> {
                                 letterSpacing: 0.0,
                               ),
                         ),
-                        if (containerMapRow.text != null &&
-                            containerMapRow.text != '')
+                        if (containerMapRow?.text != null &&
+                            containerMapRow?.text != '')
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 14.0, 0.0, 0.0),
                             child: Text(
-                              containerMapRow.text!,
+                              containerMapRow!.text!,
                               style: FlutterFlowTheme.of(context)
                                   .bodyMedium
                                   .override(
@@ -136,9 +138,6 @@ class _CustomDialogMapWidgetState extends State<CustomDialogMapWidget> {
                     hoverColor: Colors.transparent,
                     highlightColor: Colors.transparent,
                     onTap: () async {
-                      logFirebaseEvent(
-                          'CUSTOM_DIALOG_MAP_Icon_xagjc74h_ON_TAP');
-                      logFirebaseEvent('Icon_close_dialog_drawer_etc');
                       Navigator.pop(context);
                     },
                     child: Icon(

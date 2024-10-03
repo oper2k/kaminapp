@@ -2,11 +2,14 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'all_users_model.dart';
 export 'all_users_model.dart';
 
@@ -27,7 +30,6 @@ class _AllUsersWidgetState extends State<AllUsersWidget> {
     super.initState();
     _model = createModel(context, () => AllUsersModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'AllUsers'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -44,7 +46,7 @@ class _AllUsersWidgetState extends State<AllUsersWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFF9F7F7),
+        backgroundColor: Color(0xFFF9F7F7),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
@@ -59,8 +61,6 @@ class _AllUsersWidgetState extends State<AllUsersWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              logFirebaseEvent('ALL_USERS_PAGE_close_ICN_ON_TAP');
-              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),
@@ -73,7 +73,7 @@ class _AllUsersWidgetState extends State<AllUsersWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
@@ -100,7 +100,7 @@ class _AllUsersWidgetState extends State<AllUsersWidget> {
               List<UsersRow> listViewUsersRowList = snapshot.data!;
 
               return ListView.separated(
-                padding: const EdgeInsets.fromLTRB(
+                padding: EdgeInsets.fromLTRB(
                   0,
                   20.0,
                   0,
@@ -109,12 +109,12 @@ class _AllUsersWidgetState extends State<AllUsersWidget> {
                 shrinkWrap: true,
                 scrollDirection: Axis.vertical,
                 itemCount: listViewUsersRowList.length,
-                separatorBuilder: (_, __) => const SizedBox(height: 16.0),
+                separatorBuilder: (_, __) => SizedBox(height: 16.0),
                 itemBuilder: (context, listViewIndex) {
                   final listViewUsersRow = listViewUsersRowList[listViewIndex];
                   return Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                     child: Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       decoration: BoxDecoration(
@@ -122,15 +122,15 @@ class _AllUsersWidgetState extends State<AllUsersWidget> {
                         borderRadius: BorderRadius.circular(16.0),
                       ),
                       child: Padding(
-                        padding: const EdgeInsets.all(12.0),
+                        padding: EdgeInsets.all(12.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(100.0),
                               child: CachedNetworkImage(
-                                fadeInDuration: const Duration(milliseconds: 0),
-                                fadeOutDuration: const Duration(milliseconds: 0),
+                                fadeInDuration: Duration(milliseconds: 0),
+                                fadeOutDuration: Duration(milliseconds: 0),
                                 imageUrl: valueOrDefault<String>(
                                   listViewUsersRow.photoUrl,
                                   'https://zigbtihbwqghofeurmcw.supabase.co/storage/v1/object/public/kamin/users/avatars/Me.png',
@@ -149,7 +149,7 @@ class _AllUsersWidgetState extends State<AllUsersWidget> {
                             ),
                             Flexible(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     12.0, 0.0, 0.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -168,7 +168,7 @@ class _AllUsersWidgetState extends State<AllUsersWidget> {
                                             .bodyMedium
                                             .override(
                                               fontFamily: 'Roboto',
-                                              color: const Color(0xFF112D4E),
+                                              color: Color(0xFF112D4E),
                                               fontSize: 16.0,
                                               letterSpacing: 0.0,
                                             ),
@@ -180,7 +180,7 @@ class _AllUsersWidgetState extends State<AllUsersWidget> {
                                             listViewUsersRow.email != '')
                                           Flexible(
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 3.0, 0.0, 0.0),
                                               child: AutoSizeText(
                                                 valueOrDefault<String>(
@@ -205,7 +205,7 @@ class _AllUsersWidgetState extends State<AllUsersWidget> {
                                       ],
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 3.0, 0.0, 0.0),
                                       child: Text(
                                         valueOrDefault<String>(
@@ -229,7 +229,7 @@ class _AllUsersWidgetState extends State<AllUsersWidget> {
                                       ),
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 3.0, 0.0, 0.0),
                                       child: Text(
                                         '${functions.thirtyMinusInt(functions.diffBetweenTwoDates(listViewUsersRow.createdTime)) < 0 ? '0' : functions.thirtyMinusInt(functions.diffBetweenTwoDates(listViewUsersRow.createdTime)).toString()} дней до финального теста',

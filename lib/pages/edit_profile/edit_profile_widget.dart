@@ -8,12 +8,16 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/form_field_controller.dart';
 import '/flutter_flow/upload_data.dart';
+import 'dart:math';
 import '/custom_code/actions/index.dart' as actions;
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'edit_profile_model.dart';
 export 'edit_profile_model.dart';
 
@@ -36,9 +40,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
   void initState() {
     super.initState();
     _model = createModel(context, () => EditProfileModel());
-
-    logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'Edit_Profile'});
 
     _model.firstNameFocusNode ??= FocusNode();
 
@@ -75,8 +76,8 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
             curve: Curves.easeInOut,
             delay: 0.0.ms,
             duration: 400.0.ms,
-            begin: const Offset(0.0, 46.0),
-            end: const Offset(0.0, 0.0),
+            begin: Offset(0.0, 46.0),
+            end: Offset(0.0, 0.0),
           ),
         ],
       ),
@@ -100,10 +101,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Align(
-          alignment: const AlignmentDirectional(0.0, -1.0),
+          alignment: AlignmentDirectional(0.0, -1.0),
           child: Container(
             width: 700.0,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: FutureBuilder<List<UsersRow>>(
               future: (_model.requestCompleter1 ??= Completer<List<UsersRow>>()
                     ..complete(UsersTable().querySingleRow(
@@ -150,7 +151,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                               'assets/images/9b595a8fdc346d8bbf8d04d439cdc3f3.jpeg',
                             ).image,
                           ),
-                          borderRadius: const BorderRadius.only(
+                          borderRadius: BorderRadius.only(
                             bottomLeft: Radius.circular(32.0),
                             bottomRight: Radius.circular(32.0),
                             topLeft: Radius.circular(0.0),
@@ -161,7 +162,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                           mainAxisSize: MainAxisSize.max,
                           children: [
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   12.0, 36.0, 12.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -180,12 +181,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                       size: 30.0,
                                     ),
                                     onPressed: () async {
-                                      logFirebaseEvent(
-                                          'EDIT_PROFILE_exit_to_app_outlined_ICN_ON');
-                                      logFirebaseEvent(
-                                          'IconButton_custom_action');
                                       await actions.onesignalLogout();
-                                      logFirebaseEvent('IconButton_auth');
                                       GoRouter.of(context).prepareAuthEvent();
                                       await authManager.signOut();
                                       GoRouter.of(context)
@@ -207,10 +203,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                       size: 30.0,
                                     ),
                                     onPressed: () async {
-                                      logFirebaseEvent(
-                                          'EDIT_PROFILE_PAGE_close_ICN_ON_TAP');
-                                      logFirebaseEvent(
-                                          'IconButton_navigate_back');
                                       context.pop();
                                     },
                                   ),
@@ -222,7 +214,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       0.0, 20.0, 0.0, 0.0),
                                   child: Container(
                                     width: 163.0,
@@ -236,7 +228,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                           'assets/images/Me.png',
                                         ).image,
                                       ),
-                                      boxShadow: const [
+                                      boxShadow: [
                                         BoxShadow(
                                           blurRadius: 30.0,
                                           color: Color(0x1A000000),
@@ -248,20 +240,20 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                       ],
                                       shape: BoxShape.circle,
                                     ),
-                                    alignment: const AlignmentDirectional(0.0, 0.0),
+                                    alignment: AlignmentDirectional(0.0, 0.0),
                                     child: Stack(
                                       children: [
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: ClipRRect(
                                             borderRadius:
                                                 BorderRadius.circular(100.0),
                                             child: CachedNetworkImage(
                                               fadeInDuration:
-                                                  const Duration(milliseconds: 500),
+                                                  Duration(milliseconds: 500),
                                               fadeOutDuration:
-                                                  const Duration(milliseconds: 500),
+                                                  Duration(milliseconds: 500),
                                               imageUrl: valueOrDefault<String>(
                                                 columnUsersRow?.photoUrl,
                                                 'нет',
@@ -274,7 +266,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                         ),
                                         Align(
                                           alignment:
-                                              const AlignmentDirectional(0.0, 0.0),
+                                              AlignmentDirectional(0.0, 0.0),
                                           child: FlutterFlowIconButton(
                                             borderColor: Colors.transparent,
                                             borderRadius: 30.0,
@@ -288,10 +280,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                               size: 40.0,
                                             ),
                                             onPressed: () async {
-                                              logFirebaseEvent(
-                                                  'EDIT_PROFILE_photo_camera_outlined_ICN_O');
-                                              logFirebaseEvent(
-                                                  'IconButton_upload_media_to_supabase');
                                               final selectedMedia =
                                                   await selectMediaWithSourceBottomSheet(
                                                 context: context,
@@ -379,8 +367,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 }
                                               }
 
-                                              logFirebaseEvent(
-                                                  'IconButton_backend_call');
                                               await UsersTable().update(
                                                 data: {
                                                   'photo_url':
@@ -391,14 +377,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                   currentUserUid,
                                                 ),
                                               );
-                                              logFirebaseEvent(
-                                                  'IconButton_refresh_database_request');
                                               safeSetState(() => _model
                                                   .requestCompleter2 = null);
                                               await _model
                                                   .waitForRequestCompleted2();
-                                              logFirebaseEvent(
-                                                  'IconButton_refresh_database_request');
                                               safeSetState(() => _model
                                                   .requestCompleter1 = null);
                                               await _model
@@ -413,14 +395,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 26.0, 16.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         10.0, 0.0, 0.0, 0.0),
                                     child: Column(
                                       mainAxisSize: MainAxisSize.max,
@@ -444,7 +426,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 6.0, 0.0, 0.0),
                                           child: Text(
                                             valueOrDefault<String>(
@@ -474,14 +456,14 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 30.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Expanded(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     16.0, 0.0, 16.0, 0.0),
                                 child: Column(
                                   mainAxisSize: MainAxisSize.max,
@@ -522,7 +504,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 children: [
                                                   Container(
                                                     width: 200.0,
-                                                    decoration: const BoxDecoration(),
+                                                    decoration: BoxDecoration(),
                                                     child: TextFormField(
                                                       controller: _model
                                                               .firstNameTextController ??=
@@ -557,7 +539,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         enabledBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Color(
                                                                 0xFFB7DDF7),
                                                             width: 1.0,
@@ -570,7 +552,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         focusedBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Color(
                                                                 0xFFB7DDF7),
                                                             width: 1.0,
@@ -583,7 +565,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         errorBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Color(
                                                                 0xFFB7DDF7),
                                                             width: 1.0,
@@ -596,7 +578,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                         focusedErrorBorder:
                                                             OutlineInputBorder(
                                                           borderSide:
-                                                              const BorderSide(
+                                                              BorderSide(
                                                             color: Color(
                                                                 0xFFB7DDF7),
                                                             width: 1.0,
@@ -629,7 +611,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -666,7 +648,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                     Container(
                                                       width: 200.0,
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: TextFormField(
                                                         controller: _model
                                                                 .lastNameTextController ??=
@@ -701,7 +683,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFB7DDF7),
                                                               width: 1.0,
@@ -714,7 +696,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFB7DDF7),
                                                               width: 1.0,
@@ -727,7 +709,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           errorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFB7DDF7),
                                                               width: 1.0,
@@ -740,7 +722,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedErrorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFB7DDF7),
                                                               width: 1.0,
@@ -777,7 +759,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 10.0, 0.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -814,7 +796,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                     Container(
                                                       width: 200.0,
                                                       decoration:
-                                                          const BoxDecoration(),
+                                                          BoxDecoration(),
                                                       child: TextFormField(
                                                         controller: _model
                                                                 .positionTextController ??=
@@ -849,7 +831,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           enabledBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFB7DDF7),
                                                               width: 1.0,
@@ -862,7 +844,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFB7DDF7),
                                                               width: 1.0,
@@ -875,7 +857,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           errorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFB7DDF7),
                                                               width: 1.0,
@@ -888,7 +870,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           focusedErrorBorder:
                                                               OutlineInputBorder(
                                                             borderSide:
-                                                                const BorderSide(
+                                                                BorderSide(
                                                               color: Color(
                                                                   0xFFB7DDF7),
                                                               width: 1.0,
@@ -925,7 +907,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                         ),
                                         Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 20.0, 0.0, 0.0),
                                           child: Row(
                                             mainAxisSize: MainAxisSize.max,
@@ -989,9 +971,9 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                 snapshot.data!;
 
                                             return Container(
-                                              decoration: const BoxDecoration(),
+                                              decoration: BoxDecoration(),
                                               child: Padding(
-                                                padding: const EdgeInsetsDirectional
+                                                padding: EdgeInsetsDirectional
                                                     .fromSTEB(
                                                         0.0, 12.0, 0.0, 0.0),
                                                 child:
@@ -1042,10 +1024,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                           .primaryBackground,
                                                   elevation: 1.0,
                                                   borderColor:
-                                                      const Color(0xFFB7DDF7),
+                                                      Color(0xFFB7DDF7),
                                                   borderWidth: 1.0,
                                                   borderRadius: 16.0,
-                                                  margin: const EdgeInsetsDirectional
+                                                  margin: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 4.0, 16.0, 4.0),
                                                   hidesUnderline: true,
@@ -1059,14 +1041,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                       ],
                                     ),
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 20.0, 0.0, 45.0),
                                       child: FFButtonWidget(
                                         onPressed: () async {
-                                          logFirebaseEvent(
-                                              'EDIT_PROFILE_PAGE__BTN_ON_TAP');
-                                          logFirebaseEvent(
-                                              'Button_backend_call');
                                           await UsersTable().update(
                                             data: {
                                               'first_name': _model
@@ -1084,8 +1062,6 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                               columnUsersRow?.uid,
                                             ),
                                           );
-                                          logFirebaseEvent(
-                                              'Button_navigate_to');
 
                                           context.goNamed('Home');
                                         },
@@ -1094,10 +1070,10 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                           width: double.infinity,
                                           height: 56.0,
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           iconPadding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   0.0, 0.0, 0.0, 0.0),
                                           color: FlutterFlowTheme.of(context)
                                               .primary,
@@ -1110,7 +1086,7 @@ class _EditProfileWidgetState extends State<EditProfileWidget>
                                                     letterSpacing: 0.0,
                                                   ),
                                           elevation: 0.0,
-                                          borderSide: const BorderSide(
+                                          borderSide: BorderSide(
                                             color: Colors.transparent,
                                             width: 1.0,
                                           ),

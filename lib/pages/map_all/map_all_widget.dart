@@ -1,7 +1,11 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'map_all_model.dart';
 export 'map_all_model.dart';
 
@@ -22,7 +26,6 @@ class _MapAllWidgetState extends State<MapAllWidget> {
     super.initState();
     _model = createModel(context, () => MapAllModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'MapAll'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -39,7 +42,7 @@ class _MapAllWidgetState extends State<MapAllWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFF9F7F7),
+        backgroundColor: Color(0xFFF9F7F7),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
@@ -54,8 +57,6 @@ class _MapAllWidgetState extends State<MapAllWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              logFirebaseEvent('MAP_ALL_PAGE_close_ICN_ON_TAP');
-              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),
@@ -68,29 +69,29 @@ class _MapAllWidgetState extends State<MapAllWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    SizedBox(
+                    Container(
                       width: MediaQuery.sizeOf(context).width * 1.0,
                       height: 998.0,
                       child: Stack(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         children: [
                           Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: ClipRRect(
                               borderRadius: BorderRadius.circular(8.0),
                               child: Image.asset(
@@ -102,20 +103,17 @@ class _MapAllWidgetState extends State<MapAllWidget> {
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(-0.12, -0.66),
+                            alignment: AlignmentDirectional(-0.12, -0.66),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                logFirebaseEvent('MAP_ALL_PAGE_UC_ON_TAP');
-                                logFirebaseEvent('UC_navigate_to');
-
                                 context.pushNamed(
                                   'MapUC',
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
+                                    kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
                                       duration: Duration(milliseconds: 0),
@@ -126,26 +124,22 @@ class _MapAllWidgetState extends State<MapAllWidget> {
                               child: Container(
                                 width: 61.0,
                                 height: 60.0,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                               ),
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(0.34, -0.19),
+                            alignment: AlignmentDirectional(0.34, -0.19),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                logFirebaseEvent(
-                                    'MAP_ALL_PAGE_FourthFloor_ON_TAP');
-                                logFirebaseEvent('FourthFloor_navigate_to');
-
                                 context.pushNamed(
                                   'MapFourthFloor',
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
+                                    kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
                                       duration: Duration(milliseconds: 0),
@@ -156,26 +150,22 @@ class _MapAllWidgetState extends State<MapAllWidget> {
                               child: Container(
                                 width: 63.0,
                                 height: 56.0,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                               ),
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(0.23, -0.35),
+                            alignment: AlignmentDirectional(0.23, -0.35),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                logFirebaseEvent(
-                                    'MAP_ALL_PAGE_ThirdFloor_ON_TAP');
-                                logFirebaseEvent('ThirdFloor_navigate_to');
-
                                 context.pushNamed(
                                   'MapThirdFloor',
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
+                                    kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
                                       duration: Duration(milliseconds: 0),
@@ -186,26 +176,22 @@ class _MapAllWidgetState extends State<MapAllWidget> {
                               child: Container(
                                 width: 62.0,
                                 height: 59.0,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                               ),
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(0.1, -0.48),
+                            alignment: AlignmentDirectional(0.1, -0.48),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                logFirebaseEvent(
-                                    'MAP_ALL_PAGE_SecondFloor_ON_TAP');
-                                logFirebaseEvent('SecondFloor_navigate_to');
-
                                 context.pushNamed(
                                   'MapSecondFloor',
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
+                                    kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
                                       duration: Duration(milliseconds: 0),
@@ -216,25 +202,22 @@ class _MapAllWidgetState extends State<MapAllWidget> {
                               child: Container(
                                 width: 62.0,
                                 height: 61.0,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                               ),
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(-0.57, 0.29),
+                            alignment: AlignmentDirectional(-0.57, 0.29),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                logFirebaseEvent('MAP_ALL_PAGE_BO_ON_TAP');
-                                logFirebaseEvent('BO_navigate_to');
-
                                 context.pushNamed(
                                   'MapBO',
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
+                                    kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
                                       duration: Duration(milliseconds: 0),
@@ -245,25 +228,22 @@ class _MapAllWidgetState extends State<MapAllWidget> {
                               child: Container(
                                 width: 67.0,
                                 height: 82.0,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                               ),
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(-0.46, -0.04),
+                            alignment: AlignmentDirectional(-0.46, -0.04),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                logFirebaseEvent('MAP_ALL_PAGE_Sales_ON_TAP');
-                                logFirebaseEvent('Sales_navigate_to');
-
                                 context.pushNamed(
                                   'MapSales',
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
+                                    kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
                                       duration: Duration(milliseconds: 0),
@@ -274,25 +254,22 @@ class _MapAllWidgetState extends State<MapAllWidget> {
                               child: Container(
                                 width: 76.0,
                                 height: 72.0,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                               ),
                             ),
                           ),
                           Align(
-                            alignment: const AlignmentDirectional(-0.73, 0.74),
+                            alignment: AlignmentDirectional(-0.73, 0.74),
                             child: InkWell(
                               splashColor: Colors.transparent,
                               focusColor: Colors.transparent,
                               hoverColor: Colors.transparent,
                               highlightColor: Colors.transparent,
                               onTap: () async {
-                                logFirebaseEvent('MAP_ALL_PAGE_TO_ON_TAP');
-                                logFirebaseEvent('TO_navigate_to');
-
                                 context.pushNamed(
                                   'MapTO',
                                   extra: <String, dynamic>{
-                                    kTransitionInfoKey: const TransitionInfo(
+                                    kTransitionInfoKey: TransitionInfo(
                                       hasTransition: true,
                                       transitionType: PageTransitionType.fade,
                                       duration: Duration(milliseconds: 0),
@@ -303,7 +280,7 @@ class _MapAllWidgetState extends State<MapAllWidget> {
                               child: Container(
                                 width: 95.0,
                                 height: 82.0,
-                                decoration: const BoxDecoration(),
+                                decoration: BoxDecoration(),
                               ),
                             ),
                           ),

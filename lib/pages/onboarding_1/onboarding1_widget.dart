@@ -2,8 +2,13 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'onboarding1_model.dart';
 export 'onboarding1_model.dart';
 
@@ -27,8 +32,6 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
     super.initState();
     _model = createModel(context, () => Onboarding1Model());
 
-    logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'Onboarding_1'});
     animationsMap.addAll({
       'columnOnPageLoadAnimation1': AnimationInfo(
         trigger: AnimationTrigger.onPageLoad,
@@ -76,11 +79,11 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         body: Align(
-          alignment: const AlignmentDirectional(0.0, 0.0),
+          alignment: AlignmentDirectional(0.0, 0.0),
           child: Container(
             width: 700.0,
-            decoration: const BoxDecoration(),
-            child: SizedBox(
+            decoration: BoxDecoration(),
+            child: Container(
               width: MediaQuery.sizeOf(context).width * 1.0,
               height: MediaQuery.sizeOf(context).height * 1.0,
               child: PageView(
@@ -91,16 +94,16 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      const Spacer(),
+                      Spacer(),
                       Image.asset(
                         'assets/images/Pose_0017.png',
                         width: MediaQuery.sizeOf(context).width * 1.0,
                         height: 375.0,
                         fit: BoxFit.contain,
                       ),
-                      const Spacer(),
+                      Spacer(),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 24.0, 16.0, 0.0),
                         child: Text(
                           'Мы очень рады, что ты присоединился к нашей команде',
@@ -109,14 +112,14 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                               .displaySmall
                               .override(
                                 fontFamily: 'Roboto',
-                                color: const Color(0xFF112D4E),
+                                color: Color(0xFF112D4E),
                                 letterSpacing: 0.0,
                                 lineHeight: 1.45,
                               ),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 24.0, 16.0, 0.0),
                         child: Text(
                           'Курс, который ты будешь изучать в течение следующих нескольких дней, поможет тебе быстро освоиться и узнать всю необходимую информацию',
@@ -130,14 +133,12 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 20.0, 16.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            logFirebaseEvent('ONBOARDING_1_PAGE__BTN_ON_TAP');
-                            logFirebaseEvent('Button_page_view');
                             await _model.pageViewController?.nextPage(
-                              duration: const Duration(milliseconds: 300),
+                              duration: Duration(milliseconds: 300),
                               curve: Curves.ease,
                             );
                           },
@@ -145,9 +146,9 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                           options: FFButtonOptions(
                             width: 200.0,
                             height: 56.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -158,7 +159,7 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                                   letterSpacing: 0.0,
                                 ),
                             elevation: 0.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -166,23 +167,23 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                           ),
                         ),
                       ),
-                      const Spacer(flex: 2),
+                      Spacer(flex: 2),
                     ],
                   ).animateOnPageLoad(
                       animationsMap['columnOnPageLoadAnimation1']!),
                   Column(
                     mainAxisSize: MainAxisSize.max,
                     children: [
-                      const Spacer(),
+                      Spacer(),
                       Image.asset(
                         'assets/images/Pose_0017.png',
                         width: MediaQuery.sizeOf(context).width * 1.0,
                         height: 375.0,
                         fit: BoxFit.contain,
                       ),
-                      const Spacer(),
+                      Spacer(),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 24.0, 16.0, 0.0),
                         child: Text(
                           'Когда угодно, где угодно',
@@ -191,13 +192,13 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                               .displaySmall
                               .override(
                                 fontFamily: 'Roboto',
-                                color: const Color(0xFF112D4E),
+                                color: Color(0xFF112D4E),
                                 letterSpacing: 0.0,
                               ),
                         ),
                       ),
                       Padding(
-                        padding: const EdgeInsetsDirectional.fromSTEB(
+                        padding: EdgeInsetsDirectional.fromSTEB(
                             16.0, 24.0, 16.0, 0.0),
                         child: Text(
                           'Учитесь с удовольствием вместе с нами, где бы вы ни находились!',
@@ -211,21 +212,18 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                       ),
                       Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                         child: FFButtonWidget(
                           onPressed: () async {
-                            logFirebaseEvent('ONBOARDING_1_PAGE__BTN_ON_TAP');
-                            logFirebaseEvent('Button_navigate_to');
-
                             context.goNamed('Login');
                           },
                           text: 'Начать',
                           options: FFButtonOptions(
                             width: 200.0,
                             height: 56.0,
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
-                            iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                            iconPadding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 0.0, 0.0, 0.0),
                             color: FlutterFlowTheme.of(context).primary,
                             textStyle: FlutterFlowTheme.of(context)
@@ -236,7 +234,7 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                                   letterSpacing: 0.0,
                                 ),
                             elevation: 0.0,
-                            borderSide: const BorderSide(
+                            borderSide: BorderSide(
                               color: Colors.transparent,
                               width: 1.0,
                             ),
@@ -244,7 +242,7 @@ class _Onboarding1WidgetState extends State<Onboarding1Widget>
                           ),
                         ),
                       ),
-                      const Spacer(flex: 2),
+                      Spacer(flex: 2),
                     ],
                   ).animateOnPageLoad(
                       animationsMap['columnOnPageLoadAnimation2']!),

@@ -1,7 +1,11 @@
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'reset_password_success_model.dart';
 export 'reset_password_success_model.dart';
 
@@ -24,8 +28,6 @@ class _ResetPasswordSuccessWidgetState
     super.initState();
     _model = createModel(context, () => ResetPasswordSuccessModel());
 
-    logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'ResetPasswordSuccess'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -57,8 +59,6 @@ class _ResetPasswordSuccessWidgetState
               size: 30.0,
             ),
             onPressed: () async {
-              logFirebaseEvent('RESET_PASSWORD_SUCCESS_arrow_back_rounde');
-              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),
@@ -71,19 +71,19 @@ class _ResetPasswordSuccessWidgetState
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Padding(
-                padding: const EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
+                padding: EdgeInsetsDirectional.fromSTEB(16.0, 0.0, 16.0, 0.0),
                 child: Column(
                   mainAxisSize: MainAxisSize.max,
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -97,7 +97,7 @@ class _ResetPasswordSuccessWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(40.0, 0.0, 40.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -120,7 +120,7 @@ class _ResetPasswordSuccessWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 20.0, 0.0, 0.0),
                       child: Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -143,7 +143,7 @@ class _ResetPasswordSuccessWidgetState
                     ),
                     Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(0.0, 28.0, 0.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(0.0, 28.0, 0.0, 0.0),
                       child: FlutterFlowIconButton(
                         borderColor: FlutterFlowTheme.of(context).primary,
                         borderRadius: 30.0,
@@ -156,9 +156,6 @@ class _ResetPasswordSuccessWidgetState
                           size: 30.0,
                         ),
                         onPressed: () async {
-                          logFirebaseEvent(
-                              'RESET_PASSWORD_SUCCESS_arrow_right_alt_o');
-                          logFirebaseEvent('IconButton_navigate_back');
                           context.pop();
                         },
                       ),

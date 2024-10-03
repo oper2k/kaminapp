@@ -4,10 +4,12 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'dart:async';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'chat_model.dart';
 export 'chat_model.dart';
@@ -34,7 +36,6 @@ class _ChatWidgetState extends State<ChatWidget> {
     super.initState();
     _model = createModel(context, () => ChatModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Chat'});
     _model.textController ??= TextEditingController();
     _model.textFieldFocusNode ??= FocusNode();
 
@@ -56,7 +57,7 @@ class _ChatWidgetState extends State<ChatWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFF9F7F7),
+        backgroundColor: Color(0xFFF9F7F7),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
@@ -71,8 +72,6 @@ class _ChatWidgetState extends State<ChatWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              logFirebaseEvent('CHAT_PAGE_close_ICN_ON_TAP');
-              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),
@@ -85,23 +84,23 @@ class _ChatWidgetState extends State<ChatWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Stack(
                 children: [
                   Container(
                     width: double.infinity,
                     height: double.infinity,
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       gradient: LinearGradient(
                         colors: [Color(0xFFDAEFFB), Color(0xFF8EBEE7)],
                         stops: [0.0, 1.0],
@@ -121,7 +120,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                   ),
                   Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 75.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 75.0),
                     child: FutureBuilder<List<ChatMessagesInfoViewRow>>(
                       future: (_model.requestCompleter ??= Completer<
                               List<ChatMessagesInfoViewRow>>()
@@ -129,7 +128,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                               queryFn: (q) => q
                                   .eq(
                                     'chat',
-                                    widget.chat?.uid,
+                                    widget!.chat?.uid,
                                   )
                                   .order('created_at'),
                             )))
@@ -154,15 +153,11 @@ class _ChatWidgetState extends State<ChatWidget> {
 
                         return RefreshIndicator(
                           onRefresh: () async {
-                            logFirebaseEvent(
-                                'CHAT_ListView_ywdphcij_ON_PULL_TO_REFRES');
-                            logFirebaseEvent(
-                                'ListView_refresh_database_request');
                             safeSetState(() => _model.requestCompleter = null);
                             await _model.waitForRequestCompleted();
                           },
                           child: ListView.builder(
-                            padding: const EdgeInsets.fromLTRB(
+                            padding: EdgeInsets.fromLTRB(
                               0,
                               10.0,
                               0,
@@ -184,7 +179,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                           .rlUserOwner !=
                                       currentUserUid)
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 12.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -194,13 +189,13 @@ class _ChatWidgetState extends State<ChatWidget> {
                                           if (currentUserUid !=
                                               FFAppState().userAdmin)
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(8.0, 0.0, 8.0, 0.0),
                                               child: Container(
                                                 width: 40.0,
                                                 height: 40.0,
                                                 clipBehavior: Clip.antiAlias,
-                                                decoration: const BoxDecoration(
+                                                decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
                                                 ),
                                                 child: Image.asset(
@@ -212,20 +207,20 @@ class _ChatWidgetState extends State<ChatWidget> {
                                           if (currentUserUid ==
                                               FFAppState().userAdmin)
                                             Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(8.0, 0.0, 8.0, 0.0),
                                               child: Container(
                                                 width: 40.0,
                                                 height: 40.0,
                                                 clipBehavior: Clip.antiAlias,
-                                                decoration: const BoxDecoration(
+                                                decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
                                                 ),
                                                 child: CachedNetworkImage(
                                                   fadeInDuration:
-                                                      const Duration(milliseconds: 0),
+                                                      Duration(milliseconds: 0),
                                                   fadeOutDuration:
-                                                      const Duration(milliseconds: 0),
+                                                      Duration(milliseconds: 0),
                                                   imageUrl:
                                                       valueOrDefault<String>(
                                                     listViewChatMessagesInfoViewRow
@@ -238,14 +233,14 @@ class _ChatWidgetState extends State<ChatWidget> {
                                             ),
                                           Flexible(
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(0.0, 0.0, 8.0, 0.0),
                                               child: Container(
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryBackground,
-                                                  boxShadow: const [
+                                                  boxShadow: [
                                                     BoxShadow(
                                                       blurRadius: 12.0,
                                                       color: Color(0x19333333),
@@ -256,7 +251,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                     )
                                                   ],
                                                   borderRadius:
-                                                      const BorderRadius.only(
+                                                      BorderRadius.only(
                                                     bottomLeft:
                                                         Radius.circular(0.0),
                                                     bottomRight:
@@ -281,7 +276,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         16.0,
@@ -303,7 +298,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         5.0,
@@ -352,7 +347,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                           .rlUserOwner ==
                                       currentUserUid)
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 0.0, 0.0, 12.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
@@ -363,14 +358,14 @@ class _ChatWidgetState extends State<ChatWidget> {
                                         children: [
                                           Flexible(
                                             child: Padding(
-                                              padding: const EdgeInsetsDirectional
+                                              padding: EdgeInsetsDirectional
                                                   .fromSTEB(8.0, 0.0, 0.0, 0.0),
                                               child: Container(
                                                 decoration: BoxDecoration(
                                                   color: FlutterFlowTheme.of(
                                                           context)
                                                       .secondaryBackground,
-                                                  boxShadow: const [
+                                                  boxShadow: [
                                                     BoxShadow(
                                                       blurRadius: 12.0,
                                                       color: Color(0x19333333),
@@ -381,7 +376,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                     )
                                                   ],
                                                   borderRadius:
-                                                      const BorderRadius.only(
+                                                      BorderRadius.only(
                                                     bottomLeft:
                                                         Radius.circular(22.0),
                                                     bottomRight:
@@ -406,7 +401,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                         children: [
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         16.0,
@@ -428,7 +423,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                           ),
                                                           Padding(
                                                             padding:
-                                                                const EdgeInsetsDirectional
+                                                                EdgeInsetsDirectional
                                                                     .fromSTEB(
                                                                         16.0,
                                                                         5.0,
@@ -472,7 +467,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                           ),
                                           Padding(
                                             padding:
-                                                const EdgeInsetsDirectional.fromSTEB(
+                                                EdgeInsetsDirectional.fromSTEB(
                                                     8.0, 0.0, 8.0, 0.0),
                                             child: Container(
                                               decoration: BoxDecoration(
@@ -485,14 +480,14 @@ class _ChatWidgetState extends State<ChatWidget> {
                                                 width: 40.0,
                                                 height: 40.0,
                                                 clipBehavior: Clip.antiAlias,
-                                                decoration: const BoxDecoration(
+                                                decoration: BoxDecoration(
                                                   shape: BoxShape.circle,
                                                 ),
                                                 child: CachedNetworkImage(
                                                   fadeInDuration:
-                                                      const Duration(milliseconds: 0),
+                                                      Duration(milliseconds: 0),
                                                   fadeOutDuration:
-                                                      const Duration(milliseconds: 0),
+                                                      Duration(milliseconds: 0),
                                                   imageUrl:
                                                       valueOrDefault<String>(
                                                     listViewChatMessagesInfoViewRow
@@ -516,7 +511,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                     ),
                   ),
                   Align(
-                    alignment: const AlignmentDirectional(0.0, 1.0),
+                    alignment: AlignmentDirectional(0.0, 1.0),
                     child: Container(
                       decoration: BoxDecoration(
                         color: FlutterFlowTheme.of(context).primaryBtnText,
@@ -526,7 +521,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                         children: [
                           Expanded(
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 12.0, 16.0, 12.0),
                               child: TextFormField(
                                 controller: _model.textController,
@@ -554,14 +549,14 @@ class _ChatWidgetState extends State<ChatWidget> {
                                         letterSpacing: 0.0,
                                       ),
                                   enabledBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0xFF8EBEE7),
                                       width: 1.0,
                                     ),
                                     borderRadius: BorderRadius.circular(16.0),
                                   ),
                                   focusedBorder: OutlineInputBorder(
-                                    borderSide: const BorderSide(
+                                    borderSide: BorderSide(
                                       color: Color(0xFF8EBEE7),
                                       width: 1.0,
                                     ),
@@ -582,7 +577,7 @@ class _ChatWidgetState extends State<ChatWidget> {
                                     borderRadius: BorderRadius.circular(16.0),
                                   ),
                                   filled: true,
-                                  fillColor: const Color(0xFFF9FAFB),
+                                  fillColor: Color(0xFFF9FAFB),
                                 ),
                                 style: FlutterFlowTheme.of(context)
                                     .bodyMedium
@@ -598,14 +593,14 @@ class _ChatWidgetState extends State<ChatWidget> {
                             ),
                           ),
                           Padding(
-                            padding: const EdgeInsetsDirectional.fromSTEB(
+                            padding: EdgeInsetsDirectional.fromSTEB(
                                 0.0, 12.0, 16.0, 12.0),
                             child: FlutterFlowIconButton(
-                              borderColor: const Color(0xFF2E5896),
+                              borderColor: Color(0xFF2E5896),
                               borderRadius: 20.0,
                               borderWidth: 1.0,
                               buttonSize: 40.0,
-                              fillColor: const Color(0xFF2E5896),
+                              fillColor: Color(0xFF2E5896),
                               icon: Icon(
                                 Icons.arrow_upward,
                                 color: FlutterFlowTheme.of(context)
@@ -613,16 +608,13 @@ class _ChatWidgetState extends State<ChatWidget> {
                                 size: 24.0,
                               ),
                               onPressed: () async {
-                                logFirebaseEvent(
-                                    'CHAT_PAGE_arrow_upward_ICN_ON_TAP');
-                                if (_model.textController.text != '') {
-                                  logFirebaseEvent('IconButton_backend_call');
+                                if (_model.textController.text != null &&
+                                    _model.textController.text != '') {
                                   await MessagesTable().insert({
-                                    'chat': widget.chat?.uid,
+                                    'chat': widget!.chat?.uid,
                                     'name': _model.textController.text,
                                     'rl_user_owner': currentUserUid,
                                   });
-                                  logFirebaseEvent('IconButton_backend_call');
                                   await ChatsTable().update(
                                     data: {
                                       'last_message':
@@ -633,27 +625,22 @@ class _ChatWidgetState extends State<ChatWidget> {
                                     },
                                     matchingRows: (rows) => rows.eq(
                                       'uid',
-                                      widget.chat?.uid,
+                                      widget!.chat?.uid,
                                     ),
                                   );
-                                  logFirebaseEvent(
-                                      'IconButton_refresh_database_request');
                                   safeSetState(
                                       () => _model.requestCompleter = null);
                                   await _model.waitForRequestCompleted();
-                                  logFirebaseEvent('IconButton_backend_call');
                                   await OneSignalGroup.sendNotificationsCall
                                       .call(
                                     receiverId:
                                         currentUserUid == FFAppState().userAdmin
-                                            ? widget.chat?.rlUserClient
-                                            : widget.chat?.rlUserAdmin,
+                                            ? widget!.chat?.rlUserClient
+                                            : widget!.chat?.rlUserAdmin,
                                     heading: 'Новое сообшение',
                                     content: _model.textController.text,
                                   );
 
-                                  logFirebaseEvent(
-                                      'IconButton_clear_text_fields_pin_codes');
                                   safeSetState(() {
                                     _model.textController?.clear();
                                   });

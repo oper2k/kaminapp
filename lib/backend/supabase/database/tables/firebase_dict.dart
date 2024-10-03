@@ -9,7 +9,7 @@ class FirebaseDictTable extends SupabaseTable<FirebaseDictRow> {
 }
 
 class FirebaseDictRow extends SupabaseDataRow {
-  FirebaseDictRow(super.data);
+  FirebaseDictRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => FirebaseDictTable();
@@ -23,6 +23,6 @@ class FirebaseDictRow extends SupabaseDataRow {
   DateTime? get updatedAt => getField<DateTime>('updated_at');
   set updatedAt(DateTime? value) => setField<DateTime>('updated_at', value);
 
-  dynamic get attrs => getField<dynamic>('attrs');
-  set attrs(dynamic value) => setField<dynamic>('attrs', value);
+  dynamic? get attrs => getField<dynamic>('attrs');
+  set attrs(dynamic? value) => setField<dynamic>('attrs', value);
 }

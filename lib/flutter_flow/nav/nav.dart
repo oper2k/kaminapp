@@ -1,6 +1,9 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:go_router/go_router.dart';
+import 'package:page_transition/page_transition.dart';
 import 'package:provider/provider.dart';
 import '/backend/backend.dart';
 import '/backend/schema/structs/index.dart';
@@ -10,7 +13,12 @@ import '/backend/supabase/supabase.dart';
 import '/auth/base_auth_user_provider.dart';
 
 import '/index.dart';
+import '/main.dart';
+import '/flutter_flow/flutter_flow_theme.dart';
+import '/flutter_flow/lat_lng.dart';
+import '/flutter_flow/place.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import 'serialization_util.dart';
 
 export 'package:go_router/go_router.dart';
 export 'serialization_util.dart';
@@ -75,48 +83,48 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
       debugLogDiagnostics: true,
       refreshListenable: appStateNotifier,
       errorBuilder: (context, state) =>
-          appStateNotifier.loggedIn ? const HomeWidget() : const Onboarding1Widget(),
+          appStateNotifier.loggedIn ? HomeWidget() : Onboarding1Widget(),
       routes: [
         FFRoute(
           name: '_initialize',
           path: '/',
           builder: (context, _) =>
-              appStateNotifier.loggedIn ? const HomeWidget() : const Onboarding1Widget(),
+              appStateNotifier.loggedIn ? HomeWidget() : Onboarding1Widget(),
           routes: [
             FFRoute(
               name: 'Onboarding_1',
               path: 'onboarding1',
-              builder: (context, params) => const Onboarding1Widget(),
+              builder: (context, params) => Onboarding1Widget(),
             ),
             FFRoute(
               name: 'Login',
               path: 'login',
-              builder: (context, params) => const LoginWidget(),
+              builder: (context, params) => LoginWidget(),
             ),
             FFRoute(
               name: 'Signin',
               path: 'signin',
-              builder: (context, params) => const SigninWidget(),
+              builder: (context, params) => SigninWidget(),
             ),
             FFRoute(
               name: 'ResetPassword',
               path: 'resetPassword',
-              builder: (context, params) => const ResetPasswordWidget(),
+              builder: (context, params) => ResetPasswordWidget(),
             ),
             FFRoute(
               name: 'ResetPasswordSuccess',
               path: 'resetPasswordSuccess',
-              builder: (context, params) => const ResetPasswordSuccessWidget(),
+              builder: (context, params) => ResetPasswordSuccessWidget(),
             ),
             FFRoute(
               name: 'Home',
               path: 'home',
-              builder: (context, params) => const HomeWidget(),
+              builder: (context, params) => HomeWidget(),
             ),
             FFRoute(
               name: 'Edit_Profile',
               path: 'editProfile',
-              builder: (context, params) => const EditProfileWidget(),
+              builder: (context, params) => EditProfileWidget(),
             ),
             FFRoute(
               name: 'Basic_Course',
@@ -159,12 +167,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'TestEnd',
               path: 'testEnd',
-              builder: (context, params) => const TestEndWidget(),
+              builder: (context, params) => TestEndWidget(),
             ),
             FFRoute(
               name: 'Admin',
               path: 'admin',
-              builder: (context, params) => const AdminWidget(),
+              builder: (context, params) => AdminWidget(),
             ),
             FFRoute(
               name: 'AdminTestDetail',
@@ -179,57 +187,57 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'Dictionary',
               path: 'dictionary',
-              builder: (context, params) => const DictionaryWidget(),
+              builder: (context, params) => DictionaryWidget(),
             ),
             FFRoute(
               name: 'MapAll',
               path: 'mapAll',
-              builder: (context, params) => const MapAllWidget(),
+              builder: (context, params) => MapAllWidget(),
             ),
             FFRoute(
               name: 'MapUC',
               path: 'mapUC',
-              builder: (context, params) => const MapUCWidget(),
+              builder: (context, params) => MapUCWidget(),
             ),
             FFRoute(
               name: 'MapSecondFloor',
               path: 'mapSecondFloor',
-              builder: (context, params) => const MapSecondFloorWidget(),
+              builder: (context, params) => MapSecondFloorWidget(),
             ),
             FFRoute(
               name: 'MapThirdFloor',
               path: 'mapThirdFloor',
-              builder: (context, params) => const MapThirdFloorWidget(),
+              builder: (context, params) => MapThirdFloorWidget(),
             ),
             FFRoute(
               name: 'MapFourthFloor',
               path: 'mapFourthFloor',
-              builder: (context, params) => const MapFourthFloorWidget(),
+              builder: (context, params) => MapFourthFloorWidget(),
             ),
             FFRoute(
               name: 'MapSales',
               path: 'mapSales',
-              builder: (context, params) => const MapSalesWidget(),
+              builder: (context, params) => MapSalesWidget(),
             ),
             FFRoute(
               name: 'MapBO',
               path: 'mapBO',
-              builder: (context, params) => const MapBOWidget(),
+              builder: (context, params) => MapBOWidget(),
             ),
             FFRoute(
               name: 'MapTO',
               path: 'mapTO',
-              builder: (context, params) => const MapTOWidget(),
+              builder: (context, params) => MapTOWidget(),
             ),
             FFRoute(
               name: 'Cheklist',
               path: 'cheklist',
-              builder: (context, params) => const CheklistWidget(),
+              builder: (context, params) => CheklistWidget(),
             ),
             FFRoute(
               name: 'Contacts',
               path: 'contacts',
-              builder: (context, params) => const ContactsWidget(),
+              builder: (context, params) => ContactsWidget(),
             ),
             FFRoute(
               name: 'Chat',
@@ -244,7 +252,7 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'AllChats',
               path: 'allChats',
-              builder: (context, params) => const AllChatsWidget(),
+              builder: (context, params) => AllChatsWidget(),
             ),
             FFRoute(
               name: 'TestEndSuccess',
@@ -259,12 +267,12 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
             FFRoute(
               name: 'MapEat',
               path: 'mapEat',
-              builder: (context, params) => const MapEatWidget(),
+              builder: (context, params) => MapEatWidget(),
             ),
             FFRoute(
               name: 'AllUsers',
               path: 'allUsers',
-              builder: (context, params) => const AllUsersWidget(),
+              builder: (context, params) => AllUsersWidget(),
             )
           ].map((r) => r.toRoute(appStateNotifier)).toList(),
         ),
@@ -502,7 +510,7 @@ class TransitionInfo {
   final Duration duration;
   final Alignment? alignment;
 
-  static TransitionInfo appDefault() => const TransitionInfo(hasTransition: false);
+  static TransitionInfo appDefault() => TransitionInfo(hasTransition: false);
 }
 
 class RootPageContext {

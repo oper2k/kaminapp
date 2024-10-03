@@ -2,8 +2,12 @@ import '/components/custom_dialog_map/custom_dialog_map_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'map_second_floor_model.dart';
 export 'map_second_floor_model.dart';
@@ -25,8 +29,6 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
     super.initState();
     _model = createModel(context, () => MapSecondFloorModel());
 
-    logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'MapSecondFloor'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -43,7 +45,7 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFF9F7F7),
+        backgroundColor: Color(0xFFF9F7F7),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
@@ -58,8 +60,6 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              logFirebaseEvent('MAP_SECOND_FLOOR_PAGE_close_ICN_ON_TAP');
-              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),
@@ -72,31 +72,31 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
-                      child: SizedBox(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Container(
                         width: 307.0,
                         height: 1088.0,
                         child: Stack(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
@@ -108,7 +108,7 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.85, -0.99),
+                              alignment: AlignmentDirectional(0.85, -0.99),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -116,17 +116,14 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    logFirebaseEvent(
-                                        'MAP_SECOND_FLOOR_PAGE_k211_ON_TAP');
-                                    logFirebaseEvent('k211_alert_dialog');
                                     await showAlignedDialog(
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: const AlignmentDirectional(
+                                      targetAnchor: AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: const AlignmentDirectional(
+                                      followerAnchor: AlignmentDirectional(
                                               1.0, -1.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -137,7 +134,7 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                               onTap: () =>
                                                   FocusScope.of(dialogContext)
                                                       .unfocus(),
-                                              child: const CustomDialogMapWidget(
+                                              child: CustomDialogMapWidget(
                                                 nameSearch: 'k211',
                                               ),
                                             ),
@@ -149,13 +146,13 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-0.66, -0.88),
+                              alignment: AlignmentDirectional(-0.66, -0.88),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -163,17 +160,14 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    logFirebaseEvent(
-                                        'MAP_SECOND_FLOOR_PAGE_k210_ON_TAP');
-                                    logFirebaseEvent('k210_alert_dialog');
                                     await showAlignedDialog(
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: const AlignmentDirectional(
+                                      targetAnchor: AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: const AlignmentDirectional(
+                                      followerAnchor: AlignmentDirectional(
                                               -1.0, -1.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -184,7 +178,7 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                               onTap: () =>
                                                   FocusScope.of(dialogContext)
                                                       .unfocus(),
-                                              child: const CustomDialogMapWidget(
+                                              child: CustomDialogMapWidget(
                                                 nameSearch: 'k210',
                                               ),
                                             ),
@@ -196,13 +190,13 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.84, -0.55),
+                              alignment: AlignmentDirectional(0.84, -0.55),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -210,17 +204,14 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    logFirebaseEvent(
-                                        'MAP_SECOND_FLOOR_PAGE_k213_ON_TAP');
-                                    logFirebaseEvent('k213_alert_dialog');
                                     await showAlignedDialog(
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: const AlignmentDirectional(
+                                      targetAnchor: AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: const AlignmentDirectional(
+                                      followerAnchor: AlignmentDirectional(
                                               1.0, 0.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -231,7 +222,7 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                               onTap: () =>
                                                   FocusScope.of(dialogContext)
                                                       .unfocus(),
-                                              child: const CustomDialogMapWidget(
+                                              child: CustomDialogMapWidget(
                                                 nameSearch: 'k213',
                                               ),
                                             ),
@@ -243,13 +234,13 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-0.64, -0.3),
+                              alignment: AlignmentDirectional(-0.64, -0.3),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -257,17 +248,14 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    logFirebaseEvent(
-                                        'MAP_SECOND_FLOOR_PAGE_k208_ON_TAP');
-                                    logFirebaseEvent('k208_alert_dialog');
                                     await showAlignedDialog(
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: const AlignmentDirectional(
+                                      targetAnchor: AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: const AlignmentDirectional(
+                                      followerAnchor: AlignmentDirectional(
                                               -1.0, 0.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -278,7 +266,7 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                               onTap: () =>
                                                   FocusScope.of(dialogContext)
                                                       .unfocus(),
-                                              child: const CustomDialogMapWidget(
+                                              child: CustomDialogMapWidget(
                                                 nameSearch: 'k208',
                                               ),
                                             ),
@@ -290,13 +278,13 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.85, -0.21),
+                              alignment: AlignmentDirectional(0.85, -0.21),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -304,17 +292,14 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    logFirebaseEvent(
-                                        'MAP_SECOND_FLOOR_PAGE_k214_ON_TAP');
-                                    logFirebaseEvent('k214_alert_dialog');
                                     await showAlignedDialog(
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: const AlignmentDirectional(
+                                      targetAnchor: AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: const AlignmentDirectional(
+                                      followerAnchor: AlignmentDirectional(
                                               1.0, 0.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -325,7 +310,7 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                               onTap: () =>
                                                   FocusScope.of(dialogContext)
                                                       .unfocus(),
-                                              child: const CustomDialogMapWidget(
+                                              child: CustomDialogMapWidget(
                                                 nameSearch: 'k214',
                                               ),
                                             ),
@@ -337,13 +322,13 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-0.66, 0.04),
+                              alignment: AlignmentDirectional(-0.66, 0.04),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -351,17 +336,14 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    logFirebaseEvent(
-                                        'MAP_SECOND_FLOOR_PAGE_k207_ON_TAP');
-                                    logFirebaseEvent('k207_alert_dialog');
                                     await showAlignedDialog(
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: const AlignmentDirectional(
+                                      targetAnchor: AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: const AlignmentDirectional(
+                                      followerAnchor: AlignmentDirectional(
                                               -1.0, 0.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -372,7 +354,7 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                               onTap: () =>
                                                   FocusScope.of(dialogContext)
                                                       .unfocus(),
-                                              child: const CustomDialogMapWidget(
+                                              child: CustomDialogMapWidget(
                                                 nameSearch: 'k207',
                                               ),
                                             ),
@@ -384,13 +366,13 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(0.85, 0.03),
+                              alignment: AlignmentDirectional(0.85, 0.03),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -398,17 +380,14 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    logFirebaseEvent(
-                                        'MAP_SECOND_FLOOR_PAGE_k215_ON_TAP');
-                                    logFirebaseEvent('k215_alert_dialog');
                                     await showAlignedDialog(
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: const AlignmentDirectional(
+                                      targetAnchor: AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: const AlignmentDirectional(
+                                      followerAnchor: AlignmentDirectional(
                                               1.0, 0.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -419,7 +398,7 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                               onTap: () =>
                                                   FocusScope.of(dialogContext)
                                                       .unfocus(),
-                                              child: const CustomDialogMapWidget(
+                                              child: CustomDialogMapWidget(
                                                 nameSearch: 'k215',
                                               ),
                                             ),
@@ -431,7 +410,7 @@ class _MapSecondFloorWidgetState extends State<MapSecondFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                   ),
                                 ),
                               ),

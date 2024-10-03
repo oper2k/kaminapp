@@ -1,6 +1,8 @@
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'test_questions_choose_model.dart';
 export 'test_questions_choose_model.dart';
@@ -53,9 +55,9 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
     context.watch<FFAppState>();
 
     return Align(
-      alignment: const AlignmentDirectional(0.0, -1.0),
+      alignment: AlignmentDirectional(0.0, -1.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -65,7 +67,7 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
               children: [
                 Expanded(
                   child: Text(
-                    widget.name!,
+                    widget!.name!,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Roboto',
                           letterSpacing: 0.0,
@@ -75,10 +77,10 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
               ],
             ),
             Padding(
-              padding: const EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),
+              padding: EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),
               child: Builder(
                 builder: (context) {
-                  final questions = widget.questions?.toList() ?? [];
+                  final questions = widget!.questions?.toList() ?? [];
 
                   return Column(
                     mainAxisSize: MainAxisSize.max,
@@ -86,7 +88,7 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
                       final questionsItem = questions[questionsIndex];
                       return Padding(
                         padding:
-                            const EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
+                            EdgeInsetsDirectional.fromSTEB(5.0, 0.0, 0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           crossAxisAlignment: CrossAxisAlignment.center,
@@ -102,11 +104,8 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
                                     hoverColor: Colors.transparent,
                                     highlightColor: Colors.transparent,
                                     onTap: () async {
-                                      logFirebaseEvent(
-                                          'TEST_QUESTIONS_CHOOSE_Icon_njgk4i3t_ON_T');
-                                      logFirebaseEvent('Icon_update_app_state');
                                       FFAppState().currentQuestion =
-                                          widget.name!;
+                                          widget!.name!;
                                       FFAppState().qurrentAnswer =
                                           questionsItem;
                                       safeSetState(() {});
@@ -130,7 +129,7 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
                             ),
                             Flexible(
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     5.0, 0.0, 0.0, 0.0),
                                 child: Text(
                                   questionsItem,
@@ -146,7 +145,7 @@ class _TestQuestionsChooseWidgetState extends State<TestQuestionsChooseWidget> {
                           ],
                         ),
                       );
-                    }).divide(const SizedBox(height: 12.0)),
+                    }).divide(SizedBox(height: 12.0)),
                   );
                 },
               ),

@@ -10,7 +10,7 @@ class FirebaseUsersTable extends SupabaseTable<FirebaseUsersRow> {
 }
 
 class FirebaseUsersRow extends SupabaseDataRow {
-  FirebaseUsersRow(super.data);
+  FirebaseUsersRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => FirebaseUsersTable();

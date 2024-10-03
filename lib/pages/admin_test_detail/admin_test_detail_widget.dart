@@ -6,6 +6,9 @@ import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'admin_test_detail_model.dart';
 export 'admin_test_detail_model.dart';
 
@@ -31,8 +34,6 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
     super.initState();
     _model = createModel(context, () => AdminTestDetailModel());
 
-    logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'AdminTestDetail'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -51,7 +52,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
         key: scaffoldKey,
         backgroundColor: FlutterFlowTheme.of(context).primaryBackground,
         appBar: AppBar(
-          backgroundColor: const Color(0xFFF9F7F7),
+          backgroundColor: Color(0xFFF9F7F7),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -64,8 +65,6 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              logFirebaseEvent('ADMIN_TEST_DETAIL_PAGE_close_ICN_ON_TAP');
-              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),
@@ -78,24 +77,24 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: Align(
-          alignment: const AlignmentDirectional(0.0, -1.0),
+          alignment: AlignmentDirectional(0.0, -1.0),
           child: Container(
             width: 700.0,
-            decoration: const BoxDecoration(),
+            decoration: BoxDecoration(),
             child: Column(
               mainAxisSize: MainAxisSize.max,
               children: [
                 Expanded(
                   child: Align(
-                    alignment: const AlignmentDirectional(0.0, -1.0),
+                    alignment: AlignmentDirectional(0.0, -1.0),
                     child: Padding(
                       padding:
-                          const EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
+                          EdgeInsetsDirectional.fromSTEB(24.0, 0.0, 24.0, 0.0),
                       child: SingleChildScrollView(
                         child: Column(
                           mainAxisSize: MainAxisSize.max,
@@ -105,11 +104,11 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                               mainAxisSize: MainAxisSize.max,
                               children: [
                                 Padding(
-                                  padding: const EdgeInsetsDirectional.fromSTEB(
+                                  padding: EdgeInsetsDirectional.fromSTEB(
                                       16.0, 45.0, 0.0, 0.0),
                                   child: Text(
                                     valueOrDefault<String>(
-                                      widget.currentTestAnswers?.user,
+                                      widget!.currentTestAnswers?.user,
                                       'нет почты',
                                     ),
                                     style: FlutterFlowTheme.of(context)
@@ -124,11 +123,11 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                               ],
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
-                                  widget.currentTestAnswers?.courseName,
+                                  widget!.currentTestAnswers?.courseName,
                                   'нет курса',
                                 ),
                                 style: FlutterFlowTheme.of(context)
@@ -140,11 +139,11 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 0.0, 0.0, 0.0),
                               child: Text(
                                 valueOrDefault<String>(
-                                  widget.currentTestAnswers?.textName,
+                                  widget!.currentTestAnswers?.textName,
                                   'нет текста',
                                 ),
                                 style: FlutterFlowTheme.of(context)
@@ -156,7 +155,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                               ),
                             ),
                             Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 45.0, 0.0, 0.0),
                               child: Text(
                                 'Ответы:',
@@ -171,9 +170,9 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                             ),
                             Builder(
                               builder: (context) {
-                                final answers = widget
+                                final answers = widget!
                                         .currentTestAnswers?.answers
-                                        .toList() ??
+                                        ?.toList() ??
                                     [];
 
                                 return Column(
@@ -183,7 +182,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                                       (answersIndex) {
                                     final answersItem = answers[answersIndex];
                                     return Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 10.0, 0.0, 0.0),
                                       child: Column(
                                         mainAxisSize: MainAxisSize.max,
@@ -195,11 +194,11 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                                             children: [
                                               Expanded(
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 0.0, 0.0, 0.0),
                                                   child: Text(
-                                                    '${functions.increment(answersIndex).toString()}. ${widget.currentTestAnswers?.questions[answersIndex]}',
+                                                    '${functions.increment(answersIndex).toString()}. ${widget!.currentTestAnswers?.questions?[answersIndex]}',
                                                     style: FlutterFlowTheme.of(
                                                             context)
                                                         .titleMedium
@@ -218,7 +217,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                                             children: [
                                               Expanded(
                                                 child: Padding(
-                                                  padding: const EdgeInsetsDirectional
+                                                  padding: EdgeInsetsDirectional
                                                       .fromSTEB(
                                                           16.0, 0.0, 0.0, 0.0),
                                                   child: Text(
@@ -249,10 +248,10 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                   ),
                 ),
                 Container(
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(25.0, 45.0, 25.0, 45.0),
+                        EdgeInsetsDirectional.fromSTEB(25.0, 45.0, 25.0, 45.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.min,
                       mainAxisAlignment: MainAxisAlignment.start,
@@ -260,34 +259,29 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                         Expanded(
                           child: FFButtonWidget(
                             onPressed: () async {
-                              logFirebaseEvent(
-                                  'ADMIN_TEST_DETAIL_PAGE___BTN_ON_TAP');
-                              logFirebaseEvent('Button_backend_call');
                               await TestsAnswersTable().update(
                                 data: {
                                   'isFaild': true,
                                 },
                                 matchingRows: (rows) => rows.eq(
                                   'uid',
-                                  widget.currentTestAnswers?.uid,
+                                  widget!.currentTestAnswers?.uid,
                                 ),
                               );
-                              logFirebaseEvent('Button_backend_call');
                               await OneSignalGroup.sendNotificationsCall.call(
-                                receiverId: widget.currentTestAnswers?.rlUser,
+                                receiverId: widget!.currentTestAnswers?.rlUser,
                                 heading: 'Тест не сдан :(',
                                 content: 'Попробуй еще раз',
                               );
 
-                              logFirebaseEvent('Button_navigate_back');
                               context.safePop();
                             },
                             text: 'Не сдал',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).alternate,
                               textStyle: FlutterFlowTheme.of(context)
@@ -298,7 +292,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                                     letterSpacing: 0.0,
                                   ),
                               elevation: 0.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -309,34 +303,29 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                         Expanded(
                           child: FFButtonWidget(
                             onPressed: () async {
-                              logFirebaseEvent(
-                                  'ADMIN_TEST_DETAIL_PAGE__BTN_ON_TAP');
-                              logFirebaseEvent('Button_backend_call');
                               await TestsAnswersTable().update(
                                 data: {
                                   'isPass': true,
                                 },
                                 matchingRows: (rows) => rows.eq(
                                   'uid',
-                                  widget.currentTestAnswers?.uid,
+                                  widget!.currentTestAnswers?.uid,
                                 ),
                               );
-                              logFirebaseEvent('Button_backend_call');
                               await OneSignalGroup.sendNotificationsCall.call(
-                                receiverId: widget.currentTestAnswers?.rlUser,
+                                receiverId: widget!.currentTestAnswers?.rlUser,
                                 heading: 'Поздравляем!',
                                 content: 'Тест успешно сдан :)',
                               );
 
-                              logFirebaseEvent('Button_navigate_back');
                               context.safePop();
                             },
                             text: 'Сдал',
                             options: FFButtonOptions(
                               height: 40.0,
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   24.0, 0.0, 24.0, 0.0),
-                              iconPadding: const EdgeInsetsDirectional.fromSTEB(
+                              iconPadding: EdgeInsetsDirectional.fromSTEB(
                                   0.0, 0.0, 0.0, 0.0),
                               color: FlutterFlowTheme.of(context).success,
                               textStyle: FlutterFlowTheme.of(context)
@@ -347,7 +336,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                                     letterSpacing: 0.0,
                                   ),
                               elevation: 0.0,
-                              borderSide: const BorderSide(
+                              borderSide: BorderSide(
                                 color: Colors.transparent,
                                 width: 1.0,
                               ),
@@ -355,7 +344,7 @@ class _AdminTestDetailWidgetState extends State<AdminTestDetailWidget> {
                             ),
                           ),
                         ),
-                      ].divide(const SizedBox(width: 16.0)),
+                      ].divide(SizedBox(width: 16.0)),
                     ),
                   ),
                 ),

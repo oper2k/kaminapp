@@ -2,10 +2,13 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'dictionary_model.dart';
 export 'dictionary_model.dart';
 
@@ -26,7 +29,6 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
     super.initState();
     _model = createModel(context, () => DictionaryModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'Dictionary'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -43,7 +45,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFF9F7F7),
+        backgroundColor: Color(0xFFF9F7F7),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
@@ -58,8 +60,6 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              logFirebaseEvent('DICTIONARY_PAGE_close_ICN_ON_TAP');
-              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),
@@ -72,14 +72,14 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: FutureBuilder<List<DicRow>>(
               future: DicTable().queryRows(
                 queryFn: (q) => q.order('sort', ascending: true),
@@ -102,7 +102,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
 
                 return Container(
                   width: 700.0,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Stack(
                     children: [
                       Column(
@@ -119,11 +119,6 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                           initialPage:
                                               max(0, min(0, dict.length - 1))),
                                   onPageChanged: (_) async {
-                                    logFirebaseEvent(
-                                        'DICTIONARY_PageView_6xk30d4c_ON_WIDGET_S');
-                                    logFirebaseEvent(
-                                        'PageView_update_app_state');
-
                                     safeSetState(() {});
                                   },
                                   scrollDirection: Axis.horizontal,
@@ -131,7 +126,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                   itemBuilder: (context, dictIndex) {
                                     final dictItem = dict[dictIndex];
                                     return Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           15.0, 0.0, 15.0, 0.0),
                                       child: SingleChildScrollView(
                                         child: Column(
@@ -139,7 +134,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                           children: [
                                             Container(
                                               decoration: BoxDecoration(
-                                                color: const Color(0xFFDAEFFB),
+                                                color: Color(0xFFDAEFFB),
                                                 borderRadius:
                                                     BorderRadius.circular(16.0),
                                               ),
@@ -150,11 +145,11 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                                 children: [
                                                   Align(
                                                     alignment:
-                                                        const AlignmentDirectional(
+                                                        AlignmentDirectional(
                                                             0.0, 0.0),
                                                     child: Padding(
                                                       padding:
-                                                          const EdgeInsets.all(6.0),
+                                                          EdgeInsets.all(6.0),
                                                       child: ClipRRect(
                                                         borderRadius:
                                                             BorderRadius
@@ -162,11 +157,11 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                                         child:
                                                             CachedNetworkImage(
                                                           fadeInDuration:
-                                                              const Duration(
+                                                              Duration(
                                                                   milliseconds:
                                                                       0),
                                                           fadeOutDuration:
-                                                              const Duration(
+                                                              Duration(
                                                                   milliseconds:
                                                                       0),
                                                           imageUrl:
@@ -180,7 +175,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 6.0,
                                                                 24.0, 0.0),
                                                     child: Text(
@@ -196,7 +191,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Roboto',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF3F72AF),
                                                             fontSize: 36.0,
                                                             letterSpacing: 0.0,
@@ -205,7 +200,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(
                                                                 24.0,
                                                                 12.0,
@@ -214,7 +209,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                                     child: Container(
                                                       width: double.infinity,
                                                       height: 1.0,
-                                                      decoration: const BoxDecoration(
+                                                      decoration: BoxDecoration(
                                                         color:
                                                             Color(0xFF3F72AF),
                                                       ),
@@ -222,7 +217,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                                   ),
                                                   Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(24.0, 0.0,
                                                                 24.0, 24.0),
                                                     child: Text(
@@ -236,7 +231,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                                           .override(
                                                             fontFamily:
                                                                 'Roboto',
-                                                            color: const Color(
+                                                            color: Color(
                                                                 0xFF3F72AF),
                                                             letterSpacing: 0.0,
                                                           ),
@@ -257,24 +252,24 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                         ],
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 1.0),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         child: Container(
                           width: double.infinity,
                           height: 80.0,
-                          decoration: const BoxDecoration(),
+                          decoration: BoxDecoration(),
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Row(
                               mainAxisSize: MainAxisSize.max,
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
                                 Container(
                                   decoration: BoxDecoration(
-                                    color: const Color(0xFFEDF2FA),
+                                    color: Color(0xFFEDF2FA),
                                     borderRadius: BorderRadius.circular(50.0),
                                   ),
                                   child: Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         15.0, 3.0, 15.0, 3.0),
                                     child: Text(
                                       valueOrDefault<String>(
@@ -291,7 +286,7 @@ class _DictionaryWidgetState extends State<DictionaryWidget> {
                                           .bodyMedium
                                           .override(
                                             fontFamily: 'Roboto',
-                                            color: const Color(0xFFB7DDF7),
+                                            color: Color(0xFFB7DDF7),
                                             fontSize: 16.0,
                                             letterSpacing: 0.0,
                                           ),

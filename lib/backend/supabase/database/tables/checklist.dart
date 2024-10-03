@@ -9,7 +9,7 @@ class ChecklistTable extends SupabaseTable<ChecklistRow> {
 }
 
 class ChecklistRow extends SupabaseDataRow {
-  ChecklistRow(super.data);
+  ChecklistRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => ChecklistTable();

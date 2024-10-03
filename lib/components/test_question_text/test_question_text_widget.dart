@@ -2,6 +2,9 @@ import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import 'package:easy_debounce/easy_debounce.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'test_question_text_model.dart';
 export 'test_question_text_model.dart';
 
@@ -51,9 +54,9 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
   @override
   Widget build(BuildContext context) {
     return Align(
-      alignment: const AlignmentDirectional(0.0, -1.0),
+      alignment: AlignmentDirectional(0.0, -1.0),
       child: Padding(
-        padding: const EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
+        padding: EdgeInsetsDirectional.fromSTEB(0.0, 24.0, 0.0, 0.0),
         child: Column(
           mainAxisSize: MainAxisSize.max,
           children: [
@@ -62,7 +65,7 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
               children: [
                 Expanded(
                   child: Text(
-                    widget.parameter1!,
+                    widget!.parameter1!,
                     style: FlutterFlowTheme.of(context).bodyMedium.override(
                           fontFamily: 'Roboto',
                           letterSpacing: 0.0,
@@ -75,10 +78,10 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
               mainAxisSize: MainAxisSize.max,
               children: [
                 Align(
-                  alignment: const AlignmentDirectional(0.0, -1.0),
+                  alignment: AlignmentDirectional(0.0, -1.0),
                   child: Padding(
                     padding:
-                        const EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),
+                        EdgeInsetsDirectional.fromSTEB(0.0, 26.0, 0.0, 0.0),
                     child: Row(
                       mainAxisSize: MainAxisSize.max,
                       children: [
@@ -88,24 +91,18 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
                             focusNode: _model.textFieldFocusNode,
                             onChanged: (_) => EasyDebounce.debounce(
                               '_model.textController',
-                              const Duration(milliseconds: 100),
+                              Duration(milliseconds: 100),
                               () async {
-                                logFirebaseEvent(
-                                    'TEST_QUESTION_TEXT_TextField_6r55iy17_ON');
-                                logFirebaseEvent('TextField_update_app_state');
                                 FFAppState().currentQuestion =
-                                    widget.parameter1!;
+                                    widget!.parameter1!;
                                 FFAppState().qurrentAnswer =
                                     _model.textController.text;
                                 safeSetState(() {});
                               },
                             ),
                             onFieldSubmitted: (_) async {
-                              logFirebaseEvent(
-                                  'TEST_QUESTION_TEXT_TextField_6r55iy17_ON');
-                              logFirebaseEvent('TextField_update_app_state');
                               FFAppState().currentQuestion =
-                                  widget.parameter1!;
+                                  widget!.parameter1!;
                               FFAppState().qurrentAnswer =
                                   _model.textController.text;
                               safeSetState(() {});
@@ -132,14 +129,14 @@ class _TestQuestionTextWidgetState extends State<TestQuestionTextWidget> {
                                     letterSpacing: 0.0,
                                   ),
                               enabledBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x802E5896),
                                   width: 1.0,
                                 ),
                                 borderRadius: BorderRadius.circular(8.0),
                               ),
                               focusedBorder: OutlineInputBorder(
-                                borderSide: const BorderSide(
+                                borderSide: BorderSide(
                                   color: Color(0x802E5896),
                                   width: 1.0,
                                 ),

@@ -7,11 +7,14 @@ import '/flutter_flow/flutter_flow_animations.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
+import 'dart:math';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:provider/provider.dart';
 import 'tests_details_model.dart';
 export 'tests_details_model.dart';
@@ -46,14 +49,9 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
     super.initState();
     _model = createModel(context, () => TestsDetailsModel());
 
-    logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'TestsDetails'});
     // On page load action.
     SchedulerBinding.instance.addPostFrameCallback((_) async {
-      logFirebaseEvent('TESTS_DETAILS_TestsDetails_ON_INIT_STATE');
-      logFirebaseEvent('TestsDetails_wait__delay');
       await Future.delayed(const Duration(milliseconds: 1000));
-      logFirebaseEvent('TestsDetails_widget_animation');
       if (animationsMap['testQuestionsChooseOnActionTriggerAnimation'] !=
           null) {
         safeSetState(() => hasTestQuestionsChooseTriggered = true);
@@ -62,7 +60,6 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                 .controller
                 .forward(from: 0.0));
       }
-      logFirebaseEvent('TestsDetails_widget_animation');
       if (animationsMap['testQuestionTextOnActionTriggerAnimation'] != null) {
         safeSetState(() => hasTestQuestionTextTriggered = true);
         SchedulerBinding.instance.addPostFrameCallback((_) async =>
@@ -140,9 +137,9 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFF9F7F7),
+        backgroundColor: Color(0xFFF9F7F7),
         appBar: AppBar(
-          backgroundColor: const Color(0xFFF9F7F7),
+          backgroundColor: Color(0xFFF9F7F7),
           automaticallyImplyLeading: false,
           leading: FlutterFlowIconButton(
             borderColor: Colors.transparent,
@@ -155,13 +152,11 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
               size: 30.0,
             ),
             onPressed: () async {
-              logFirebaseEvent('TESTS_DETAILS_PAGE_close_ICN_ON_TAP');
-              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),
           title: Text(
-            '${widget.currentCourse?.name} / Тест',
+            '${widget!.currentCourse?.name} / Тест',
             style: FlutterFlowTheme.of(context).headlineMedium.override(
                   fontFamily: 'Roboto',
                   color: FlutterFlowTheme.of(context).primaryText,
@@ -169,20 +164,20 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: FutureBuilder<List<QuestionsRow>>(
               future: QuestionsTable().queryRows(
                 queryFn: (q) => q
                     .eq(
                       'rl_test',
-                      widget.currentTest?.uid,
+                      widget!.currentTest?.uid,
                     )
                     .order('sort', ascending: true),
               ),
@@ -204,13 +199,13 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
 
                 return Container(
                   width: 700.0,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Stack(
                     children: [
                       Align(
-                        alignment: const AlignmentDirectional(0.0, -1.0),
+                        alignment: AlignmentDirectional(0.0, -1.0),
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               15.0, 0.0, 15.0, 80.0),
                           child: SingleChildScrollView(
                             child: Column(
@@ -230,11 +225,11 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                   mainAxisSize: MainAxisSize.max,
                                   children: [
                                     Padding(
-                                      padding: const EdgeInsetsDirectional.fromSTEB(
+                                      padding: EdgeInsetsDirectional.fromSTEB(
                                           0.0, 35.0, 0.0, 0.0),
                                       child: Text(
                                         valueOrDefault<String>(
-                                          widget.currentTest?.name,
+                                          widget!.currentTest?.name,
                                           'Нет названия теста',
                                         ),
                                         style: FlutterFlowTheme.of(context)
@@ -266,7 +261,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                     _model.index) &&
                                                 (questionsItem.type == 'выбор'))
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: wrapWithModel(
                                                   model: _model
@@ -286,7 +281,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                         containerQuestionsRowList[
                                                                 _model.index]
                                                             .name,
-                                                    testName: widget
+                                                    testName: widget!
                                                         .currentTest!.name!,
                                                     index: _model.index,
                                                     questions:
@@ -302,7 +297,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                     _model.index) &&
                                                 (questionsItem.type == 'текст'))
                                               Align(
-                                                alignment: const AlignmentDirectional(
+                                                alignment: AlignmentDirectional(
                                                     0.0, -1.0),
                                                 child: wrapWithModel(
                                                   model: _model
@@ -320,7 +315,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                     parameter1:
                                                         questionsItem.name,
                                                     index: questionsIndex,
-                                                    testName: widget
+                                                    testName: widget!
                                                         .currentTest!.name!,
                                                   ),
                                                 ).animateOnActionTrigger(
@@ -342,17 +337,17 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                         ),
                       ),
                       Align(
-                        alignment: const AlignmentDirectional(0.0, 1.0),
+                        alignment: AlignmentDirectional(0.0, 1.0),
                         child: Container(
                           width: double.infinity,
                           height: 80.0,
-                          decoration: const BoxDecoration(
+                          decoration: BoxDecoration(
                             color: Color(0xFFF9F7F7),
                           ),
                           child: Align(
-                            alignment: const AlignmentDirectional(0.0, 0.0),
+                            alignment: AlignmentDirectional(0.0, 0.0),
                             child: Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   15.0, 0.0, 15.0, 0.0),
                               child: Row(
                                 mainAxisSize: MainAxisSize.max,
@@ -362,7 +357,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                     Flexible(
                                       child: Align(
                                         alignment:
-                                            const AlignmentDirectional(-1.0, 0.0),
+                                            AlignmentDirectional(-1.0, 0.0),
                                         child: Row(
                                           mainAxisSize: MainAxisSize.max,
                                           children: [
@@ -390,7 +385,7 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                     ),
                                   Flexible(
                                     child: Align(
-                                      alignment: const AlignmentDirectional(1.0, 0.0),
+                                      alignment: AlignmentDirectional(1.0, 0.0),
                                       child: Row(
                                         mainAxisSize: MainAxisSize.max,
                                         mainAxisAlignment:
@@ -402,44 +397,36 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                             hoverColor: Colors.transparent,
                                             highlightColor: Colors.transparent,
                                             onTap: () async {
-                                              logFirebaseEvent(
-                                                  'TESTS_DETAILS_PAGE_Row_4vae5s9b_ON_TAP');
                                               if (containerQuestionsRowList
                                                       .length ==
                                                   functions.increment(
                                                       _model.index)) {
-                                                logFirebaseEvent(
-                                                    'Row_update_page_state');
                                                 _model.addToAnswersList(
                                                     FFAppState().qurrentAnswer);
                                                 _model.addToQuestionsList(
                                                     FFAppState()
                                                         .currentQuestion);
                                                 safeSetState(() {});
-                                                logFirebaseEvent(
-                                                    'Row_backend_call');
                                                 _model.newAnswersCopy =
                                                     await TestsAnswersTable()
                                                         .insert({
                                                   'answers': _model.answersList,
                                                   'isPass': false,
                                                   'isFaild': false,
-                                                  'course_name': widget
+                                                  'course_name': widget!
                                                       .currentCourse?.name,
                                                   'text_name': currentUserEmail,
                                                   'questions':
                                                       _model.questionsList,
                                                   'user': currentUserEmail,
                                                   'rl_test':
-                                                      widget.currentTest?.uid,
-                                                  'rl_course': widget
+                                                      widget!.currentTest?.uid,
+                                                  'rl_course': widget!
                                                       .currentCourse?.uid,
                                                   'rl_user': currentUserUid,
-                                                  'rl_lesson': widget
+                                                  'rl_lesson': widget!
                                                       .currentLesson?.uid,
                                                 });
-                                                logFirebaseEvent(
-                                                    'Row_backend_call');
                                                 await OneSignalGroup
                                                     .sendNotificationsCall
                                                     .call(
@@ -450,16 +437,12 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                   content: 'Работай давай!',
                                                 );
 
-                                                logFirebaseEvent(
-                                                    'Row_navigate_to');
                                                 if (Navigator.of(context)
                                                     .canPop()) {
                                                   context.pop();
                                                 }
                                                 context.pushNamed('TestEnd');
                                               } else {
-                                                logFirebaseEvent(
-                                                    'Row_update_page_state');
                                                 _model.index = _model.index + 1;
                                                 _model.addToAnswersList(
                                                     FFAppState().qurrentAnswer);
@@ -467,8 +450,6 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                     FFAppState()
                                                         .currentQuestion);
                                                 safeSetState(() {});
-                                                logFirebaseEvent(
-                                                    'Row_widget_animation');
                                                 if (animationsMap[
                                                         'testQuestionsChooseOnActionTriggerAnimation'] !=
                                                     null) {
@@ -485,8 +466,6 @@ class _TestsDetailsWidgetState extends State<TestsDetailsWidget>
                                                                       from:
                                                                           0.0));
                                                 }
-                                                logFirebaseEvent(
-                                                    'Row_widget_animation');
                                                 if (animationsMap[
                                                         'testQuestionTextOnActionTriggerAnimation'] !=
                                                     null) {

@@ -2,10 +2,13 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'all_chats_model.dart';
 export 'all_chats_model.dart';
 
@@ -26,7 +29,6 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
     super.initState();
     _model = createModel(context, () => AllChatsModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'AllChats'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -43,7 +45,7 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFF9F7F7),
+        backgroundColor: Color(0xFFF9F7F7),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
@@ -58,8 +60,6 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              logFirebaseEvent('ALL_CHATS_PAGE_close_ICN_ON_TAP');
-              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),
@@ -72,14 +72,14 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: FutureBuilder<List<ChatsRow>>(
               future: ChatsTable().queryRows(
                 queryFn: (q) => q.order('timestamp_last_message'),
@@ -102,7 +102,7 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
 
                 return Container(
                   width: 700.0,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Builder(
                     builder: (context) {
                       final chats = containerChatsRowList.toList();
@@ -113,7 +113,7 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                           children: List.generate(chats.length, (chatsIndex) {
                             final chatsItem = chats[chatsIndex];
                             return Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 20.0, 16.0, 0.0),
                               child: Stack(
                                 children: [
@@ -154,11 +154,6 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                                         hoverColor: Colors.transparent,
                                         highlightColor: Colors.transparent,
                                         onTap: () async {
-                                          logFirebaseEvent(
-                                              'ALL_CHATS_PAGE_Container_vp9zq3zs_ON_TAP');
-                                          logFirebaseEvent(
-                                              'Container_navigate_to');
-
                                           context.pushNamed(
                                             'Chat',
                                             queryParameters: {
@@ -180,7 +175,7 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                                                 BorderRadius.circular(16.0),
                                           ),
                                           child: Padding(
-                                            padding: const EdgeInsets.all(12.0),
+                                            padding: EdgeInsets.all(12.0),
                                             child: Row(
                                               mainAxisSize: MainAxisSize.max,
                                               children: [
@@ -189,9 +184,9 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                                                       BorderRadius.circular(
                                                           100.0),
                                                   child: CachedNetworkImage(
-                                                    fadeInDuration: const Duration(
+                                                    fadeInDuration: Duration(
                                                         milliseconds: 0),
-                                                    fadeOutDuration: const Duration(
+                                                    fadeOutDuration: Duration(
                                                         milliseconds: 0),
                                                     imageUrl:
                                                         valueOrDefault<String>(
@@ -207,7 +202,7 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                                                 Flexible(
                                                   child: Padding(
                                                     padding:
-                                                        const EdgeInsetsDirectional
+                                                        EdgeInsetsDirectional
                                                             .fromSTEB(12.0, 0.0,
                                                                 0.0, 0.0),
                                                     child: Column(
@@ -230,7 +225,7 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                                                               .override(
                                                                 fontFamily:
                                                                     'Roboto',
-                                                                color: const Color(
+                                                                color: Color(
                                                                     0xFF112D4E),
                                                                 fontSize: 16.0,
                                                                 letterSpacing:
@@ -244,7 +239,7 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                                                             Flexible(
                                                               child: Padding(
                                                                 padding:
-                                                                    const EdgeInsetsDirectional
+                                                                    EdgeInsetsDirectional
                                                                         .fromSTEB(
                                                                             0.0,
                                                                             3.0,
@@ -281,7 +276,7 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                                                         ),
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       3.0,
@@ -335,9 +330,9 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                                   ))
                                     Align(
                                       alignment:
-                                          const AlignmentDirectional(1.0, -1.0),
+                                          AlignmentDirectional(1.0, -1.0),
                                       child: Padding(
-                                        padding: const EdgeInsetsDirectional.fromSTEB(
+                                        padding: EdgeInsetsDirectional.fromSTEB(
                                             0.0, 12.0, 12.0, 0.0),
                                         child: Container(
                                           width: 10.0,
@@ -353,7 +348,7 @@ class _AllChatsWidgetState extends State<AllChatsWidget> {
                                 ],
                               ),
                             );
-                          }).addToEnd(const SizedBox(height: 30.0)),
+                          }).addToEnd(SizedBox(height: 30.0)),
                         ),
                       );
                     },

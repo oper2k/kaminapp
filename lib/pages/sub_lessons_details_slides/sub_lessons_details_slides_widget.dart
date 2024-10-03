@@ -3,8 +3,12 @@ import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
 import '/flutter_flow/flutter_flow_web_view.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import '/flutter_flow/custom_functions.dart' as functions;
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'sub_lessons_details_slides_model.dart';
 export 'sub_lessons_details_slides_model.dart';
 
@@ -32,8 +36,6 @@ class _SubLessonsDetailsSlidesWidgetState
     super.initState();
     _model = createModel(context, () => SubLessonsDetailsSlidesModel());
 
-    logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'SubLessonsDetailsSlides'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -65,14 +67,12 @@ class _SubLessonsDetailsSlidesWidgetState
               size: 30.0,
             ),
             onPressed: () async {
-              logFirebaseEvent('SUB_LESSONS_DETAILS_SLIDES_close_ICN_ON_');
-              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),
           title: Text(
             valueOrDefault<String>(
-              widget.currentSubLesson?.name,
+              widget!.currentSubLesson?.name,
               'Нет названия',
             ),
             style: FlutterFlowTheme.of(context).headlineMedium.override(
@@ -82,17 +82,17 @@ class _SubLessonsDetailsSlidesWidgetState
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: Stack(
                 children: [
                   Column(
@@ -100,13 +100,13 @@ class _SubLessonsDetailsSlidesWidgetState
                     children: [
                       Flexible(
                         child: Padding(
-                          padding: const EdgeInsetsDirectional.fromSTEB(
+                          padding: EdgeInsetsDirectional.fromSTEB(
                               0.0, 0.0, 0.0, 80.0),
                           child: Builder(
                             builder: (context) {
-                              final currentDescription = widget
+                              final currentDescription = widget!
                                       .currentSubLesson?.descriptions
-                                      .toList() ??
+                                      ?.toList() ??
                                   [];
 
                               return PageView.builder(
@@ -119,10 +119,6 @@ class _SubLessonsDetailsSlidesWidgetState
                                                 currentDescription.length -
                                                     1))),
                                 onPageChanged: (_) async {
-                                  logFirebaseEvent(
-                                      'SUB_LESSONS_DETAILS_SLIDES_PageView_dx8i');
-                                  logFirebaseEvent('PageView_update_app_state');
-
                                   safeSetState(() {});
                                 },
                                 scrollDirection: Axis.horizontal,
@@ -133,7 +129,7 @@ class _SubLessonsDetailsSlidesWidgetState
                                       currentDescription[
                                           currentDescriptionIndex];
                                   return Padding(
-                                    padding: const EdgeInsetsDirectional.fromSTEB(
+                                    padding: EdgeInsetsDirectional.fromSTEB(
                                         20.0, 0.0, 20.0, 0.0),
                                     child: FlutterFlowWebView(
                                       content: currentDescriptionItem,
@@ -156,24 +152,24 @@ class _SubLessonsDetailsSlidesWidgetState
                     ],
                   ),
                   Align(
-                    alignment: const AlignmentDirectional(0.0, 1.0),
+                    alignment: AlignmentDirectional(0.0, 1.0),
                     child: Container(
                       width: double.infinity,
                       height: 80.0,
-                      decoration: const BoxDecoration(),
+                      decoration: BoxDecoration(),
                       child: Align(
-                        alignment: const AlignmentDirectional(0.0, 0.0),
+                        alignment: AlignmentDirectional(0.0, 0.0),
                         child: Row(
                           mainAxisSize: MainAxisSize.max,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Container(
                               decoration: BoxDecoration(
-                                color: const Color(0xFFEDF2FA),
+                                color: Color(0xFFEDF2FA),
                                 borderRadius: BorderRadius.circular(50.0),
                               ),
                               child: Padding(
-                                padding: const EdgeInsetsDirectional.fromSTEB(
+                                padding: EdgeInsetsDirectional.fromSTEB(
                                     15.0, 3.0, 15.0, 3.0),
                                 child: Text(
                                   valueOrDefault<String>(
@@ -183,14 +179,14 @@ class _SubLessonsDetailsSlidesWidgetState
                                               _model.pageViewCurrentIndex)
                                           .toString(),
                                       '0',
-                                    )}/${widget.currentSubLesson?.descriptions.length.toString()}',
+                                    )}/${widget!.currentSubLesson?.descriptions?.length?.toString()}',
                                     '0/0',
                                   ),
                                   style: FlutterFlowTheme.of(context)
                                       .bodyMedium
                                       .override(
                                         fontFamily: 'Roboto',
-                                        color: const Color(0xFFB7DDF7),
+                                        color: Color(0xFFB7DDF7),
                                         fontSize: 16.0,
                                         letterSpacing: 0.0,
                                       ),

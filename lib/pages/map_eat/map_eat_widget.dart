@@ -2,10 +2,13 @@ import '/backend/supabase/supabase.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'map_eat_model.dart';
 export 'map_eat_model.dart';
 
@@ -26,7 +29,6 @@ class _MapEatWidgetState extends State<MapEatWidget> {
     super.initState();
     _model = createModel(context, () => MapEatModel());
 
-    logFirebaseEvent('screen_view', parameters: {'screen_name': 'MapEat'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -43,7 +45,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFF9F7F7),
+        backgroundColor: Color(0xFFF9F7F7),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
@@ -58,8 +60,6 @@ class _MapEatWidgetState extends State<MapEatWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              logFirebaseEvent('MAP_EAT_PAGE_close_ICN_ON_TAP');
-              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),
@@ -72,14 +72,14 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: FutureBuilder<List<EatsRow>>(
               future: EatsTable().queryRows(
                 queryFn: (q) => q.order('created_at', ascending: true),
@@ -102,7 +102,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
 
                 return Container(
                   width: 700.0,
-                  decoration: const BoxDecoration(),
+                  decoration: BoxDecoration(),
                   child: Builder(
                     builder: (context) {
                       final eats = containerEatsRowList.toList();
@@ -113,7 +113,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                           children: List.generate(eats.length, (eatsIndex) {
                             final eatsItem = eats[eatsIndex];
                             return Padding(
-                              padding: const EdgeInsetsDirectional.fromSTEB(
+                              padding: EdgeInsetsDirectional.fromSTEB(
                                   16.0, 20.0, 16.0, 0.0),
                               child: Container(
                                 width: MediaQuery.sizeOf(context).width * 1.0,
@@ -123,7 +123,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                                   borderRadius: BorderRadius.circular(16.0),
                                 ),
                                 child: Padding(
-                                  padding: const EdgeInsets.all(12.0),
+                                  padding: EdgeInsets.all(12.0),
                                   child: Row(
                                     mainAxisSize: MainAxisSize.min,
                                     children: [
@@ -132,9 +132,9 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                                             BorderRadius.circular(8.0),
                                         child: CachedNetworkImage(
                                           fadeInDuration:
-                                              const Duration(milliseconds: 0),
+                                              Duration(milliseconds: 0),
                                           fadeOutDuration:
-                                              const Duration(milliseconds: 0),
+                                              Duration(milliseconds: 0),
                                           imageUrl: eatsItem.image!,
                                           width: 96.0,
                                           height: 96.0,
@@ -144,7 +144,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                                       Expanded(
                                         child: Padding(
                                           padding:
-                                              const EdgeInsetsDirectional.fromSTEB(
+                                              EdgeInsetsDirectional.fromSTEB(
                                                   12.0, 0.0, 0.0, 0.0),
                                           child: Column(
                                             mainAxisSize: MainAxisSize.max,
@@ -165,7 +165,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                                                         .override(
                                                           fontFamily: 'Roboto',
                                                           color:
-                                                              const Color(0xFF112D4E),
+                                                              Color(0xFF112D4E),
                                                           fontSize: 16.0,
                                                           letterSpacing: 0.0,
                                                         ),
@@ -180,7 +180,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                                                       children: [
                                                         Padding(
                                                           padding:
-                                                              const EdgeInsetsDirectional
+                                                              EdgeInsetsDirectional
                                                                   .fromSTEB(
                                                                       0.0,
                                                                       12.0,
@@ -224,7 +224,7 @@ class _MapEatWidgetState extends State<MapEatWidget> {
                                 ),
                               ),
                             );
-                          }).addToEnd(const SizedBox(height: 30.0)),
+                          }).addToEnd(SizedBox(height: 30.0)),
                         ),
                       );
                     },

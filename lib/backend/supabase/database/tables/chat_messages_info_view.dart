@@ -10,7 +10,7 @@ class ChatMessagesInfoViewTable extends SupabaseTable<ChatMessagesInfoViewRow> {
 }
 
 class ChatMessagesInfoViewRow extends SupabaseDataRow {
-  ChatMessagesInfoViewRow(super.data);
+  ChatMessagesInfoViewRow(Map<String, dynamic> data) : super(data);
 
   @override
   SupabaseTable get table => ChatMessagesInfoViewTable();

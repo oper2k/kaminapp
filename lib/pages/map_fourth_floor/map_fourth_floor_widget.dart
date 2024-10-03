@@ -2,8 +2,12 @@ import '/components/custom_dialog_map/custom_dialog_map_widget.dart';
 import '/flutter_flow/flutter_flow_icon_button.dart';
 import '/flutter_flow/flutter_flow_theme.dart';
 import '/flutter_flow/flutter_flow_util.dart';
+import '/flutter_flow/flutter_flow_widgets.dart';
 import 'package:aligned_dialog/aligned_dialog.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:provider/provider.dart';
 import 'package:webviewx_plus/webviewx_plus.dart';
 import 'map_fourth_floor_model.dart';
 export 'map_fourth_floor_model.dart';
@@ -25,8 +29,6 @@ class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
     super.initState();
     _model = createModel(context, () => MapFourthFloorModel());
 
-    logFirebaseEvent('screen_view',
-        parameters: {'screen_name': 'MapFourthFloor'});
     WidgetsBinding.instance.addPostFrameCallback((_) => safeSetState(() {}));
   }
 
@@ -43,7 +45,7 @@ class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
       onTap: () => FocusScope.of(context).unfocus(),
       child: Scaffold(
         key: scaffoldKey,
-        backgroundColor: const Color(0xFFF9F7F7),
+        backgroundColor: Color(0xFFF9F7F7),
         appBar: AppBar(
           backgroundColor: FlutterFlowTheme.of(context).secondaryBackground,
           automaticallyImplyLeading: false,
@@ -58,8 +60,6 @@ class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
               size: 30.0,
             ),
             onPressed: () async {
-              logFirebaseEvent('MAP_FOURTH_FLOOR_PAGE_close_ICN_ON_TAP');
-              logFirebaseEvent('IconButton_navigate_back');
               context.pop();
             },
           ),
@@ -72,31 +72,31 @@ class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
                   letterSpacing: 0.0,
                 ),
           ),
-          actions: const [],
+          actions: [],
           centerTitle: false,
           elevation: 0.0,
         ),
         body: SafeArea(
           top: true,
           child: Align(
-            alignment: const AlignmentDirectional(0.0, -1.0),
+            alignment: AlignmentDirectional(0.0, -1.0),
             child: Container(
               width: 700.0,
-              decoration: const BoxDecoration(),
+              decoration: BoxDecoration(),
               child: SingleChildScrollView(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Align(
-                      alignment: const AlignmentDirectional(0.0, 0.0),
-                      child: SizedBox(
+                      alignment: AlignmentDirectional(0.0, 0.0),
+                      child: Container(
                         width: 307.0,
                         height: 1088.0,
                         child: Stack(
-                          alignment: const AlignmentDirectional(0.0, 0.0),
+                          alignment: AlignmentDirectional(0.0, 0.0),
                           children: [
                             Align(
-                              alignment: const AlignmentDirectional(0.0, 0.0),
+                              alignment: AlignmentDirectional(0.0, 0.0),
                               child: ClipRRect(
                                 borderRadius: BorderRadius.circular(8.0),
                                 child: Image.asset(
@@ -108,7 +108,7 @@ class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-0.68, 0.56),
+                              alignment: AlignmentDirectional(-0.68, 0.56),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -116,17 +116,14 @@ class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    logFirebaseEvent(
-                                        'MAP_FOURTH_FLOOR_PAGE_k403_ON_TAP');
-                                    logFirebaseEvent('k403_alert_dialog');
                                     await showAlignedDialog(
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: const AlignmentDirectional(
+                                      targetAnchor: AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: const AlignmentDirectional(
+                                      followerAnchor: AlignmentDirectional(
                                               -1.0, 0.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -137,7 +134,7 @@ class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
                                               onTap: () =>
                                                   FocusScope.of(dialogContext)
                                                       .unfocus(),
-                                              child: const CustomDialogMapWidget(
+                                              child: CustomDialogMapWidget(
                                                 nameSearch: 'k403',
                                               ),
                                             ),
@@ -149,13 +146,13 @@ class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                   ),
                                 ),
                               ),
                             ),
                             Align(
-                              alignment: const AlignmentDirectional(-0.67, 0.86),
+                              alignment: AlignmentDirectional(-0.67, 0.86),
                               child: Builder(
                                 builder: (context) => InkWell(
                                   splashColor: Colors.transparent,
@@ -163,17 +160,14 @@ class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
                                   hoverColor: Colors.transparent,
                                   highlightColor: Colors.transparent,
                                   onTap: () async {
-                                    logFirebaseEvent(
-                                        'MAP_FOURTH_FLOOR_PAGE_k404_ON_TAP');
-                                    logFirebaseEvent('k404_alert_dialog');
                                     await showAlignedDialog(
                                       context: context,
                                       isGlobal: false,
                                       avoidOverflow: false,
-                                      targetAnchor: const AlignmentDirectional(
+                                      targetAnchor: AlignmentDirectional(
                                               0.0, 0.0)
                                           .resolve(Directionality.of(context)),
-                                      followerAnchor: const AlignmentDirectional(
+                                      followerAnchor: AlignmentDirectional(
                                               -1.0, 1.0)
                                           .resolve(Directionality.of(context)),
                                       builder: (dialogContext) {
@@ -184,7 +178,7 @@ class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
                                               onTap: () =>
                                                   FocusScope.of(dialogContext)
                                                       .unfocus(),
-                                              child: const CustomDialogMapWidget(
+                                              child: CustomDialogMapWidget(
                                                 nameSearch: 'k404',
                                               ),
                                             ),
@@ -196,7 +190,7 @@ class _MapFourthFloorWidgetState extends State<MapFourthFloorWidget> {
                                   child: Container(
                                     width: 84.0,
                                     height: 61.0,
-                                    decoration: const BoxDecoration(),
+                                    decoration: BoxDecoration(),
                                   ),
                                 ),
                               ),
